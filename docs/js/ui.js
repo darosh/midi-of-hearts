@@ -261,13 +261,13 @@ function buildCard (icons) {
   svg.appendChild(jackBtn)
 
   // Beat line: heart → jack
-  svg.appendChild(el('line', {
-    id: 'beatLine',
-    x1: f(HEART_C.x), y1: f(HEART_C.y),
-    x2: f(JACK_C.x), y2: f(JACK_C.y),
-    stroke: '#ccc', 'stroke-width': f(SW * 0.6),
-    'stroke-dasharray': `${f(P)} ${f(I / 2)}`,
-  }))
+  // svg.appendChild(el('line', {
+  //   id: 'beatLine',
+  //   x1: f(HEART_C.x), y1: f(HEART_C.y),
+  //   x2: f(JACK_C.x), y2: f(JACK_C.y),
+  //   stroke: '#ccc', 'stroke-width': f(SW * 0.6),
+  //   'stroke-dasharray': `${f(P)} ${f(I / 2)}`,
+  // }))
 
   // Animated layer (arcs, ticks, glows) — always on top
   animLayer = el('g', { id: 'anim-layer' })
