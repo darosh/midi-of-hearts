@@ -227,6 +227,28 @@ function buildCard (icons) {
   })
   svg.appendChild(line)
 
+  // BPM chart — inserted here so it renders under the heart
+  const chartG = el('g', { id: 'bpm-chart' })
+  const chartLine = el('polyline', {
+    id: 'bpm-line'
+  })
+  chartG.appendChild(chartLine)
+  const minLabel = el('text', {
+    id: 'bpm-min-label',
+    'font-size': f(SW * 5),
+    'text-anchor': 'middle',
+    'dominant-baseline': 'central',
+  })
+  const maxLabel = el('text', {
+    id: 'bpm-max-label',
+    'font-size': f(SW * 5),
+    'text-anchor': 'middle',
+    'dominant-baseline': 'central',
+  })
+  chartG.appendChild(minLabel)
+  chartG.appendChild(maxLabel)
+  svg.appendChild(chartG)
+
   // Heart — centre
   const heartSize = IW * 0.40
   const heartG = el('g', { id: 'heart' })
@@ -386,6 +408,7 @@ function raf () {
   animateHeartPulse(now)
   animateMidiGlow(now)
   animateDigits(now)
+  renderBpmChart(now)
   updateStatus()
   updateActiveStates()
 }
@@ -477,6 +500,83 @@ function animateMidiGlow (now) {
     const age = now - Math.max(...recent), t = age / 200
     // jackGlowEl.setAttribute('opacity', 1 - t)
   } else {
+  }
+}
+
+// BPM chart along diagonal
+const CHART_WINDOW_MS = 60000
+
+function renderBpmChart (now) {
+  const chartLine = svg?.getElementById('bpm-line')
+  const minLabel = svg?.getElementById('bpm-min-label')
+  const maxLabel = svg?.getElementById('bpm-max-label')
+  if (!chartLine) return
+
+  const halfW = IW * 0.07
+
+  // Direction vectors along and perpendicular to the diagonal (STOP→MIDI)
+  const dx = MIDI_C.x - STOP_C.x
+  const dy = MIDI_C.y - STOP_C.y
+  const len = Math.hypot(dx, dy)
+  const ax = dx / len, ay = dy / len
+  const px = -ay, py = ax  // perp 90° CCW
+
+  // Chart endpoints inset from symbols
+  const symbolInset = IW * 0.14
+  const startX = STOP_C.x + ax * symbolInset  // oldest end (STOP/square side)
+  const startY = STOP_C.y + ay * symbolInset
+  const endX = MIDI_C.x - ax * symbolInset    // newest end (MIDI/triangle side)
+  const endY = MIDI_C.y - ay * symbolInset
+  const cdx = endX - startX, cdy = endY - startY
+
+  const cutoff = now - CHART_WINDOW_MS
+  const visible = state.bpmHistory.filter(s => s.t >= cutoff)
+
+  if (visible.length < 2) {
+    chartLine.setAttribute('points', `${f(startX)},${f(startY)} ${f(endX)},${f(endY)}`)
+    minLabel.textContent = ''
+    maxLabel.textContent = ''
+    return
+  }
+
+  const bpms = visible.map(s => s.bpm)
+  let bMin = Math.min(...bpms)
+  let bMax = Math.max(...bpms)
+  if (bMax - bMin < 10) {
+    const mid = (bMin + bMax) / 2
+    bMin = mid - 5
+    bMax = mid + 5
+  }
+  const bSpan = bMax - bMin
+
+  const pts = visible.map(s => {
+    // tFrac: 0 = 60s ago (STOP/oldest end), 1 = now (MIDI/newest end)
+    const tFrac = Math.max(0, Math.min(1, (s.t - cutoff) / CHART_WINDOW_MS))
+    // bFrac: -1 = high BPM (one perp side), +1 = low BPM (other perp side)
+    const bFrac = (bMax - s.bpm) / bSpan * 2 - 1
+
+    const svgX = startX + tFrac * cdx + bFrac * px * halfW
+    const svgY = startY + tFrac * cdy + bFrac * py * halfW
+    return `${f(svgX)},${f(svgY)}`
+  }).join(' ')
+
+  chartLine.setAttribute('points', pts)
+
+  // Labels near STOP_C (oldest/left end), perpendicular offsets
+  const hasVariance = bMax - bMin > 1
+  if (hasVariance) {
+    const labelOffset = halfW * 1.6
+    // max label on the -perp side (high BPM direction)
+    maxLabel.setAttribute('x', f(startX - px * labelOffset))
+    maxLabel.setAttribute('y', f(startY - py * labelOffset))
+    maxLabel.textContent = Math.round(bMax)
+    // min label on the +perp side (low BPM direction)
+    minLabel.setAttribute('x', f(startX + px * labelOffset))
+    minLabel.setAttribute('y', f(startY + py * labelOffset))
+    minLabel.textContent = Math.round(bMin)
+  } else {
+    minLabel.textContent = ''
+    maxLabel.textContent = ''
   }
 }
 

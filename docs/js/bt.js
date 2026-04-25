@@ -40,6 +40,8 @@ function handleHr(event) {
   const bpm = is16 ? v.getUint16(1, true) : v.getUint8(1);
   state.bpm = bpm;
   state.lastHrTime = performance.now();
+  state.bpmHistory.push({ t: state.lastHrTime, bpm });
+  if (state.bpmHistory.length > 300) state.bpmHistory.shift();
   emit('heartrate', bpm);
 }
 
