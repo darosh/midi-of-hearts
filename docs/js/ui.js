@@ -524,7 +524,7 @@ function renderBpmChart (now) {
   const maxLabel = svg?.getElementById('bpm-max-label')
   if (!chartLine) return
 
-  const halfW = IW * 0.07
+  const halfW = IW * 0.083
 
   // Direction vectors along and perpendicular to the diagonal (STOP→MIDI)
   const dx = MIDI_C.x - STOP_C.x
@@ -534,7 +534,7 @@ function renderBpmChart (now) {
   const px = -ay, py = ax  // perp 90° CCW
 
   // Chart endpoints inset from symbols
-  const symbolInset = IW * 0.08
+  const symbolInset = IW * 0.083 - P
   const startX = STOP_C.x + ax * symbolInset  // oldest end (STOP/square side)
   const startY = STOP_C.y + ay * symbolInset
   const endX = MIDI_C.x - ax * symbolInset    // newest end (MIDI/triangle side)
