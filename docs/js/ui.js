@@ -91,23 +91,24 @@ const DIGIT_X = [
 
 let numbersNodes = []   // cloneable <g id="dN"> elements from numbers.svg
 
-function renderDigits (bpm, scaleY = 1) {
+// digits: array of digit numbers; scaleYByIndex: map of index→scaleY override
+function renderDigits (digits, scaleYByIndex = {}) {
   while (digitGroup.firstChild) digitGroup.removeChild(digitGroup.firstChild)
-  if (bpm <= 0 || !numbersNodes.length) return
+  if (!digits.length || !numbersNodes.length) return
 
-  const digits = String(Math.round(bpm)).split('').map(Number)
-  const targetH = IH * 0.18
+  const targetH = IH * 0.144
   const scale = targetH / DIGIT_VH
   const GAP = targetH * 0.15
 
-  // Total width for centering
   const totalW = digits.reduce((s, d) => s + DIGIT_X[d][1] * scale, 0)
     + GAP * (digits.length - 1)
 
   let curX = HEART_C.x - totalW / 2
   const baseY = HEART_C.y - targetH / 2 + targetH * 0.05
 
-  for (const d of digits) {
+  for (let i = 0; i < digits.length; i++) {
+    const d = digits[i]
+    const scaleY = scaleYByIndex[i] ?? 1
     const [xMin, dw] = DIGIT_X[d]
     const ox = curX - xMin * scale
     const scY = scale * scaleY
@@ -264,7 +265,7 @@ function buildCard (icons) {
   // Digit group
   digitGroup = el('g', { id: 'digitGroup' })
   svg.appendChild(digitGroup)
-  renderDigits(0)
+  renderDigits([])
 }
 
 // ── MIDI picker overlay ───────────────────────────────────────────────────────
@@ -358,7 +359,9 @@ function closePicker () {
 const ARC_TRAVEL_MS = 800
 const BEAT_TRAVEL_MS = 2000
 
-let displayBpm = 0, targetBpm = 0, digitTransition = null
+let displayDigits = []   // digit array currently rendered
+let targetBpm = 0
+let digitAnims = []      // [{ index, startMs }]
 const arcEvents = []
 const DIGIT_DUR = 300
 
@@ -373,6 +376,14 @@ function raf () {
   animateMidiGlow(now)
   animateDigits(now)
   updateStatus()
+  updateActiveStates()
+}
+
+function updateActiveStates () {
+  svg?.getElementById('watch-btn')?.classList.toggle('active', !!state.isConnected)
+  svg?.getElementById('play-btn')?.classList.toggle('active', !!state.isPlaying)
+  svg?.getElementById('stop-btn')?.classList.toggle('active', !state.isPlaying)
+  svg?.getElementById('jack-btn')?.classList.toggle('active', !!midi.selectedOutput())
 }
 
 function updateStatus () {
@@ -458,24 +469,39 @@ function animateMidiGlow (now) {
   }
 }
 
-// Digit transition
+// Digit transition — per-changed-digit only
 function animateDigits (now) {
-  if (targetBpm !== state.bpm) {
+  if (state.bpm !== targetBpm) {
+    const newDigits = state.bpm > 0 ? String(Math.round(state.bpm)).split('').map(Number) : []
     targetBpm = state.bpm
-    digitTransition = { from: displayBpm, to: targetBpm, startMs: now }
+    // Pad both to same length (right-aligned)
+    const maxLen = Math.max(displayDigits.length, newDigits.length)
+    const oldPad = [...Array(maxLen - displayDigits.length).fill(null), ...displayDigits]
+    const newPad = [...Array(maxLen - newDigits.length).fill(null), ...newDigits]
+    for (let i = 0; i < maxLen; i++) {
+      if (oldPad[i] !== newPad[i]) {
+        const existing = digitAnims.find(a => a.index === i && a.maxLen === maxLen)
+        if (existing) existing.startMs = now
+        else digitAnims.push({ index: i, maxLen, startMs: now })
+      }
+    }
+    displayDigits = [...newDigits]
   }
-  if (!digitTransition) {
-    renderDigits(displayBpm)
-    return
+
+  // Remove finished anims
+  digitAnims = digitAnims.filter(a => now - a.startMs < DIGIT_DUR)
+
+  // Build scaleY map keyed by displayDigits index
+  const scaleYByIndex = {}
+  const dLen = displayDigits.length
+  for (const anim of digitAnims) {
+    const di = anim.index - (anim.maxLen - dLen)
+    if (di < 0 || di >= dLen) continue
+    const t = Math.min(1, (now - anim.startMs) / DIGIT_DUR)
+    scaleYByIndex[di] = t < 0.5 ? 1 - t * 2 : (t - 0.5) * 2
   }
-  const t = Math.min(1, (now - digitTransition.startMs) / DIGIT_DUR)
-  if (t < 0.5) {
-    renderDigits(digitTransition.from, 1 - t * 2)
-  } else {
-    displayBpm = digitTransition.to
-    renderDigits(digitTransition.to, (t - 0.5) * 2)
-    if (t >= 1) digitTransition = null
-  }
+
+  renderDigits(displayDigits, scaleYByIndex)
 }
 
 // ── MIDI port change ──────────────────────────────────────────────────────────
@@ -522,6 +548,8 @@ export async function init () {
     clearTimeout(resizeTimer)
     resizeTimer = setTimeout(() => {
       jackGlowEl = null
+      displayDigits = []
+      digitAnims = []
       closePicker()
       deriveH()
       buildCard(icons)

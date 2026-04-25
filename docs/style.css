@@ -78,6 +78,23 @@ svg * {
     fill-opacity: 1;
 }
 
+#watch-btn.active * {
+    stroke: var(--x-white);
+}
+
+#play-btn.active *, #stop-btn.active * {
+    stroke: var(--x-white);
+}
+
+#jack-btn.active * {
+    stroke: var(--x-white);
+}
+
+#digitGroup * {
+    fill: var(--x-white);
+    stroke: none;
+}
+
 #drum-btn *, #sine-btn * {
     fill: var(--x-fill);
     fill-opacity: 0;
