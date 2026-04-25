@@ -145,6 +145,7 @@ function renderDigits (digits, scaleYByIndex = {}) {
 // ── Card DOM references ───────────────────────────────────────────────────────
 let svg = null
 let animLayer = null
+let icons = null
 let digitGroup = null
 
 function updateSoundBtns () {
@@ -476,21 +477,21 @@ function animateWatchArcs (now) {
 function animateBeatTicks (now) {
   animLayer.querySelectorAll('.tick').forEach(e => e.remove())
   if (!state.isPlaying) return
-  const x1 = HEART_C.x, y1 = HEART_C.y
-  const x2 = JACK_C.x, y2 = JACK_C.y
-  const dx = x2 - x1, dy = y2 - y1
-  const len = I / 2
-  const nx = -dy / Math.hypot(dx, dy) * len
-  const ny = dx / Math.hypot(dx, dy) * len
+  const dx = JACK_C.x - HEART_C.x, dy = JACK_C.y - HEART_C.y
+  const totalDist = Math.hypot(dx, dy)
+  const ux = dx / totalDist, uy = dy / totalDist
+  const jackR = IW * 0.13       // half of midiSize (IW * 0.26)
+  const travelDist = totalDist - jackR  // t=1 lands at jack icon edge
   for (const beatTime of state.upcomingBeats) {
     const remaining = beatTime - now
     if (remaining < 0 || remaining > BEAT_TRAVEL_MS) continue
     const t = 1 - remaining / BEAT_TRAVEL_MS
-    const tx = x1 + dx * t, ty = y1 + dy * t
-    animLayer.appendChild(el('line', {
-      class: 'tick',
-      x1: f(tx - nx), y1: f(ty - ny), x2: f(tx + nx), y2: f(ty + ny),
-      opacity: 0.3 + 0.7 * t,
+    const dist = t * travelDist
+    const tx = HEART_C.x + ux * dist
+    const ty = HEART_C.y + uy * dist
+    animLayer.appendChild(placeIcon(icons.heart, tx, ty, GUTTER_H, GUTTER_H - P, {
+      class: 'tick beat-signal',
+      opacity: f(0.2 + 0.8 * t),
     }))
   }
 }
@@ -647,7 +648,7 @@ export async function init () {
     sine: './svg/sine-icon.svg',
   }
 
-  const icons = Object.fromEntries(
+  icons = Object.fromEntries(
     await Promise.all(Object.entries(paths).map(async ([id, path]) => [id, await fetchIcon(path)]))
   )
 
