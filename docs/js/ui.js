@@ -22,6 +22,7 @@ const CX = W / 2
 // H-dependent layout (set by deriveH, called on init and resize)
 let H, OH, IY, IH, CY, GUTTER_H
 let WATCH_C, HEART_C, BPM_C, MIDI_C, STOP_C, JACK_C, DIGIT_H
+let lineAngle
 
 function deriveH () {
   H = Math.max(W * 3 / 2, Math.round(W * window.innerHeight / window.innerWidth))
@@ -37,6 +38,9 @@ function deriveH () {
   STOP_C = { x: IX + IW * 0.22, y: IY + IH - IW * 0.22 }
   JACK_C = { x: IX + IW * 0.78, y: IY + IH - IW * 0.22 }
   DIGIT_H = IH * 0.12
+
+  // Angle of the line from STOP_C to MIDI_C (degrees, for button rotation)
+  lineAngle = Math.atan2(MIDI_C.y - STOP_C.y, MIDI_C.x - STOP_C.x) * 180 / Math.PI
 }
 
 // ── SVG namespace + helpers ───────────────────────────────────────────────────
@@ -233,17 +237,28 @@ function buildCard (icons) {
     id: 'bpm-line'
   })
   chartG.appendChild(chartLine)
+  const labelHalf = IW * 0.09   // half stop-button size
+  const labelPerp = labelHalf + P / 2
+  // In the rotated label frame (lineAngle+90 around STOP_C):
+  //   x offset → perpendicular displacement
+  //   y offset → along-diagonal displacement (negative = toward MIDI)
   const minLabel = el('text', {
     id: 'bpm-min-label',
+    x: f(STOP_C.x + labelPerp),
+    y: f(STOP_C.y - labelHalf),
     'font-size': f(SW * 5),
-    'text-anchor': 'middle',
-    'dominant-baseline': 'central',
+    'text-anchor': 'start',
+    'dominant-baseline': 'auto',
+    transform: `rotate(${f(lineAngle + 90)},${f(STOP_C.x)},${f(STOP_C.y)})`
   })
   const maxLabel = el('text', {
     id: 'bpm-max-label',
+    x: f(STOP_C.x - labelPerp),
+    y: f(STOP_C.y - labelHalf),
     'font-size': f(SW * 5),
-    'text-anchor': 'middle',
-    'dominant-baseline': 'central',
+    'text-anchor': 'end',
+    'dominant-baseline': 'auto',
+    transform: `rotate(${f(lineAngle + 90)},${f(STOP_C.x)},${f(STOP_C.y)})`
   })
   chartG.appendChild(minLabel)
   chartG.appendChild(maxLabel)
@@ -255,9 +270,6 @@ function buildCard (icons) {
   heartG.appendChild(placeIcon(icons.heart, HEART_C.x, HEART_C.y, heartSize, heartSize,
     {}))
   svg.appendChild(heartG)
-
-  // Angle of the line from STOP_C to MIDI_C (degrees, for button rotation)
-  const lineAngle = Math.atan2(MIDI_C.y - STOP_C.y, MIDI_C.x - STOP_C.x) * 180 / Math.PI
 
   // MIDI icon — top-right (play/stop toggle) AND bottom-right (jack) — same icon
   const midiSize = IW * 0.26
@@ -532,28 +544,23 @@ function renderBpmChart (now) {
   const cutoff = now - CHART_WINDOW_MS
   const visible = state.bpmHistory.filter(s => s.t >= cutoff)
 
-  if (visible.length < 2) {
-    chartLine.setAttribute('points', `${f(startX)},${f(startY)} ${f(endX)},${f(endY)}`)
+  if (visible.length === 0) {
+    chartLine.setAttribute('points', '')
     minLabel.textContent = ''
     maxLabel.textContent = ''
     return
   }
 
-  const bpms = visible.map(s => s.bpm)
-  let bMin = Math.min(...bpms)
-  let bMax = Math.max(...bpms)
-  if (bMax - bMin < 10) {
-    const mid = (bMin + bMax) / 2
-    bMin = mid - 5
-    bMax = mid + 5
-  }
+  // Use all-time min/max for stable scale; fall back to current BPM when only one value seen
+  const bMin = state.bpmAllTimeMin
+  const bMax = state.bpmAllTimeMax
   const bSpan = bMax - bMin
 
   const pts = visible.map(s => {
-    // tFrac: 0 = 60s ago (STOP/oldest end), 1 = now (MIDI/newest end)
-    const tFrac = Math.max(0, Math.min(1, (s.t - cutoff) / CHART_WINDOW_MS))
-    // bFrac: -1 = high BPM (one perp side), +1 = low BPM (other perp side)
-    const bFrac = (bMax - s.bpm) / bSpan * 2 - 1
+    // tFrac: 1 = newest (STOP end), 0 = oldest (MIDI end)
+    const tFrac = 1 - Math.max(0, Math.min(1, (s.t - cutoff) / CHART_WINDOW_MS))
+    // bFrac: 0 = center when min=max; -1 = high BPM, +1 = low BPM
+    const bFrac = bSpan > 0 ? (bMax - s.bpm) / bSpan * 2 - 1 : 0
 
     const svgX = startX + tFrac * cdx + bFrac * px * halfW
     const svgY = startY + tFrac * cdy + bFrac * py * halfW
@@ -562,21 +569,12 @@ function renderBpmChart (now) {
 
   chartLine.setAttribute('points', pts)
 
-  // Labels near STOP_C (oldest/left end), perpendicular offsets
-  const hasVariance = bMax - bMin > 1
-  if (hasVariance) {
-    const labelOffset = halfW * 1.6
-    // max label on the -perp side (high BPM direction)
-    maxLabel.setAttribute('x', f(startX - px * labelOffset))
-    maxLabel.setAttribute('y', f(startY - py * labelOffset))
+  if (bSpan > 0) {
     maxLabel.textContent = Math.round(bMax)
-    // min label on the +perp side (low BPM direction)
-    minLabel.setAttribute('x', f(startX + px * labelOffset))
-    minLabel.setAttribute('y', f(startY + py * labelOffset))
     minLabel.textContent = Math.round(bMin)
   } else {
+    maxLabel.textContent = bMin < Infinity ? Math.round(bMin) : ''
     minLabel.textContent = ''
-    maxLabel.textContent = ''
   }
 }
 

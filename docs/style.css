@@ -168,4 +168,5 @@ svg * {
     stroke-width: 0;
     fill: var(--x-white);
     fill-opacity: .87;
+    letter-spacing: 2px;
 }

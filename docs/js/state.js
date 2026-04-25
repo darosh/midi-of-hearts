@@ -7,4 +7,6 @@ export const state = {
   lastBeatTime: -Infinity,
   lastHrTime: -Infinity,  // performance.now() of most recent HR notification
   bpmHistory: [],         // { t: DOMHighResTimeStamp, bpm: number }[]
+  bpmAllTimeMin: Infinity,
+  bpmAllTimeMax: -Infinity,
 };

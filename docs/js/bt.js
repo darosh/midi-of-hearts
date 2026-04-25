@@ -42,6 +42,8 @@ function handleHr(event) {
   state.lastHrTime = performance.now();
   state.bpmHistory.push({ t: state.lastHrTime, bpm });
   if (state.bpmHistory.length > 300) state.bpmHistory.shift();
+  if (bpm < state.bpmAllTimeMin) state.bpmAllTimeMin = bpm;
+  if (bpm > state.bpmAllTimeMax) state.bpmAllTimeMax = bpm;
   emit('heartrate', bpm);
 }
 
