@@ -192,17 +192,20 @@ function buildCard (icons) {
   svg.appendChild(heartG)
 
 
+  // Angle of the line from STOP_C to MIDI_C (degrees, for button rotation)
+  const lineAngle = Math.atan2(MIDI_C.y - STOP_C.y, MIDI_C.x - STOP_C.x) * 180 / Math.PI
+
   // MIDI icon — top-right (play/stop toggle) AND bottom-right (jack) — same icon
   const midiSize = IW * 0.26
-  const midiBtn = el('g', { id: 'play-btn', style: 'cursor:pointer' })
-  midiBtn.appendChild(placeIcon(icons.play, MIDI_C.x, MIDI_C.y, midiSize, midiSize,
-    {}))
+  const midiBtn = el('g', { id: 'play-btn', style: 'cursor:pointer',
+    transform: `rotate(${f(lineAngle)},${f(MIDI_C.x)},${f(MIDI_C.y)})` })
+  midiBtn.appendChild(placeIcon(icons.play, MIDI_C.x, MIDI_C.y, midiSize, midiSize, {}))
   midiBtn.addEventListener('click', () => state.isPlaying ? midi.stop() : midi.start())
   svg.appendChild(midiBtn)
 
-  const stopBtn = el('g', { id: 'stop-btn', style: 'cursor:pointer' })
-  stopBtn.appendChild(placeIcon(icons.stop, STOP_C.x, STOP_C.y, midiSize, midiSize,
-    {}))
+  const stopBtn = el('g', { id: 'stop-btn', style: 'cursor:pointer',
+    transform: `rotate(${f(lineAngle)},${f(STOP_C.x)},${f(STOP_C.y)})` })
+  stopBtn.appendChild(placeIcon(icons.stop, STOP_C.x, STOP_C.y, midiSize, midiSize, {}))
   stopBtn.addEventListener('click', () => state.isPlaying ? midi.stop() : midi.start())
   svg.appendChild(stopBtn)
 
