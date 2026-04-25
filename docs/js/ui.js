@@ -167,6 +167,10 @@ function buildCard (icons) {
     x: IX, y: IY, width: IW, height: IH, rx: RI, ry: RI,
   }))
 
+  // Animated layer (arcs, ticks, glows) — always on top
+  animLayer = el('g', { id: 'anim-layer' })
+  svg.appendChild(animLayer)
+
   // Title — rotated CCW in left gutter, beginning aligned with inner rect bottom
   // scale is height-constrained, so compute actual scaled width to set pivot
   const titleCX = M + I / 2
@@ -264,7 +268,7 @@ function buildCard (icons) {
   chartG.appendChild(maxLabel)
   svg.appendChild(chartG)
 
-  // Heart — centre
+  // Heart — center
   const heartSize = IW * 0.40
   const heartG = el('g', { id: 'heart' })
   heartG.appendChild(placeIcon(icons.heart, HEART_C.x, HEART_C.y, heartSize, heartSize,
@@ -302,10 +306,6 @@ function buildCard (icons) {
   //   stroke: '#ccc', 'stroke-width': f(SW * 0.6),
   //   'stroke-dasharray': `${f(P)} ${f(I / 2)}`,
   // }))
-
-  // Animated layer (arcs, ticks, glows) — always on top
-  animLayer = el('g', { id: 'anim-layer' })
-  svg.appendChild(animLayer)
 
   // Digit group
   digitGroup = el('g', { id: 'digit-group' })

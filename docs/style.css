@@ -83,7 +83,7 @@ svg * {
 
 #watch-btn *, #jack-btn * {
     fill: var(--x-bg);
-    fill-opacity: .001;
+    fill-opacity: 1;
 }
 
 #play-btn *, #stop-btn *, #heart * {
