@@ -1,6 +1,7 @@
 import { state } from './state.js'
 import * as bt from './bt.js'
 import * as midi from './midi.js'
+import * as audio from './audio.js'
 
 // ── Geometry constants ────────────────────────────────────────────────────────
 const W = 500                   // SVG reference width (always 500)
@@ -125,6 +126,13 @@ let svg = null
 let animLayer = null
 let digitGroup = null
 
+function updateSoundBtns () {
+  const drumEl = document.getElementById('drum-btn')
+  const sineEl = document.getElementById('sine-btn')
+  if (drumEl) drumEl.classList.toggle('active', audio.kickOn)
+  if (sineEl) sineEl.classList.toggle('active', audio.sineOn)
+}
+
 // ── Build card ────────────────────────────────────────────────────────────────
 function buildCard (icons) {
   if (svg) svg.remove()
@@ -156,7 +164,7 @@ function buildCard (icons) {
   // GH link — bottom-right corner gutter
   const ghSize = GUTTER_H * .88
   const ghLink = el('a', { href: 'https://github.com/darosh/midi-of-hearts', target: '_blank', id: 'gh' })
-  ghLink.appendChild(placeIcon(icons.gh, W - M / 2 - I - ghSize - P * .25, H - M - I / 2 - P * .25, ghSize, ghSize))
+  ghLink.appendChild(placeIcon(icons.gh, W - M / 2 - I - ghSize - P * .25, H - M - I / 2, ghSize, ghSize))
   svg.appendChild(ghLink)
 
   // Top-left corner icons — centred in the gutter gap (M + I/2, M + I/2)
@@ -165,6 +173,29 @@ function buildCard (icons) {
   const cornerCY = M + I / 2
   svg.appendChild(placeIcon(icons.heart, cornerCX + I - P, cornerCY, cornerSize, cornerSize - P, { id: 'heart-small-icon' }))
   svg.appendChild(placeIcon(icons.midiLogo, cornerCX + I + cornerSize + P * 1.5, cornerCY, cornerSize * 5, cornerSize, { id: 'midi-small-icon' }))
+
+  // Top-right corner — drum & sine toggle buttons
+  const rightGutterCX = W - M - I / 2
+  const snd1CY = IY + cornerSize / 2
+  const snd2CY = snd1CY + cornerSize + P
+
+  const drumBtn = el('g', { id: 'drum-btn', style: 'cursor:pointer' })
+  drumBtn.appendChild(placeIcon(icons.drum, rightGutterCX, snd1CY, cornerSize, cornerSize, {}))
+  drumBtn.addEventListener('click', () => {
+    audio.toggleKick()
+    updateSoundBtns()
+  })
+  svg.appendChild(drumBtn)
+
+  const sineBtn = el('g', { id: 'sine-btn', style: 'cursor:pointer' })
+  sineBtn.appendChild(placeIcon(icons.sine, rightGutterCX, snd2CY, cornerSize, cornerSize, {}))
+  sineBtn.addEventListener('click', () => {
+    audio.toggleSine()
+    updateSoundBtns()
+  })
+  svg.appendChild(sineBtn)
+
+  updateSoundBtns()
 
   // Watch — top-left inner area
   const watchSize = IW * 0.28
@@ -463,8 +494,10 @@ export async function init () {
     title: './svg/title.svg',
     play: './svg/play.svg',
     stop: './svg/stop.svg',
-    gh: './svg/gh.svg',
+    gh: './svg/help.svg',
     numbers: './svg/numbers.svg',
+    drum: './svg/drum-icon.svg',
+    sine: './svg/sine-icon.svg',
   }
 
   const icons = Object.fromEntries(
@@ -481,6 +514,7 @@ export async function init () {
   deriveH()
   buildCard(icons)
   loadStoredOutput()
+  midi.onBeat(t => audio.scheduleBeat(t, state.bpm))
 
   // Rebuild on resize (debounced)
   let resizeTimer

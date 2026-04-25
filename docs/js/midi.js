@@ -30,6 +30,9 @@ const portListeners = [];
 export function onPortChange(fn) { portListeners.push(fn); }
 function notifyPortChange() { portListeners.forEach(fn => fn(outputs())); }
 
+const beatListeners = [];
+export function onBeat(fn) { beatListeners.push(fn); }
+
 function send(bytes, timestamp) {
   selectedOutput()?.send(bytes, timestamp);
 }
@@ -67,6 +70,7 @@ function runScheduler() {
       // Quarter note — record for animation and mark last beat
       state.upcomingBeats.push(t);
       if (t <= now) state.lastBeatTime = t;
+      beatListeners.forEach(fn => fn(t));
     }
     pulseIndex++;
     nextPulseTime += intervalMs;

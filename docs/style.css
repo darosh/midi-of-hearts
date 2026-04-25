@@ -44,6 +44,11 @@ svg * {
 
 #gh * {
     stroke-width: 0;
+    fill: var(--x-fill);
+}
+
+#gh:hover * {
+    stroke-width: 0;
     fill: var(--x-white);
     fill-opacity: .80;
 }
@@ -71,6 +76,16 @@ svg * {
 #play-btn *, #stop-btn *, #heart * {
     fill: var(--x-bg);
     fill-opacity: 1;
+}
+
+#drum-btn *, #sine-btn * {
+    fill: var(--x-fill);
+    fill-opacity: 0;
+    stroke: var(--x-stroke);
+}
+
+#drum-btn.active *, #sine-btn.active * {
+    stroke: var(--x-white);
 }
 
 /* MIDI picker overlay */
