@@ -209,8 +209,10 @@ function buildCard (icons) {
   stopBtn.addEventListener('click', () => state.isPlaying ? midi.stop() : midi.start())
   svg.appendChild(stopBtn)
 
-  svg.appendChild(placeIcon(icons.midiIcon, JACK_C.x, JACK_C.y, midiSize, midiSize,
-    { id: 'jack-btn' }))
+  const jackBtn = el('g', { id: 'jack-btn', style: 'cursor:pointer' })
+  jackBtn.appendChild(placeIcon(icons.midiIcon, JACK_C.x, JACK_C.y, midiSize, midiSize, {}))
+  jackBtn.addEventListener('click', () => openPicker())
+  svg.appendChild(jackBtn)
 
   // Beat line: heart → jack
   svg.appendChild(el('line', {
@@ -229,6 +231,92 @@ function buildCard (icons) {
   digitGroup = el('g', { id: 'digitGroup' })
   svg.appendChild(digitGroup)
   renderDigits(0)
+}
+
+// ── MIDI picker overlay ───────────────────────────────────────────────────────
+const LS_OUTPUT_KEY = 'moh-midi-output'
+
+function loadStoredOutput () {
+  const id = localStorage.getItem(LS_OUTPUT_KEY)
+  if (id) midi.selectOutput(id)
+}
+
+function openPicker () {
+  if (svg.getElementById('midiPicker')) return   // already open
+
+  const ports = midi.outputs()
+  const items = [{ id: '', label: 'MIDI Off' }, ...ports.map(p => ({ id: p.id, label: p.name }))]
+  const currentId = midi.selectedOutput()?.id ?? ''
+
+  const rowH = I
+  const totalH = items.length * rowH
+  const startY = IY + (IH - totalH) / 2
+  const fontSize = rowH * 0.38
+
+  const g = el('g', { id: 'midiPicker' })
+
+  // Background covering the inner rect
+  g.appendChild(el('rect', {
+    id: 'midiPickerBg',
+    x: f(IX), y: f(IY), width: f(IW), height: f(IH), rx: f(RI), ry: f(RI),
+  }))
+
+  items.forEach((item, i) => {
+    const y = startY + i * rowH
+    const isSelected = item.id === currentId
+
+    const rowG = el('g', { class: 'picker-row-group' })
+
+    // Separator line (above every row except the first)
+    if (i > 0) {
+      rowG.appendChild(el('line', {
+        class: 'picker-divider',
+        x1: f(IX), y1: f(y), x2: f(IX + IW), y2: f(y),
+      }))
+    }
+
+    // Label
+    const label = el('text', {
+      class: 'picker-label' + (isSelected ? ' selected' : ''),
+      x: f(IX + IW / 2),
+      y: f(y + rowH / 2),
+      'text-anchor': 'middle',
+      'dominant-baseline': 'central',
+      'font-size': f(fontSize),
+    })
+    label.textContent = item.label
+    rowG.appendChild(label)
+
+    // Invisible hit target (on top so hover works)
+    const hit = el('rect', {
+      class: 'picker-row-hit',
+      x: f(IX), y: f(y), width: f(IW), height: f(rowH),
+    })
+    hit.addEventListener('click', () => {
+      localStorage.setItem(LS_OUTPUT_KEY, item.id)
+      midi.selectOutput(item.id)
+      closePicker()
+    })
+    rowG.appendChild(hit)
+
+    g.appendChild(rowG)
+  })
+
+  // Click backdrop (outside rows) closes picker
+  const backdrop = el('rect', {
+    x: f(OX), y: f(OY), width: f(OW), height: f(OH),
+    fill: 'transparent', stroke: 'none', style: 'cursor:default',
+  })
+  backdrop.addEventListener('click', e => {
+    if (e.target === backdrop) closePicker()
+  })
+  g.insertBefore(backdrop, g.firstChild)
+
+  svg.appendChild(g)
+}
+
+function closePicker () {
+  svg.getElementById('midiPicker')?.remove()
 }
 
 // ── RAF animation loop ────────────────────────────────────────────────────────
@@ -355,9 +443,9 @@ function animateDigits (now) {
   }
 }
 
-// ── MIDI port label ───────────────────────────────────────────────────────────
-midi.onPortChange(ports => {
-  if (ports.length) midi.selectOutput(ports[0].id)
+// ── MIDI port change ──────────────────────────────────────────────────────────
+midi.onPortChange(() => {
+  loadStoredOutput()
 })
 
 // ── Init ──────────────────────────────────────────────────────────────────────
@@ -388,6 +476,7 @@ export async function init () {
 
   deriveH()
   buildCard(icons)
+  loadStoredOutput()
 
   // Rebuild on resize (debounced)
   let resizeTimer
@@ -395,6 +484,7 @@ export async function init () {
     clearTimeout(resizeTimer)
     resizeTimer = setTimeout(() => {
       jackGlowEl = null
+      closePicker()
       deriveH()
       buildCard(icons)
     }, 200)

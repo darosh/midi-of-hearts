@@ -64,3 +64,12 @@ svg * {
   fill: var(--x-bg);
   fill-opacity: 1;
 }
+
+/* MIDI picker overlay */
+#midiPicker { pointer-events: all; }
+#midiPickerBg { fill: var(--x-bg); stroke: none; }
+.picker-divider { stroke: var(--x-stroke); stroke-opacity: 0.35; fill: none; }
+.picker-row-hit { fill: transparent; stroke: none; cursor: pointer; }
+.picker-label { fill: var(--x-white); fill-opacity: 0.55; stroke: none; font-family: monospace; }
+.picker-label.selected { fill: #fff; fill-opacity: 1; }
+.picker-row-group:hover .picker-label { fill: #fff; fill-opacity: 1; }
