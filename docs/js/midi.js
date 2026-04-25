@@ -1,4 +1,5 @@
 import { state } from './state.js';
+import { cancelPendingAudio } from './audio.js';
 
 const LOOKAHEAD_MS = 2000;
 const SCHEDULER_MS = 30;
@@ -53,6 +54,7 @@ export function stop() {
   clearInterval(schedulerTimer);
   schedulerTimer = null;
   state.upcomingBeats = [];
+  cancelPendingAudio();
   send([0xFC]);
 }
 

@@ -498,10 +498,13 @@ function animateBeatTicks (now) {
 
 // Heart pulse
 function animateHeartPulse (now) {
-  const heartG = svg?.getElementById('heartG')
+  const heartG = svg?.getElementById('heart')
   if (!heartG) return
-  const age = now - state.lastHrTime, dur = 300
-  if (age > dur) {
+  const lastBeat = state.upcomingBeats
+    .filter(t => t <= now)
+    .reduce((a, b) => (b > a ? b : a), -Infinity)
+  const age = now - lastBeat, dur = 300
+  if (!isFinite(lastBeat) || age > dur) {
     heartG.setAttribute('transform', '')
     return
   }

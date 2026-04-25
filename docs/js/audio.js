@@ -2,9 +2,19 @@ let ctx = null
 export let kickOn = false
 export let sineOn = false
 
+const pending = []
+
 function ensureCtx () {
   if (!ctx) ctx = new AudioContext()
   if (ctx.state === 'suspended') ctx.resume()
+}
+
+export function cancelPendingAudio () {
+  const now = ctx ? ctx.currentTime : 0
+  for (const osc of pending) {
+    try { osc.stop(now) } catch (_) {}
+  }
+  pending.length = 0
 }
 
 export function toggleKick () {
@@ -13,6 +23,7 @@ export function toggleKick () {
     sineOn = false
     ensureCtx()
   }
+  cancelPendingAudio()
 }
 
 export function toggleSine () {
@@ -21,6 +32,7 @@ export function toggleSine () {
     kickOn = false
     ensureCtx()
   }
+  cancelPendingAudio()
 }
 
 export function scheduleBeat (perfNowTime, bpm) {
@@ -42,6 +54,8 @@ function scheduleKick (at) {
   gain.gain.exponentialRampToValueAtTime(0.001, at + 0.35)
   osc.start(at)
   osc.stop(at + 0.35)
+  pending.push(osc)
+  osc.onended = () => { const i = pending.indexOf(osc); if (i !== -1) pending.splice(i, 1) }
 }
 
 function scheduleSineNote (at, bpm) {
@@ -60,4 +74,6 @@ function scheduleSineNote (at, bpm) {
   gain.gain.linearRampToValueAtTime(0, at + hold + 0.005) // sharp cutoff
   osc.start(at)
   osc.stop(at + hold + 0.01)
+  pending.push(osc)
+  osc.onended = () => { const i = pending.indexOf(osc); if (i !== -1) pending.splice(i, 1) }
 }
