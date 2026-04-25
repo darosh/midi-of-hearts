@@ -23,6 +23,7 @@ const CX = W / 2
 let H, OH, IY, IH, CY, GUTTER_H
 let WATCH_C, HEART_C, BPM_C, MIDI_C, STOP_C, JACK_C, DIGIT_H
 let lineAngle
+let WATCH_RADIUS, ARC_ANGLE, ARC_MAX_R
 
 function deriveH () {
   H = Math.max(W * 3 / 2, Math.round(W * window.innerHeight / window.innerWidth))
@@ -41,6 +42,10 @@ function deriveH () {
 
   // Angle of the line from STOP_C to MIDI_C (degrees, for button rotation)
   lineAngle = Math.atan2(MIDI_C.y - STOP_C.y, MIDI_C.x - STOP_C.x) * 180 / Math.PI
+
+  WATCH_RADIUS = IW * 0.14
+  ARC_ANGLE = Math.atan2(HEART_C.y - WATCH_C.y, HEART_C.x - WATCH_C.x)
+  ARC_MAX_R = Math.hypot(HEART_C.x - WATCH_C.x, HEART_C.y - WATCH_C.y)
 }
 
 // ── SVG namespace + helpers ───────────────────────────────────────────────────
@@ -449,13 +454,20 @@ function animateWatchArcs (now) {
   animLayer.querySelectorAll('.arc').forEach(e => e.remove())
   const cutoff = now - ARC_TRAVEL_MS
   while (arcEvents.length && arcEvents[0].startMs < cutoff) arcEvents.shift()
+  const HALF_SPREAD = Math.PI / 12  // 15° each side = 30° total
   for (const ev of arcEvents) {
     const t = (now - ev.startMs) / ARC_TRAVEL_MS
-    const cx = WATCH_C.x + (HEART_C.x - WATCH_C.x) * t
-    const cy = WATCH_C.y + (HEART_C.y - WATCH_C.y) * t
-    animLayer.appendChild(el('circle', {
-      class: 'arc', cx: f(cx), cy: f(cy), r: f(SW * 2 + t * SW * 3),
-      opacity: 1 - t,
+    const r = WATCH_RADIUS + t * (ARC_MAX_R - WATCH_RADIUS)
+    const a1 = ARC_ANGLE - HALF_SPREAD
+    const a2 = ARC_ANGLE + HALF_SPREAD
+    const x1 = WATCH_C.x + r * Math.cos(a1)
+    const y1 = WATCH_C.y + r * Math.sin(a1)
+    const x2 = WATCH_C.x + r * Math.cos(a2)
+    const y2 = WATCH_C.y + r * Math.sin(a2)
+    animLayer.appendChild(el('path', {
+      class: 'arc',
+      d: `M ${f(x1)} ${f(y1)} A ${f(r)} ${f(r)} 0 0 1 ${f(x2)} ${f(y2)}`,
+      opacity: f(1 - t),
     }))
   }
 }

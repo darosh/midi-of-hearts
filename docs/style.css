@@ -170,3 +170,8 @@ svg * {
     fill-opacity: .87;
     letter-spacing: 2px;
 }
+
+.arc {
+    stroke: var(--x-white);
+    stroke-width: 1.25px;
+}
