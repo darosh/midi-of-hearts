@@ -99,9 +99,8 @@ svg * {
     stroke: var(--x-white);
 }
 
-#digitGroup * {
-    fill: var(--x-white);
-    stroke: none;
+#digit-group * {
+    stroke: var(--x-white);
 }
 
 #drum-btn *, #sine-btn * {

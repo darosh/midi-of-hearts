@@ -21,7 +21,7 @@ const CX = W / 2
 
 // H-dependent layout (set by deriveH, called on init and resize)
 let H, OH, IY, IH, CY, GUTTER_H
-let WATCH_C, HEART_C, MIDI_C, STOP_C, JACK_C
+let WATCH_C, HEART_C, BPM_C, MIDI_C, STOP_C, JACK_C, DIGIT_H
 
 function deriveH () {
   H = Math.max(W * 3 / 2, Math.round(W * window.innerHeight / window.innerWidth))
@@ -32,9 +32,11 @@ function deriveH () {
   GUTTER_H = I - 2 * P
   WATCH_C = { x: IX + IW * 0.22, y: IY + IW * 0.22 }
   HEART_C = { x: CX, y: IY + IH * 0.52 }
+  BPM_C = { x: CX, y: IY + IH * 0.50 }
   MIDI_C = { x: IX + IW * 0.78, y: IY + IW * 0.22 }
   STOP_C = { x: IX + IW * 0.22, y: IY + IH - IW * 0.22 }
   JACK_C = { x: IX + IW * 0.78, y: IY + IH - IW * 0.22 }
+  DIGIT_H = IH * 0.12
 }
 
 // ── SVG namespace + helpers ───────────────────────────────────────────────────
@@ -96,15 +98,24 @@ function renderDigits (digits, scaleYByIndex = {}) {
   while (digitGroup.firstChild) digitGroup.removeChild(digitGroup.firstChild)
   if (!digits.length || !numbersNodes.length) return
 
-  const targetH = IH * 0.144
-  const scale = targetH / DIGIT_VH
-  const GAP = targetH * 0.15
+  const scale = DIGIT_H / DIGIT_VH
+  const GAP = DIGIT_H * 0.15
 
-  const totalW = digits.reduce((s, d) => s + DIGIT_X[d][1] * scale, 0)
-    + GAP * (digits.length - 1)
+  let anchorOffset
+  if (digits.length === 2) {
+    // center falls in the gap between digit 0 and digit 1
+    anchorOffset = DIGIT_X[digits[0]][1] * scale + GAP / 2
+  } else if (digits.length === 3) {
+    // center falls on the center of the middle digit
+    anchorOffset = DIGIT_X[digits[0]][1] * scale + GAP + DIGIT_X[digits[1]][1] * scale / 2
+  } else {
+    const totalW = digits.reduce((s, d) => s + DIGIT_X[d][1] * scale, 0)
+      + GAP * (digits.length - 1)
+    anchorOffset = totalW / 2
+  }
 
-  let curX = HEART_C.x - totalW / 2
-  const baseY = HEART_C.y - targetH / 2 + targetH * 0.05
+  let curX = BPM_C.x - anchorOffset
+  const baseY = BPM_C.y - DIGIT_H / 2 + DIGIT_H * 0.05
 
   for (let i = 0; i < digits.length; i++) {
     const d = digits[i]
@@ -112,7 +123,7 @@ function renderDigits (digits, scaleYByIndex = {}) {
     const [xMin, dw] = DIGIT_X[d]
     const ox = curX - xMin * scale
     const scY = scale * scaleY
-    const offsetY = scaleY < 1 ? (targetH * (1 - scaleY)) / 2 : 0
+    const offsetY = scaleY < 1 ? (DIGIT_H * (1 - scaleY)) / 2 : 0
     const g = el('g', {
       transform: `translate(${f(ox)},${f(baseY + offsetY)}) scale(${f(scale)},${f(scY)})`,
     })
@@ -259,11 +270,11 @@ function buildCard (icons) {
   }))
 
   // Animated layer (arcs, ticks, glows) — always on top
-  animLayer = el('g', { id: 'animLayer' })
+  animLayer = el('g', { id: 'anim-layer' })
   svg.appendChild(animLayer)
 
   // Digit group
-  digitGroup = el('g', { id: 'digitGroup' })
+  digitGroup = el('g', { id: 'digit-group' })
   svg.appendChild(digitGroup)
   renderDigits([])
 }
