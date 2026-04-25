@@ -1,0 +1,14 @@
+{
+  "name": "midi-of-hearts-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audit": "node lighthouse.js",
+    "report": "node parse-report.js"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "lighthouse": "^12.0.0",
+    "puppeteer": "^23.0.0"
+  }
+}

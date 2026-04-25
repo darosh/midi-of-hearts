@@ -79,7 +79,7 @@ function placeIcon (icon, cx, cy, maxW, maxH, attrs = {}) {
   const scale = Math.min(maxW / vw, maxH / vh)
   const ox = cx - vw * scale / 2 - vx * scale
   const oy = cy - vh * scale / 2 - vy * scale
-  const g = el('g', { transform: `translate(${f(ox)},${f(oy)}) scale(${f(scale)})`, ...attrs })
+  const g = el('g', { 'aria-hidden': 'true', transform: `translate(${f(ox)},${f(oy)}) scale(${f(scale)})`, ...attrs })
   for (const n of icon.nodes) g.appendChild(n.cloneNode(true))
   return g
 }
@@ -151,8 +151,8 @@ let digitGroup = null
 function updateSoundBtns () {
   const drumEl = document.getElementById('drum-btn')
   const sineEl = document.getElementById('sine-btn')
-  if (drumEl) drumEl.classList.toggle('active', audio.kickOn)
-  if (sineEl) sineEl.classList.toggle('active', audio.sineOn)
+  if (drumEl) { drumEl.classList.toggle('active', audio.kickOn); drumEl.setAttribute('aria-pressed', String(audio.kickOn)) }
+  if (sineEl) { sineEl.classList.toggle('active', audio.sineOn); sineEl.setAttribute('aria-pressed', String(audio.sineOn)) }
 }
 
 // ── Build card ────────────────────────────────────────────────────────────────
@@ -189,7 +189,7 @@ function buildCard (icons) {
 
   // GH link — bottom-right corner gutter
   const ghSize = GUTTER_H * .88
-  const ghLink = el('a', { href: 'https://github.com/darosh/midi-of-hearts', target: '_blank', id: 'gh' })
+  const ghLink = el('a', { href: 'https://github.com/darosh/midi-of-hearts', target: '_blank', id: 'gh', 'aria-label': 'View source on GitHub' })
   ghLink.appendChild(placeIcon(icons.gh, W - M / 2 - I - ghSize - P * .25, H - M - I / 2, ghSize, ghSize))
   svg.appendChild(ghLink)
 
@@ -205,31 +205,34 @@ function buildCard (icons) {
   const snd1CY = IY + cornerSize / 2
   const snd2CY = snd1CY + cornerSize + P
 
-  const drumBtn = el('g', { id: 'drum-btn', style: 'cursor:pointer' })
+  const drumBtn = el('g', { id: 'drum-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Toggle drum kick', 'aria-pressed': 'false' })
   drumBtn.appendChild(placeIcon(icons.drum, rightGutterCX, snd1CY, cornerSize, cornerSize, {}))
   drumBtn.addEventListener('click', () => {
     audio.toggleKick()
     updateSoundBtns()
   })
+  drumBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); drumBtn.click() } })
   svg.appendChild(drumBtn)
 
-  const sineBtn = el('g', { id: 'sine-btn', style: 'cursor:pointer' })
+  const sineBtn = el('g', { id: 'sine-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Toggle sine tone', 'aria-pressed': 'false' })
   sineBtn.appendChild(placeIcon(icons.sine, rightGutterCX, snd2CY, cornerSize, cornerSize, {}))
   sineBtn.addEventListener('click', () => {
     audio.toggleSine()
     updateSoundBtns()
   })
+  sineBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sineBtn.click() } })
   svg.appendChild(sineBtn)
 
   updateSoundBtns()
 
   // Watch — top-left inner area
   const watchSize = IW * 0.28
-  const watchBtn = el('g', { id: 'watch-btn', style: 'cursor:pointer' })
+  const watchBtn = el('g', { id: 'watch-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Connect Bluetooth heart rate monitor' })
   watchBtn.appendChild(placeIcon(icons.watches, WATCH_C.x, WATCH_C.y, watchSize, watchSize, {}))
   watchBtn.appendChild(placeIcon(icons.onOff, WATCH_C.x, WATCH_C.y, watchSize * .5, watchSize, { id: 'on-off' }))
   watchBtn.addEventListener('click', () =>
     state.isConnected ? bt.disconnect() : bt.connect().catch(console.error))
+  watchBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); watchBtn.click() } })
   svg.appendChild(watchBtn)
 
   const line = el('line', {
@@ -284,24 +287,27 @@ function buildCard (icons) {
   // MIDI icon — top-right (play/stop toggle) AND bottom-right (jack) — same icon
   const midiSize = IW * 0.26
   const midiBtn = el('g', {
-    id: 'play-btn', style: 'cursor:pointer',
+    id: 'play-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Play MIDI clock',
     transform: `rotate(${f(lineAngle)},${f(MIDI_C.x)},${f(MIDI_C.y)})`
   })
   midiBtn.appendChild(placeIcon(icons.play, MIDI_C.x, MIDI_C.y, midiSize, midiSize, {}))
   midiBtn.addEventListener('click', () => state.isPlaying ? midi.stop() : midi.start())
+  midiBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); midiBtn.click() } })
   svg.appendChild(midiBtn)
 
   const stopBtn = el('g', {
-    id: 'stop-btn', style: 'cursor:pointer',
+    id: 'stop-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Stop MIDI clock',
     transform: `rotate(${f(lineAngle)},${f(STOP_C.x)},${f(STOP_C.y)})`
   })
   stopBtn.appendChild(placeIcon(icons.stop, STOP_C.x, STOP_C.y, midiSize, midiSize, {}))
   stopBtn.addEventListener('click', () => state.isPlaying ? midi.stop() : midi.start())
+  stopBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stopBtn.click() } })
   svg.appendChild(stopBtn)
 
-  const jackBtn = el('g', { id: 'jack-btn', style: 'cursor:pointer' })
+  const jackBtn = el('g', { id: 'jack-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Select MIDI output' })
   jackBtn.appendChild(placeIcon(icons.midiIcon, JACK_C.x, JACK_C.y, midiSize, midiSize, {}))
   jackBtn.addEventListener('click', () => openPicker())
+  jackBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jackBtn.click() } })
   svg.appendChild(jackBtn)
 
   // Beat line: heart → jack
