@@ -155,7 +155,7 @@ function buildCard (icons) {
 
   // GH link — bottom-right corner gutter
   const ghSize = GUTTER_H * .88
-  const ghLink = el('a', { href: 'https://github.com/janforst/midi-of-hearts', target: '_blank', id: 'gh' })
+  const ghLink = el('a', { href: 'https://github.com/darosh/midi-of-hearts', target: '_blank', id: 'gh' })
   ghLink.appendChild(placeIcon(icons.gh, W - M / 2 - I - ghSize - P * .25, H - M - I / 2 - P * .25, ghSize, ghSize))
   svg.appendChild(ghLink)
 
