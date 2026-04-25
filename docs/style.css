@@ -49,6 +49,8 @@ svg * {
 #title * {
     stroke-width: 0;
     fill: var(--x-white);
+    fill-opacity: .87;
+    /*stroke: var(--x-white);*/
 }
 
 #gh * {
@@ -68,9 +70,11 @@ svg * {
 }
 
 #midi-small-icon * {
-    stroke-width: 0;
-    fill: var(--x-white);
-    fill-opacity: .87;
+    stroke: var(--x-white);
+    stroke-opacity: .87;
+    /*stroke-width: 0;*/
+    /*fill: var(--x-white);*/
+    /*fill-opacity: .87;*/
 }
 
 #rect-outer {
