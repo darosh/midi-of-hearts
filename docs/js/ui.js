@@ -417,6 +417,7 @@ const arcEvents = []
 const DIGIT_DUR = 300
 
 bt.on('heartrate', () => arcEvents.push({ startMs: performance.now() }))
+bt.on('disconnect', () => { state.upcomingBeats = []; audio.cancelPendingAudio(); })
 
 function raf () {
   requestAnimationFrame(raf)
