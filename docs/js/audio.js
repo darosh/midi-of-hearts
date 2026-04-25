@@ -35,19 +35,26 @@ export function toggleSine () {
   cancelPendingAudio()
 }
 
+let beatSeq = 0
+
 export function scheduleBeat (perfNowTime, bpm) {
   if (!ctx) return
   const offset = (perfNowTime - performance.now()) / 1000
-  const at = ctx.currentTime + Math.max(0, offset)
-  if (kickOn) scheduleKick(at)
-  if (sineOn) scheduleSineNote(at, bpm)
+  const seq = ++beatSeq
+  if (offset < -0.050) {
+    return
+  }
+  const at = ctx.currentTime + Math.max(0.015, offset)
+  if (kickOn) scheduleKick(at, seq)
+  if (sineOn) scheduleSineNote(at, bpm, seq)
 }
 
-function scheduleKick (at) {
+function scheduleKick (at, seq) {
   const osc = ctx.createOscillator()
   const gain = ctx.createGain()
   osc.connect(gain)
   gain.connect(ctx.destination)
+  gain.gain.setValueAtTime(0, 0)
   osc.frequency.setValueAtTime(150, at)
   osc.frequency.exponentialRampToValueAtTime(50, at + 0.3)
   gain.gain.setValueAtTime(1, at)
@@ -58,7 +65,7 @@ function scheduleKick (at) {
   osc.onended = () => { const i = pending.indexOf(osc); if (i !== -1) pending.splice(i, 1) }
 }
 
-function scheduleSineNote (at, bpm) {
+function scheduleSineNote (at, bpm, seq) {
   // ECG monitor beep: flat sustain, no decay — pitch tracks BPM (440 Hz at 60 bpm)
   const freq = 440 * (bpm / 60)
   const hold = 0.08
@@ -68,6 +75,7 @@ function scheduleSineNote (at, bpm) {
   osc.frequency.setValueAtTime(freq, at)
   osc.connect(gain)
   gain.connect(ctx.destination)
+  gain.gain.setValueAtTime(0, 0)
   gain.gain.setValueAtTime(0, at)
   gain.gain.linearRampToValueAtTime(0.5, at + 0.005)   // sharp attack
   gain.gain.setValueAtTime(0.5, at + hold)              // flat hold
