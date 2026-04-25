@@ -1,0 +1,66 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  --x-bg: #26262a;
+  --x-stroke: #f8423d;
+  --x-fill: #bb3b37;
+  --x-white: #e4e5e5;
+
+  height: 100%;
+  background: var(--x-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#card {
+  width: 100dvw;
+  height: 100dvh;
+  display: block;
+}
+
+svg * {
+  fill: none;
+  stroke: var(--x-stroke);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+#title * {
+  stroke-width: 0;
+  fill: var(--x-white);
+}
+
+#gh * {
+  stroke-width: 0;
+  fill: var(--x-white);
+  fill-opacity: .80;
+}
+
+#heart-small-icon * {
+  stroke-width: 0;
+  fill: var(--x-fill);
+}
+
+#midi-small-icon * {
+  stroke-width: 0;
+  fill: var(--x-white);
+  fill-opacity: .87;
+}
+
+#rect-outer {
+  fill: var(--x-bg);
+}
+
+#watch-btn *, #jack-btn * {
+  fill: var(--x-bg);
+  fill-opacity: .001;
+}
+
+#play-btn *,  #stop-btn *,  #heart * {
+  fill: var(--x-bg);
+  fill-opacity: 1;
+}

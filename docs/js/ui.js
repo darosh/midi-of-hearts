@@ -1,0 +1,401 @@
+import { state } from './state.js'
+import * as bt from './bt.js'
+import * as midi from './midi.js'
+
+// ── Geometry constants ────────────────────────────────────────────────────────
+const W = 500                   // SVG reference width (always 500)
+const M = 24                    // margin: SVG edge → outer rect
+const R = 2 * M                 // outer rect corner radius
+const I = 48                    // gutter: outer rect → inner rect
+const RI = M                     // inner rect corner radius
+const P = 8                     // padding inside gutter
+const SW = W / 90                // stroke width (scales with card)
+
+// Derived from W (H-dependent values computed in deriveH)
+const OX = M, OY = M
+const OW = W - 2 * M
+const IX = M + I
+const IW = W - 2 * (M + I)
+const CX = W / 2
+
+// H-dependent layout (set by deriveH, called on init and resize)
+let H, OH, IY, IH, CY, GUTTER_H
+let WATCH_C, HEART_C, MIDI_C, STOP_C, JACK_C
+
+function deriveH () {
+  H = Math.max(W * 3 / 2, Math.round(W * window.innerHeight / window.innerWidth))
+  OH = H - 2 * M
+  IY = M + I
+  IH = H - 2 * (M + I)
+  CY = H / 2
+  GUTTER_H = I - 2 * P
+  WATCH_C = { x: IX + IW * 0.22, y: IY + IW * 0.22 }
+  HEART_C = { x: CX, y: IY + IH * 0.52 }
+  MIDI_C = { x: IX + IW * 0.78, y: IY + IW * 0.22 }
+  STOP_C = { x: IX + IW * 0.22, y: IY + IH - IW * 0.22 }
+  JACK_C = { x: IX + IW * 0.78, y: IY + IH - IW * 0.22 }
+}
+
+// ── SVG namespace + helpers ───────────────────────────────────────────────────
+const NS = 'http://www.w3.org/2000/svg'
+const f = n => n.toFixed(3)
+
+function el (tag, attrs = {}) {
+  const e = document.createElementNS(NS, tag)
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v)
+  return e
+}
+
+// ── Icon loading (inline, no symbols) ────────────────────────────────────────
+const iconCache = {}
+const SKIP_TAGS = /^(defs|metadata|title|desc|namedview|sodipodi:namedview)$/i
+
+async function fetchIcon (path) {
+  if (iconCache[path]) return iconCache[path]
+  const doc = new DOMParser().parseFromString(await (await fetch(path)).text(), 'image/svg+xml')
+  const src = doc.querySelector('svg')
+  const vb = (src.getAttribute('viewBox') || '0 0 100 100').trim().split(/[\s,]+/).map(Number)
+  const nodes = [...src.children].filter(c =>
+    !SKIP_TAGS.test(c.localName) && c.namespaceURI === NS
+  )
+  return (iconCache[path] = { nodes, vb })
+}
+
+// Place an icon inline, centred at (cx,cy), fitting in maxW × maxH, with extra attrs on the group
+function placeIcon (icon, cx, cy, maxW, maxH, attrs = {}) {
+  const [vx, vy, vw, vh] = icon.vb
+  const scale = Math.min(maxW / vw, maxH / vh)
+  const ox = cx - vw * scale / 2 - vx * scale
+  const oy = cy - vh * scale / 2 - vy * scale
+  const g = el('g', { transform: `translate(${f(ox)},${f(oy)}) scale(${f(scale)})`, ...attrs })
+  for (const n of icon.nodes) g.appendChild(n.cloneNode(true))
+  return g
+}
+
+// ── Numbers: digit x-bounds within the 71.84×22.39 viewBox ──────────────────
+// [xMin, width] for each digit 0–9 (measured from path data)
+const DIGIT_VH = 22.390625
+const DIGIT_X = [
+  [0, 6.1875],   // 0
+  [7.59375, 3.515625],   // 1
+  [12.828125, 6.375],   // 2
+  [20.265625, 6.1875],   // 3
+  [27.625, 8.03125],   // 4
+  [36.671875, 6.1875],   // 5
+  [44.1875, 6.1875],   // 6
+  [51.390625, 6.203125],   // 7
+  [58.46875, 6.0],   // 8
+  [65.65625, 6.1875],   // 9
+]
+
+let numbersNodes = []   // cloneable <g id="dN"> elements from numbers.svg
+
+function renderDigits (bpm, scaleY = 1) {
+  while (digitGroup.firstChild) digitGroup.removeChild(digitGroup.firstChild)
+  if (bpm <= 0 || !numbersNodes.length) return
+
+  const digits = String(Math.round(bpm)).split('').map(Number)
+  const targetH = IH * 0.18
+  const scale = targetH / DIGIT_VH
+  const GAP = targetH * 0.15
+
+  // Total width for centering
+  const totalW = digits.reduce((s, d) => s + DIGIT_X[d][1] * scale, 0)
+    + GAP * (digits.length - 1)
+
+  let curX = HEART_C.x - totalW / 2
+  const baseY = HEART_C.y - targetH / 2 + targetH * 0.05
+
+  for (const d of digits) {
+    const [xMin, dw] = DIGIT_X[d]
+    const ox = curX - xMin * scale
+    const scY = scale * scaleY
+    const offsetY = scaleY < 1 ? (targetH * (1 - scaleY)) / 2 : 0
+    const g = el('g', {
+      transform: `translate(${f(ox)},${f(baseY + offsetY)}) scale(${f(scale)},${f(scY)})`,
+    })
+    g.appendChild(numbersNodes[d].cloneNode(true))
+    digitGroup.appendChild(g)
+    curX += dw * scale + GAP
+  }
+}
+
+// ── Card DOM references ───────────────────────────────────────────────────────
+let svg = null
+let animLayer = null
+let digitGroup = null
+
+// ── Build card ────────────────────────────────────────────────────────────────
+function buildCard (icons) {
+  if (svg) svg.remove()
+
+  svg = el('svg', { viewBox: `0 0 ${W} ${H}`, id: 'card' })
+  document.body.appendChild(svg)
+
+  // ── Static structure ──────────────────────────────────────────────────────
+  // Outer card rect
+  svg.appendChild(el('rect', {
+    x: OX, y: OY, width: OW, height: OH, rx: R, ry: R, id: 'rect-outer'
+  }))
+
+  // Inner frame
+  svg.appendChild(el('rect', {
+    x: IX, y: IY, width: IW, height: IH, rx: RI, ry: RI,
+  }))
+
+  // Title — rotated CCW in left gutter, beginning aligned with inner rect bottom
+  // scale is height-constrained, so compute actual scaled width to set pivot
+  const titleCX = M + I / 2
+  const [, , tvw, tvh] = icons.title.vb
+  const titleScale = Math.min(IH / tvw, GUTTER_H / tvh)
+  const titlePivotY = (IY + IH) - (tvw * titleScale) / 2
+  const titleG = el('g', { transform: `rotate(-90,${f(titleCX)},${f(titlePivotY)})`, id: 'title' })
+  titleG.appendChild(placeIcon(icons.title, titleCX + P * .5, titlePivotY, IH, GUTTER_H))
+  svg.appendChild(titleG)
+
+  // GH link — bottom-right corner gutter
+  const ghSize = GUTTER_H * .88
+  const ghLink = el('a', { href: 'https://github.com/janforst/midi-of-hearts', target: '_blank', id: 'gh' })
+  ghLink.appendChild(placeIcon(icons.gh, W - M / 2 - I - ghSize - P * .25, H - M - I / 2 - P * .25, ghSize, ghSize))
+  svg.appendChild(ghLink)
+
+  // Top-left corner icons — centred in the gutter gap (M + I/2, M + I/2)
+  const cornerSize = GUTTER_H
+  const cornerCX = M + I / 2
+  const cornerCY = M + I / 2
+  svg.appendChild(placeIcon(icons.heart, cornerCX + I - P, cornerCY, cornerSize, cornerSize - P, { id: 'heart-small-icon' }))
+  svg.appendChild(placeIcon(icons.midiLogo, cornerCX + I + cornerSize + P * 1.5, cornerCY, cornerSize * 5, cornerSize, { id: 'midi-small-icon' }))
+
+  // Watch — top-left inner area
+  const watchSize = IW * 0.28
+  const watchBtn = el('g', { id: 'watch-btn', style: 'cursor:pointer' })
+  watchBtn.appendChild(placeIcon(icons.watches, WATCH_C.x, WATCH_C.y, watchSize, watchSize, {}))
+  watchBtn.appendChild(placeIcon(icons.onOff, WATCH_C.x, WATCH_C.y, watchSize * .5, watchSize, {id: 'on-off'}))
+  watchBtn.addEventListener('click', () =>
+    state.isConnected ? bt.disconnect() : bt.connect().catch(console.error))
+  svg.appendChild(watchBtn)
+
+  const line = el('line', {
+    id: 'line',
+    x1: STOP_C.x,
+    y1: STOP_C.y,
+    x2: MIDI_C.x,
+    y2: MIDI_C.y,
+  })
+  svg.appendChild(line)
+
+  // Heart — centre
+  const heartSize = IW * 0.40
+  const heartG = el('g', { id: 'heart' })
+  heartG.appendChild(placeIcon(icons.heart, HEART_C.x, HEART_C.y, heartSize, heartSize,
+    {}))
+  svg.appendChild(heartG)
+
+
+  // MIDI icon — top-right (play/stop toggle) AND bottom-right (jack) — same icon
+  const midiSize = IW * 0.26
+  const midiBtn = el('g', { id: 'play-btn', style: 'cursor:pointer' })
+  midiBtn.appendChild(placeIcon(icons.play, MIDI_C.x, MIDI_C.y, midiSize, midiSize,
+    {}))
+  midiBtn.addEventListener('click', () => state.isPlaying ? midi.stop() : midi.start())
+  svg.appendChild(midiBtn)
+
+  const stopBtn = el('g', { id: 'stop-btn', style: 'cursor:pointer' })
+  stopBtn.appendChild(placeIcon(icons.stop, STOP_C.x, STOP_C.y, midiSize, midiSize,
+    {}))
+  stopBtn.addEventListener('click', () => state.isPlaying ? midi.stop() : midi.start())
+  svg.appendChild(stopBtn)
+
+  svg.appendChild(placeIcon(icons.midiIcon, JACK_C.x, JACK_C.y, midiSize, midiSize,
+    { id: 'jack-btn' }))
+
+  // Beat line: heart → jack
+  svg.appendChild(el('line', {
+    id: 'beatLine',
+    x1: f(HEART_C.x), y1: f(HEART_C.y),
+    x2: f(JACK_C.x), y2: f(JACK_C.y),
+    stroke: '#ccc', 'stroke-width': f(SW * 0.6),
+    'stroke-dasharray': `${f(P)} ${f(I / 2)}`,
+  }))
+
+  // Animated layer (arcs, ticks, glows) — always on top
+  animLayer = el('g', { id: 'animLayer' })
+  svg.appendChild(animLayer)
+
+  // Digit group
+  digitGroup = el('g', { id: 'digitGroup' })
+  svg.appendChild(digitGroup)
+  renderDigits(0)
+}
+
+// ── RAF animation loop ────────────────────────────────────────────────────────
+const ARC_TRAVEL_MS = 800
+const BEAT_TRAVEL_MS = 2000
+
+let displayBpm = 0, targetBpm = 0, digitTransition = null
+const arcEvents = []
+const DIGIT_DUR = 300
+
+bt.on('heartrate', () => arcEvents.push({ startMs: performance.now() }))
+
+function raf () {
+  requestAnimationFrame(raf)
+  const now = performance.now()
+  animateWatchArcs(now)
+  animateBeatTicks(now)
+  animateHeartPulse(now)
+  animateMidiGlow(now)
+  animateDigits(now)
+  updateStatus()
+}
+
+function updateStatus () {
+  const t = svg?.getElementById('statusText')
+  if (!t) return
+  if (!state.isConnected) {
+    t.textContent = 'Click watch to connect'
+    return
+  }
+  t.textContent = state.isPlaying
+    ? `${state.bpm} BPM — playing`
+    : `${state.bpm} BPM — click MIDI to play`
+}
+
+// Watch arcs
+function animateWatchArcs (now) {
+  animLayer.querySelectorAll('.arc').forEach(e => e.remove())
+  const cutoff = now - ARC_TRAVEL_MS
+  while (arcEvents.length && arcEvents[0].startMs < cutoff) arcEvents.shift()
+  for (const ev of arcEvents) {
+    const t = (now - ev.startMs) / ARC_TRAVEL_MS
+    const cx = WATCH_C.x + (HEART_C.x - WATCH_C.x) * t
+    const cy = WATCH_C.y + (HEART_C.y - WATCH_C.y) * t
+    animLayer.appendChild(el('circle', {
+      class: 'arc', cx: f(cx), cy: f(cy), r: f(SW * 2 + t * SW * 3),
+      opacity: 1 - t,
+    }))
+  }
+}
+
+// Beat ticks
+function animateBeatTicks (now) {
+  animLayer.querySelectorAll('.tick').forEach(e => e.remove())
+  if (!state.isPlaying) return
+  const x1 = HEART_C.x, y1 = HEART_C.y
+  const x2 = JACK_C.x, y2 = JACK_C.y
+  const dx = x2 - x1, dy = y2 - y1
+  const len = I / 2
+  const nx = -dy / Math.hypot(dx, dy) * len
+  const ny = dx / Math.hypot(dx, dy) * len
+  for (const beatTime of state.upcomingBeats) {
+    const remaining = beatTime - now
+    if (remaining < 0 || remaining > BEAT_TRAVEL_MS) continue
+    const t = 1 - remaining / BEAT_TRAVEL_MS
+    const tx = x1 + dx * t, ty = y1 + dy * t
+    animLayer.appendChild(el('line', {
+      class: 'tick',
+      x1: f(tx - nx), y1: f(ty - ny), x2: f(tx + nx), y2: f(ty + ny),
+      opacity: 0.3 + 0.7 * t,
+    }))
+  }
+}
+
+// Heart pulse
+function animateHeartPulse (now) {
+  const heartG = svg?.getElementById('heartG')
+  if (!heartG) return
+  const age = now - state.lastHrTime, dur = 300
+  if (age > dur) {
+    heartG.setAttribute('transform', '')
+    return
+  }
+  const scale = 1 + 0.18 * Math.sin(Math.PI * age / dur)
+  heartG.setAttribute('transform',
+    `translate(${f(HEART_C.x)},${f(HEART_C.y)}) scale(${f(scale)}) translate(${f(-HEART_C.x)},${f(-HEART_C.y)})`)
+}
+
+// MIDI jack glow
+let jackGlowEl = null
+
+function animateMidiGlow (now) {
+  // if (!jackGlowEl || !jackGlowEl.isConnected) {
+  //   jackGlowEl = el('circle', {
+  //     class: 'jackGlow', cx: f(JACK_C.x), cy: f(JACK_C.y), r: f(IW * 0.15),
+  //   })
+  //   animLayer.appendChild(jackGlowEl)
+  // }
+  const recent = state.upcomingBeats.filter(t => t <= now && now - t < 200)
+  if (recent.length) {
+    const age = now - Math.max(...recent), t = age / 200
+    // jackGlowEl.setAttribute('opacity', 1 - t)
+  } else {
+  }
+}
+
+// Digit transition
+function animateDigits (now) {
+  if (targetBpm !== state.bpm) {
+    targetBpm = state.bpm
+    digitTransition = { from: displayBpm, to: targetBpm, startMs: now }
+  }
+  if (!digitTransition) {
+    renderDigits(displayBpm)
+    return
+  }
+  const t = Math.min(1, (now - digitTransition.startMs) / DIGIT_DUR)
+  if (t < 0.5) {
+    renderDigits(digitTransition.from, 1 - t * 2)
+  } else {
+    displayBpm = digitTransition.to
+    renderDigits(digitTransition.to, (t - 0.5) * 2)
+    if (t >= 1) digitTransition = null
+  }
+}
+
+// ── MIDI port label ───────────────────────────────────────────────────────────
+midi.onPortChange(ports => {
+  if (ports.length) midi.selectOutput(ports[0].id)
+})
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+export async function init () {
+  const paths = {
+    watches: './svg/watches.svg',
+    onOff: './svg/on-off.svg',
+    heart: './svg/heart.svg',
+    midiIcon: './svg/midi-icon.svg',
+    midiLogo: './svg/midi-logo.svg',
+    title: './svg/title.svg',
+    play: './svg/play.svg',
+    stop: './svg/stop.svg',
+    gh: './svg/gh.svg',
+    numbers: './svg/numbers.svg',
+  }
+
+  const icons = Object.fromEntries(
+    await Promise.all(Object.entries(paths).map(async ([id, path]) => [id, await fetchIcon(path)]))
+  )
+
+  // Extract digit nodes from the already-fetched numbers icon
+  // icons.numbers.nodes contains the <g id="dN"> elements in reverse order (d9 first in file)
+  for (let d = 0; d <= 9; d++) {
+    const g = icons.numbers.nodes.find(n => n.id === `d${d}`)
+    numbersNodes[d] = g || el('g')
+  }
+
+  deriveH()
+  buildCard(icons)
+
+  // Rebuild on resize (debounced)
+  let resizeTimer
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(() => {
+      jackGlowEl = null
+      deriveH()
+      buildCard(icons)
+    }, 200)
+  })
+
+  requestAnimationFrame(raf)
+}

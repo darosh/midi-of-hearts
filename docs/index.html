@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIDI of Hearts</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<script type="module">
+  import { init as initMidi } from './js/midi.js';
+  import { init as initUi }  from './js/ui.js';
+
+  await initMidi().catch(() => console.warn('MIDI init failed'));
+  await initUi();
+</script>
+</body>
+</html>
