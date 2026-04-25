@@ -522,7 +522,7 @@ function renderBpmChart (now) {
   const px = -ay, py = ax  // perp 90° CCW
 
   // Chart endpoints inset from symbols
-  const symbolInset = IW * 0.14
+  const symbolInset = IW * 0.08
   const startX = STOP_C.x + ax * symbolInset  // oldest end (STOP/square side)
   const startY = STOP_C.y + ay * symbolInset
   const endX = MIDI_C.x - ax * symbolInset    // newest end (MIDI/triangle side)
