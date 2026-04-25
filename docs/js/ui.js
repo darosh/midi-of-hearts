@@ -170,7 +170,7 @@ function buildCard (icons) {
   const watchSize = IW * 0.28
   const watchBtn = el('g', { id: 'watch-btn', style: 'cursor:pointer' })
   watchBtn.appendChild(placeIcon(icons.watches, WATCH_C.x, WATCH_C.y, watchSize, watchSize, {}))
-  watchBtn.appendChild(placeIcon(icons.onOff, WATCH_C.x, WATCH_C.y, watchSize * .5, watchSize, {id: 'on-off'}))
+  watchBtn.appendChild(placeIcon(icons.onOff, WATCH_C.x, WATCH_C.y, watchSize * .5, watchSize, { id: 'on-off' }))
   watchBtn.addEventListener('click', () =>
     state.isConnected ? bt.disconnect() : bt.connect().catch(console.error))
   svg.appendChild(watchBtn)
@@ -191,20 +191,23 @@ function buildCard (icons) {
     {}))
   svg.appendChild(heartG)
 
-
   // Angle of the line from STOP_C to MIDI_C (degrees, for button rotation)
   const lineAngle = Math.atan2(MIDI_C.y - STOP_C.y, MIDI_C.x - STOP_C.x) * 180 / Math.PI
 
   // MIDI icon — top-right (play/stop toggle) AND bottom-right (jack) — same icon
   const midiSize = IW * 0.26
-  const midiBtn = el('g', { id: 'play-btn', style: 'cursor:pointer',
-    transform: `rotate(${f(lineAngle)},${f(MIDI_C.x)},${f(MIDI_C.y)})` })
+  const midiBtn = el('g', {
+    id: 'play-btn', style: 'cursor:pointer',
+    transform: `rotate(${f(lineAngle)},${f(MIDI_C.x)},${f(MIDI_C.y)})`
+  })
   midiBtn.appendChild(placeIcon(icons.play, MIDI_C.x, MIDI_C.y, midiSize, midiSize, {}))
   midiBtn.addEventListener('click', () => state.isPlaying ? midi.stop() : midi.start())
   svg.appendChild(midiBtn)
 
-  const stopBtn = el('g', { id: 'stop-btn', style: 'cursor:pointer',
-    transform: `rotate(${f(lineAngle)},${f(STOP_C.x)},${f(STOP_C.y)})` })
+  const stopBtn = el('g', {
+    id: 'stop-btn', style: 'cursor:pointer',
+    transform: `rotate(${f(lineAngle)},${f(STOP_C.x)},${f(STOP_C.y)})`
+  })
   stopBtn.appendChild(placeIcon(icons.stop, STOP_C.x, STOP_C.y, midiSize, midiSize, {}))
   stopBtn.addEventListener('click', () => state.isPlaying ? midi.stop() : midi.start())
   svg.appendChild(stopBtn)
@@ -242,7 +245,7 @@ function loadStoredOutput () {
 }
 
 function openPicker () {
-  if (svg.getElementById('midiPicker')) return   // already open
+  if (svg.getElementById('midi-picker')) return   // already open
 
   const ports = midi.outputs()
   const items = [{ id: '', label: 'MIDI Off' }, ...ports.map(p => ({ id: p.id, label: p.name }))]
@@ -251,14 +254,14 @@ function openPicker () {
   const rowH = I
   const totalH = items.length * rowH
   const startY = IY + (IH - totalH) / 2
-  const fontSize = rowH * 0.38
+  const fontSize = rowH * 0.7
 
-  const g = el('g', { id: 'midiPicker' })
+  const g = el('g', { id: 'midi-picker' })
 
   // Background covering the inner rect
   g.appendChild(el('rect', {
-    id: 'midiPickerBg',
-    x: f(IX), y: f(IY), width: f(IW), height: f(IH), rx: f(RI), ry: f(RI),
+    id: 'midi-picker-bg',
+    x: f(IX + P), y: f(IY + P), width: f(IW - 2 * P), height: f(IH - 2 * P), rx: f(RI), ry: f(RI),
   }))
 
   items.forEach((item, i) => {
@@ -305,7 +308,8 @@ function openPicker () {
   // Click backdrop (outside rows) closes picker
   const backdrop = el('rect', {
     x: f(OX), y: f(OY), width: f(OW), height: f(OH),
-    fill: 'transparent', stroke: 'none', style: 'cursor:default',
+    id: 'backdrop',
+    style: 'cursor:default',
   })
   backdrop.addEventListener('click', e => {
     if (e.target === backdrop) closePicker()
@@ -316,7 +320,7 @@ function openPicker () {
 }
 
 function closePicker () {
-  svg.getElementById('midiPicker')?.remove()
+  svg.getElementById('midi-picker')?.remove()
 }
 
 // ── RAF animation loop ────────────────────────────────────────────────────────

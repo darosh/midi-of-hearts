@@ -1,75 +1,116 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 html, body {
-  --x-bg: #26262a;
-  --x-stroke: #f8423d;
-  --x-fill: #bb3b37;
-  --x-white: #e4e5e5;
+    --x-bg: #26262a;
+    --x-stroke: #f8423d;
+    --x-fill: #bb3b37;
+    --x-white: #e4e5e5;
 
-  height: 100%;
-  background: var(--x-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+    font-family: "Tulpen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    height: 100%;
+    background: var(--x-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 #card {
-  width: 100dvw;
-  height: 100dvh;
-  display: block;
+    width: 100dvw;
+    height: 100dvh;
+    display: block;
 }
 
 svg * {
-  fill: none;
-  stroke: var(--x-stroke);
-  stroke-width: 1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+    fill: none;
+    stroke: var(--x-stroke);
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
 }
 
 #title * {
-  stroke-width: 0;
-  fill: var(--x-white);
+    stroke-width: 0;
+    fill: var(--x-white);
 }
 
 #gh * {
-  stroke-width: 0;
-  fill: var(--x-white);
-  fill-opacity: .80;
+    stroke-width: 0;
+    fill: var(--x-white);
+    fill-opacity: .80;
 }
 
 #heart-small-icon * {
-  stroke-width: 0;
-  fill: var(--x-fill);
+    stroke-width: 0;
+    fill: var(--x-fill);
 }
 
 #midi-small-icon * {
-  stroke-width: 0;
-  fill: var(--x-white);
-  fill-opacity: .87;
+    stroke-width: 0;
+    fill: var(--x-white);
+    fill-opacity: .87;
 }
 
 #rect-outer {
-  fill: var(--x-bg);
+    fill: var(--x-bg);
 }
 
 #watch-btn *, #jack-btn * {
-  fill: var(--x-bg);
-  fill-opacity: .001;
+    fill: var(--x-bg);
+    fill-opacity: .001;
 }
 
-#play-btn *,  #stop-btn *,  #heart * {
-  fill: var(--x-bg);
-  fill-opacity: 1;
+#play-btn *, #stop-btn *, #heart * {
+    fill: var(--x-bg);
+    fill-opacity: 1;
 }
 
 /* MIDI picker overlay */
-#midiPicker { pointer-events: all; }
-#midiPickerBg { fill: var(--x-bg); stroke: none; }
-.picker-divider { stroke: var(--x-stroke); stroke-opacity: 0.35; fill: none; }
-.picker-row-hit { fill: transparent; stroke: none; cursor: pointer; }
-.picker-label { fill: var(--x-white); fill-opacity: 0.55; stroke: none; font-family: monospace; }
-.picker-label.selected { fill: #fff; fill-opacity: 1; }
-.picker-row-group:hover .picker-label { fill: #fff; fill-opacity: 1; }
+#midi-picker {
+    pointer-events: all;
+}
+
+#midi-picker-bg {
+    fill: var(--x-bg);
+    stroke: none;
+}
+
+.picker-divider {
+    stroke: var(--x-stroke);
+    fill: none;
+}
+
+.picker-row-hit {
+    fill: transparent;
+    stroke: none;
+    cursor: pointer;
+}
+
+.picker-label {
+    fill: var(--x-white);
+    fill-opacity: 0.55;
+    stroke: none;
+}
+
+.picker-label.selected {
+    fill: #fff;
+    fill-opacity: 1;
+}
+
+.picker-row-group:hover .picker-label {
+    fill: #fff;
+    fill-opacity: 1;
+}
+
+#backdrop {
+    fill: none;
+    stroke-width: 0;
+}
