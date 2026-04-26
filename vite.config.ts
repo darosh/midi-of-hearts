@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
-      injectRegister: 'inline',
+      injectRegister: false,
       includeAssets: ['fonts/*.ttf'],
       workbox: {
         // viteSingleFile inlines everything into index.html after VitePWA generates
