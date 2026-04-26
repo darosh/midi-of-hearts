@@ -1,7 +1,7 @@
 # TODO
 
-- [ ] test PWA install
-- [ ] test mobile / tablet
+- [x] test PWA install
+- [x] test mobile / tablet
 - [x] tweak heart pulse animation
 - [x] test MIDI
 - [x] tune kick
