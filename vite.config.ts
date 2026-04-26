@@ -11,6 +11,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: false,
       includeAssets: ['fonts/*.ttf'],
+      includeManifestIcons: false,
       workbox: {
         // viteSingleFile inlines everything into index.html, so VitePWA can't compute
         // a revision for it (ends up revision:null). Exclude html from precache entirely
@@ -39,11 +40,11 @@ export default defineConfig({
             sizes: '64x64',
             type: 'image/png',
           },
-          // {
-          //   src: 'logo.svg',
-          //   sizes: 'any',
-          //   type: 'image/svg+xml',
-          // },
+          {
+            src: 'logo.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+          },
           {
             src: 'pwa-192x192.png',
             sizes: '192x192',
