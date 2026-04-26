@@ -58,7 +58,7 @@ function scheduleKick(at: number, bpm: number): void {
   gain.gain.setValueAtTime(0, 0)
   osc.frequency.setValueAtTime(freq, at)
   osc.frequency.exponentialRampToValueAtTime(freq / 4, at + hold - 0.05)
-  gain.gain.setValueAtTime(.5, at)
+  gain.gain.setValueAtTime(0.5, at)
   gain.gain.exponentialRampToValueAtTime(0.012, at + hold)
   gain.gain.linearRampToValueAtTime(0, at + hold + 0.005)
   osc.start(at)

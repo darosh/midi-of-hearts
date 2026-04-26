@@ -8,9 +8,9 @@
 2. **Connect to your heart rate monitor:** click the watches icon, start the monitor and click pair in browser popup
 3. **Select MIDI and/or sound**
 4. **Click play button**
-5. The app should be available offline by design, but you can additionally use the browser *install as app* feature for
+5. The app should be available offline by design, but you can additionally use the browser _install as app_ feature for
    better offline user experience
-6. To force update of the cached app use *Hard Reload* <kbd>Ctrl + F5</kbd> or <kbd>Command + Shift + R</kbd> on Mac. The current version is shown during '?' button hint.
+6. To force update of the cached app use _Hard Reload_ <kbd>Ctrl + F5</kbd> or <kbd>Command + Shift + R</kbd> on Mac. The current version is shown during '?' button hint.
 
 The app is using 2 seconds buffer to mitigate browser throttling inactive tab so the clock output change is delayed.
 
