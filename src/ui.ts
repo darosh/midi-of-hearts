@@ -337,11 +337,13 @@ function buildCard(iconsArg: Record<string, Icon>): void {
 
   const jackBtn = el('g', { id: 'jack-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Select MIDI output' })
   jackBtn.appendChild(placeIcon(iconsArg.midiIcon, JACK_C.x, JACK_C.y, midiSize, midiSize))
-  jackBtn.addEventListener('click', () => openPicker())
+  jackBtn.addEventListener('click', () => {
+    void openPicker()
+  })
   jackBtn.addEventListener('keydown', (e) => {
     if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
       e.preventDefault()
-      ;(jackBtn as unknown as HTMLElement).click()
+      void openPicker()
     }
   })
   svg.appendChild(jackBtn)
@@ -353,15 +355,27 @@ function buildCard(iconsArg: Record<string, Icon>): void {
 
 // ── MIDI picker overlay ───────────────────────────────────────────────────────
 const LS_OUTPUT_KEY = 'moh-midi-output'
+let outputRestored = false
 
 function loadStoredOutput(): void {
   const id = localStorage.getItem(LS_OUTPUT_KEY)
   if (id) midi.selectOutput(id)
 }
 
-function openPicker(): void {
+async function openPicker(): Promise<void> {
   if (!svg) return
   if (svg.getElementById('midi-picker')) return
+
+  try {
+    await midi.init()
+  } catch {
+    // MIDI unavailable — show picker with no ports
+  }
+
+  if (!outputRestored) {
+    loadStoredOutput()
+    outputRestored = true
+  }
 
   const ports = midi.outputs()
   const items = [{ id: '', label: 'MIDI Off' }, ...ports.map((p) => ({ id: p.id, label: p.name }))]
@@ -657,7 +671,6 @@ export async function init(): Promise<void> {
 
   deriveH()
   buildCard(icons)
-  loadStoredOutput()
   midi.onBeat((t) => audio.scheduleBeat(t, state.bpm))
 
   let resizeTimer: ReturnType<typeof setTimeout>

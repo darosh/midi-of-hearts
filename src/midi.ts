@@ -29,6 +29,7 @@ let nextPulseTime = 0
 let pulseIndex = 0
 
 export async function init(): Promise<void> {
+  if (midiAccess) return
   midiAccess = await navigator.requestMIDIAccess({ sysex: false })
   midiAccess.onstatechange = notifyPortChange
   notifyPortChange()
