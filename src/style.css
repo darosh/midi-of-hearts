@@ -197,8 +197,40 @@ a:focus {
 [role='button']:focus-visible,
 a:focus-visible {
   outline: none;
-  outline-offset: 6px;
-  border-radius: 4px;
+}
+
+.focus-ring {
+  fill: transparent !important;
+  stroke: var(--x-stroke);
+  stroke-width: 1;
+  stroke-dasharray: 6 4;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+
+[role='button']:hover .focus-ring,
+[role='button']:focus-visible .focus-ring,
+a:hover .focus-ring,
+a:focus-visible .focus-ring {
+  opacity: 1 !important;
+  animation: dash-spin 4s linear infinite;
+}
+
+@keyframes dash-spin {
+  to {
+    stroke-dashoffset: -50;
+  }
+}
+
+#hint {
+  fill: var(--x-white);
+  fill-opacity: 0.5;
+  stroke: none;
+  stroke-width: 0;
+  letter-spacing: 0.055em;
+  word-spacing: 0.2em;
+  pointer-events: none;
 }
 
 #loading {

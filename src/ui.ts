@@ -116,6 +116,25 @@ function placeIcon(icon: Icon, cx: number, cy: number, maxW: number, maxH: numbe
   return g
 }
 
+function addFocusRing(parent: SVGElement, cx: number, cy: number, r: number): void {
+  parent.appendChild(el('circle', { class: 'focus-ring', cx: f(cx), cy: f(cy), r: f(r) }))
+}
+
+function setHint(text: string): void {
+  if (hintEl) hintEl.textContent = text
+}
+
+function clearHint(): void {
+  if (hintEl) hintEl.textContent = ''
+}
+
+function wireHint(elem: SVGElement, text: string): void {
+  elem.addEventListener('mouseenter', () => setHint(text))
+  elem.addEventListener('mouseleave', clearHint)
+  elem.addEventListener('focus', () => setHint(text))
+  elem.addEventListener('blur', clearHint)
+}
+
 // ── Numbers: digit x-bounds within the 71.84×22.39 viewBox ──────────────────
 const DIGIT_VH = 22.390625
 const DIGIT_X: [number, number][] = [
@@ -172,6 +191,7 @@ let svg: SVGSVGElement | null = null
 let animLayer: SVGElement | null = null
 let icons: Record<string, Icon>
 let digitGroup: SVGElement
+let hintEl: SVGElement | null = null
 
 function updateSoundBtns(): void {
   const drumEl = document.getElementById('drum-btn')
@@ -208,8 +228,12 @@ function buildCard(iconsArg: Record<string, Icon>): void {
   svg.appendChild(titleG)
 
   const ghSize = GUTTER_H * 0.88
+  const ghCX = W - M / 2 - I - ghSize - P * 0.25
+  const ghCY = H - M - I / 2
   const ghLink = el('a', { href: 'https://github.com/darosh/midi-of-hearts', target: '_blank', id: 'gh', 'aria-label': 'View source on GitHub' })
-  ghLink.appendChild(placeIcon(iconsArg.gh, W - M / 2 - I - ghSize - P * 0.25, H - M - I / 2, ghSize, ghSize))
+  ghLink.appendChild(placeIcon(iconsArg.gh, ghCX, ghCY, ghSize, ghSize))
+  addFocusRing(ghLink, ghCX, ghCY, ghSize * 0.62)
+  wireHint(ghLink, 'More info on GitHub')
   svg.appendChild(ghLink)
 
   const cornerSize = GUTTER_H
@@ -224,6 +248,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
 
   const drumBtn = el('g', { id: 'drum-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Toggle drum kick', 'aria-pressed': 'false' })
   drumBtn.appendChild(placeIcon(iconsArg.drum, rightGutterCX, snd1CY, cornerSize, cornerSize))
+  addFocusRing(drumBtn, rightGutterCX, snd1CY, cornerSize * 0.62)
   drumBtn.addEventListener('click', () => {
     audio.toggleKick()
     updateSoundBtns()
@@ -234,10 +259,12 @@ function buildCard(iconsArg: Record<string, Icon>): void {
       ;(drumBtn as unknown as HTMLElement).click()
     }
   })
+  wireHint(drumBtn, 'Drum sound on / off')
   svg.appendChild(drumBtn)
 
   const sineBtn = el('g', { id: 'sine-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Toggle sine tone', 'aria-pressed': 'false' })
   sineBtn.appendChild(placeIcon(iconsArg.sine, rightGutterCX, snd2CY, cornerSize, cornerSize))
+  addFocusRing(sineBtn, rightGutterCX, snd2CY, cornerSize * 0.62)
   sineBtn.addEventListener('click', () => {
     audio.toggleSine()
     updateSoundBtns()
@@ -248,6 +275,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
       ;(sineBtn as unknown as HTMLElement).click()
     }
   })
+  wireHint(sineBtn, 'Sine sound on / off')
   svg.appendChild(sineBtn)
 
   updateSoundBtns()
@@ -256,6 +284,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
   const watchBtn = el('g', { id: 'watch-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Connect Bluetooth heart rate monitor' })
   watchBtn.appendChild(placeIcon(iconsArg.watches, WATCH_C.x, WATCH_C.y, watchSize, watchSize))
   watchBtn.appendChild(placeIcon(iconsArg.onOff, WATCH_C.x, WATCH_C.y, watchSize * 0.5, watchSize, { id: 'on-off' }))
+  addFocusRing(watchBtn, WATCH_C.x, WATCH_C.y, watchSize * 0.62)
   watchBtn.addEventListener('click', () => (state.isConnected ? bt.disconnect() : bt.connect().catch(console.error)))
   watchBtn.addEventListener('keydown', (e) => {
     if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
@@ -263,6 +292,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
       ;(watchBtn as unknown as HTMLElement).click()
     }
   })
+  wireHint(watchBtn, 'Connect to heart rate sensor')
   svg.appendChild(watchBtn)
 
   svg.appendChild(el('line', { id: 'line', x1: String(STOP_C.x), y1: String(STOP_C.y), x2: String(MIDI_C.x), y2: String(MIDI_C.y) }))
@@ -308,6 +338,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
     transform: `rotate(${f(lineAngle)},${f(MIDI_C.x)},${f(MIDI_C.y)})`,
   })
   midiBtn.appendChild(placeIcon(iconsArg.play, MIDI_C.x, MIDI_C.y, midiSize, midiSize))
+  addFocusRing(midiBtn, MIDI_C.x, MIDI_C.y, midiSize * 0.62)
   midiBtn.addEventListener('click', () => (state.isPlaying ? midi.stop() : midi.start()))
   midiBtn.addEventListener('keydown', (e) => {
     if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
@@ -315,6 +346,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
       ;(midiBtn as unknown as HTMLElement).click()
     }
   })
+  wireHint(midiBtn, 'Play / Stop')
   svg.appendChild(midiBtn)
 
   const stopBtn = el('g', {
@@ -326,6 +358,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
     transform: `rotate(${f(lineAngle)},${f(STOP_C.x)},${f(STOP_C.y)})`,
   })
   stopBtn.appendChild(placeIcon(iconsArg.stop, STOP_C.x, STOP_C.y, midiSize, midiSize))
+  addFocusRing(stopBtn, STOP_C.x, STOP_C.y, midiSize * 0.62)
   stopBtn.addEventListener('click', () => (state.isPlaying ? midi.stop() : midi.start()))
   stopBtn.addEventListener('keydown', (e) => {
     if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
@@ -333,10 +366,12 @@ function buildCard(iconsArg: Record<string, Icon>): void {
       ;(stopBtn as unknown as HTMLElement).click()
     }
   })
+  wireHint(stopBtn, 'Stop / Play')
   svg.appendChild(stopBtn)
 
   const jackBtn = el('g', { id: 'jack-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Select MIDI output' })
   jackBtn.appendChild(placeIcon(iconsArg.midiIcon, JACK_C.x, JACK_C.y, midiSize, midiSize))
+  addFocusRing(jackBtn, JACK_C.x, JACK_C.y, midiSize * 0.62)
   jackBtn.addEventListener('click', () => {
     void openPicker()
   })
@@ -346,11 +381,23 @@ function buildCard(iconsArg: Record<string, Icon>): void {
       void openPicker()
     }
   })
+  wireHint(jackBtn, 'Connect to MIDI')
   svg.appendChild(jackBtn)
 
   digitGroup = el('g', { id: 'digit-group' })
   svg.appendChild(digitGroup)
   renderDigits([])
+
+  // hint text — bottom gutter, right-anchored left of gh icon
+  hintEl = el('text', {
+    id: 'hint',
+    x: f(IX + P * 2),
+    y: f(H - M - I / 2),
+    'text-anchor': 'start',
+    'dominant-baseline': 'middle',
+    'font-size': f(GUTTER_H * 0.85),
+  })
+  svg.appendChild(hintEl)
 }
 
 // ── MIDI picker overlay ───────────────────────────────────────────────────────
