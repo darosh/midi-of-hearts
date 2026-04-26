@@ -10,7 +10,8 @@
     "lint": "vp fmt && vp lint --fix --format=stylish",
     "audit": "node scripts/lighthouse.js",
     "report": "node scripts/parse-report.js",
-    "svgo": "npx svgo ./src/assets/svg/*.svg && npx svgo ./public/favicon.svg"
+    "svgo": "npx svgo ./src/assets/svg/*.svg && npx svgo public/logo.svg",
+    "pwa": "npx @vite-pwa/assets-generator --html --preset minimal-2023 public/logo.svg"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
