@@ -19,27 +19,27 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const DOCS_DIR = resolve(__dirname, '../dist')
 const REPORT_PATH = join(__dirname, 'lighthouse-report.json')
 
-function freePort () {
+function freePort() {
   return new Promise((res, rej) => {
     const s = createServer()
-    s.listen(0, '127.0.0.1', () => { const p = s.address().port; s.close(() => res(p)) })
+    s.listen(0, '127.0.0.1', () => {
+      const p = s.address().port
+      s.close(() => res(p))
+    })
     s.on('error', rej)
   })
 }
 
-function startServer (port) {
+function startServer(port) {
   return new Promise((res, rej) => {
-    const proc = spawn(
-      'npx', ['http-server', DOCS_DIR, '-p', String(port), '--silent'],
-      { stdio: 'pipe' }
-    )
+    const proc = spawn('npx', ['http-server', DOCS_DIR, '-p', String(port), '--silent'], { stdio: 'pipe' })
     proc.on('error', rej)
     // Give it a moment to bind
     setTimeout(() => res(proc), 800)
   })
 }
 
-async function run () {
+async function run() {
   const port = await freePort()
   const url = `http://127.0.0.1:${port}/`
 
@@ -76,7 +76,7 @@ async function run () {
   }
 }
 
-function printSummary (lhr) {
+function printSummary(lhr) {
   const cats = lhr.categories
   const scores = Object.entries(cats).map(([k, v]) => ({
     name: v.title,
@@ -94,9 +94,7 @@ function printSummary (lhr) {
   }
   console.log(line)
 
-  const opportunities = Object.values(lhr.audits).filter(
-    a => a.details?.type === 'opportunity' && a.score !== null && a.score < 1
-  )
+  const opportunities = Object.values(lhr.audits).filter((a) => a.details?.type === 'opportunity' && a.score !== null && a.score < 1)
   if (opportunities.length) {
     console.log('\nOpportunities:')
     for (const a of opportunities) {
@@ -107,9 +105,7 @@ function printSummary (lhr) {
   }
 
   const failing = Object.values(lhr.audits).filter(
-    a => a.score !== null && a.score < 0.9 &&
-         a.details?.type !== 'opportunity' &&
-         !['metrics', 'screenshot-thumbnails', 'final-screenshot'].includes(a.id)
+    (a) => a.score !== null && a.score < 0.9 && a.details?.type !== 'opportunity' && !['metrics', 'screenshot-thumbnails', 'final-screenshot'].includes(a.id),
   )
   if (failing.length) {
     console.log('\nFailing audits:')
@@ -119,4 +115,7 @@ function printSummary (lhr) {
   }
 }
 
-run().catch(e => { console.error(e); process.exit(1) })
+run().catch((e) => {
+  console.error(e)
+  process.exit(1)
+})

@@ -7,16 +7,17 @@
     "dev": "vp dev",
     "build": "tsc && vp build",
     "preview": "vp preview",
+    "lint": "vp fmt && vp lint --fix --format=stylish",
     "audit": "node scripts/lighthouse.js",
     "report": "node scripts/parse-report.js"
   },
   "devDependencies": {
-    "typescript": "~6.0.2",
-    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
-    "vite-plus": "latest",
     "http-server": "^14.1.1",
     "lighthouse": "^12.0.0",
-    "puppeteer": "^23.0.0"
+    "puppeteer": "^23.0.0",
+    "typescript": "~6.0.2",
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vite-plus": "latest"
   },
   "overrides": {
     "vite": "npm:@voidzero-dev/vite-plus-core@latest",

@@ -625,9 +625,7 @@
             "duration": 0.178
           }
         ],
-        "sortedBy": [
-          "duration"
-        ]
+        "sortedBy": ["duration"]
       },
       "guidanceLevel": 1
     },
@@ -693,9 +691,7 @@
         "headings": [],
         "items": [],
         "overallSavingsMs": 0,
-        "sortedBy": [
-          "wastedMs"
-        ]
+        "sortedBy": ["wastedMs"]
       },
       "guidanceLevel": 3
     },
@@ -705,9 +701,7 @@
       "description": "Leverage the `font-display` CSS feature to ensure text is user-visible while webfonts are loading. [Learn more about `font-display`](https://developer.chrome.com/docs/lighthouse/performance/font-display/).",
       "score": 1,
       "scoreDisplayMode": "metricSavings",
-      "warnings": [
-        "Lighthouse was unable to automatically check the `font-display` value for the origin http://127.0.0.1:62990."
-      ],
+      "warnings": ["Lighthouse was unable to automatically check the `font-display` value for the origin http://127.0.0.1:62990."],
       "details": {
         "type": "table",
         "headings": [
@@ -962,9 +956,7 @@
             "rtt": 0.0246
           }
         ],
-        "sortedBy": [
-          "rtt"
-        ]
+        "sortedBy": ["rtt"]
       }
     },
     "network-server-latency": {
@@ -997,9 +989,7 @@
             "serverResponseTime": 1.6634
           }
         ],
-        "sortedBy": [
-          "serverResponseTime"
-        ]
+        "sortedBy": ["serverResponseTime"]
       }
     },
     "main-thread-tasks": {
@@ -2097,10 +2087,7 @@
         "debugData": {
           "type": "debugdata",
           "impact": "moderate",
-          "tags": [
-            "cat.semantics",
-            "best-practice"
-          ]
+          "tags": ["cat.semantics", "best-practice"]
         }
       }
     },
@@ -2395,9 +2382,7 @@
             "totalBytes": 151
           }
         ],
-        "sortedBy": [
-          "totalBytes"
-        ]
+        "sortedBy": ["totalBytes"]
       },
       "guidanceLevel": 1
     },
@@ -2421,9 +2406,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2496,9 +2479,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2529,9 +2510,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2561,9 +2540,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2593,9 +2570,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2626,9 +2601,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2659,9 +2632,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2691,9 +2662,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2723,9 +2692,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2755,9 +2722,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2787,9 +2752,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -2820,9 +2783,7 @@
         "items": [],
         "overallSavingsMs": 0,
         "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
+        "sortedBy": ["wastedBytes"],
         "debugData": {
           "type": "debugdata",
           "metricSavings": {
@@ -3251,9 +3212,7 @@
         }
       },
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "uses-long-cache-ttl"
-      ]
+      "replacesAudits": ["uses-long-cache-ttl"]
     },
     "cls-culprits-insight": {
       "id": "cls-culprits-insight",
@@ -3269,11 +3228,7 @@
         "items": []
       },
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "layout-shifts",
-        "non-composited-animations",
-        "unsized-images"
-      ]
+      "replacesAudits": ["layout-shifts", "non-composited-animations", "unsized-images"]
     },
     "document-latency-insight": {
       "id": "document-latency-insight",
@@ -3310,11 +3265,7 @@
         }
       },
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "redirects",
-        "server-response-time",
-        "uses-text-compression"
-      ]
+      "replacesAudits": ["redirects", "server-response-time", "uses-text-compression"]
     },
     "dom-size-insight": {
       "id": "dom-size-insight",
@@ -3323,9 +3274,7 @@
       "score": null,
       "scoreDisplayMode": "notApplicable",
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "dom-size"
-      ]
+      "replacesAudits": ["dom-size"]
     },
     "duplicated-javascript-insight": {
       "id": "duplicated-javascript-insight",
@@ -3366,9 +3315,7 @@
         }
       },
       "guidanceLevel": 2,
-      "replacesAudits": [
-        "duplicated-javascript"
-      ]
+      "replacesAudits": ["duplicated-javascript"]
     },
     "font-display-insight": {
       "id": "font-display-insight",
@@ -3396,9 +3343,7 @@
         "items": []
       },
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "font-display"
-      ]
+      "replacesAudits": ["font-display"]
     },
     "forced-reflow-insight": {
       "id": "forced-reflow-insight",
@@ -3474,12 +3419,7 @@
         }
       },
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "modern-image-formats",
-        "uses-optimized-images",
-        "efficient-animated-content",
-        "uses-responsive-images"
-      ]
+      "replacesAudits": ["modern-image-formats", "uses-optimized-images", "efficient-animated-content", "uses-responsive-images"]
     },
     "inp-breakdown-insight": {
       "id": "inp-breakdown-insight",
@@ -3488,9 +3428,7 @@
       "score": null,
       "scoreDisplayMode": "notApplicable",
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "work-during-interaction"
-      ]
+      "replacesAudits": ["work-during-interaction"]
     },
     "lcp-breakdown-insight": {
       "id": "lcp-breakdown-insight",
@@ -3550,9 +3488,7 @@
         ]
       },
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "largest-contentful-paint-element"
-      ]
+      "replacesAudits": ["largest-contentful-paint-element"]
     },
     "lcp-discovery-insight": {
       "id": "lcp-discovery-insight",
@@ -3561,10 +3497,7 @@
       "score": null,
       "scoreDisplayMode": "notApplicable",
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "prioritize-lcp-image",
-        "lcp-lazy-loaded"
-      ]
+      "replacesAudits": ["prioritize-lcp-image", "lcp-lazy-loaded"]
     },
     "legacy-javascript-insight": {
       "id": "legacy-javascript-insight",
@@ -3702,10 +3635,7 @@
         ]
       },
       "guidanceLevel": 1,
-      "replacesAudits": [
-        "critical-request-chains",
-        "uses-rel-preconnect"
-      ]
+      "replacesAudits": ["critical-request-chains", "uses-rel-preconnect"]
     },
     "render-blocking-insight": {
       "id": "render-blocking-insight",
@@ -3744,9 +3674,7 @@
         ]
       },
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "render-blocking-resources"
-      ]
+      "replacesAudits": ["render-blocking-resources"]
     },
     "third-parties-insight": {
       "id": "third-parties-insight",
@@ -3788,9 +3716,7 @@
         "items": []
       },
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "third-party-summary"
-      ]
+      "replacesAudits": ["third-party-summary"]
     },
     "viewport-insight": {
       "id": "viewport-insight",
@@ -3832,9 +3758,7 @@
         ]
       },
       "guidanceLevel": 3,
-      "replacesAudits": [
-        "viewport"
-      ]
+      "replacesAudits": ["viewport"]
     }
   },
   "configSettings": {
@@ -3865,12 +3789,7 @@
     "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
     "auditMode": false,
     "gatherMode": false,
-    "clearStorageTypes": [
-      "file_systems",
-      "shader_cache",
-      "service_workers",
-      "cache_storage"
-    ],
+    "clearStorageTypes": ["file_systems", "shader_cache", "service_workers", "cache_storage"],
     "disableStorageReset": false,
     "debugNavigation": false,
     "channel": "node",
@@ -3891,11 +3810,7 @@
   "categories": {
     "performance": {
       "title": "Performance",
-      "supportedModes": [
-        "navigation",
-        "timespan",
-        "snapshot"
-      ],
+      "supportedModes": ["navigation", "timespan", "snapshot"],
       "auditRefs": [
         {
           "id": "first-contentful-paint",
@@ -4277,10 +4192,7 @@
       "title": "Accessibility",
       "description": "These checks highlight opportunities to [improve the accessibility of your web app](https://developer.chrome.com/docs/lighthouse/accessibility/). Automatic detection can only detect a subset of issues and does not guarantee the accessibility of your web app, so [manual testing](https://web.dev/articles/how-to-review) is also encouraged.",
       "manualDescription": "These items address areas which an automated testing tool cannot cover. Learn more in our guide on [conducting an accessibility review](https://web.dev/articles/how-to-review).",
-      "supportedModes": [
-        "navigation",
-        "snapshot"
-      ],
+      "supportedModes": ["navigation", "snapshot"],
       "auditRefs": [
         {
           "id": "accesskeys",
@@ -4643,11 +4555,7 @@
     },
     "best-practices": {
       "title": "Best Practices",
-      "supportedModes": [
-        "navigation",
-        "timespan",
-        "snapshot"
-      ],
+      "supportedModes": ["navigation", "timespan", "snapshot"],
       "auditRefs": [
         {
           "id": "is-on-https",
@@ -4767,10 +4675,7 @@
       "title": "SEO",
       "description": "These checks ensure that your page is following basic search engine optimization advice. There are many additional factors Lighthouse does not score here that may affect your search ranking, including performance on [Core Web Vitals](https://web.dev/explore/vitals). [Learn more about Google Search Essentials](https://support.google.com/webmasters/answer/35769).",
       "manualDescription": "Run these additional validators on your site to check additional SEO best practices.",
-      "supportedModes": [
-        "navigation",
-        "snapshot"
-      ],
+      "supportedModes": ["navigation", "snapshot"],
       "auditRefs": [
         {
           "id": "is-crawlable",
@@ -4907,9 +4812,7 @@
   "entities": [
     {
       "name": "127.0.0.1",
-      "origins": [
-        "http://127.0.0.1:62990"
-      ],
+      "origins": ["http://127.0.0.1:62990"],
       "isFirstParty": true,
       "isUnrecognized": true
     }
@@ -7117,36 +7020,16 @@
       "warningHeader": "Warnings: "
     },
     "icuMessagePaths": {
-      "core/audits/is-on-https.js | title": [
-        "audits[is-on-https].title"
-      ],
-      "core/audits/is-on-https.js | description": [
-        "audits[is-on-https].description"
-      ],
-      "core/audits/is-on-https.js | columnInsecureURL": [
-        "audits[is-on-https].details.headings[0].label"
-      ],
-      "core/audits/is-on-https.js | columnResolution": [
-        "audits[is-on-https].details.headings[1].label"
-      ],
-      "core/audits/redirects-http.js | title": [
-        "audits[redirects-http].title"
-      ],
-      "core/audits/redirects-http.js | description": [
-        "audits[redirects-http].description"
-      ],
-      "core/audits/viewport.js | title": [
-        "audits.viewport.title"
-      ],
-      "core/audits/viewport.js | description": [
-        "audits.viewport.description"
-      ],
-      "core/lib/i18n/i18n.js | firstContentfulPaintMetric": [
-        "audits[first-contentful-paint].title"
-      ],
-      "core/audits/metrics/first-contentful-paint.js | description": [
-        "audits[first-contentful-paint].description"
-      ],
+      "core/audits/is-on-https.js | title": ["audits[is-on-https].title"],
+      "core/audits/is-on-https.js | description": ["audits[is-on-https].description"],
+      "core/audits/is-on-https.js | columnInsecureURL": ["audits[is-on-https].details.headings[0].label"],
+      "core/audits/is-on-https.js | columnResolution": ["audits[is-on-https].details.headings[1].label"],
+      "core/audits/redirects-http.js | title": ["audits[redirects-http].title"],
+      "core/audits/redirects-http.js | description": ["audits[redirects-http].description"],
+      "core/audits/viewport.js | title": ["audits.viewport.title"],
+      "core/audits/viewport.js | description": ["audits.viewport.description"],
+      "core/lib/i18n/i18n.js | firstContentfulPaintMetric": ["audits[first-contentful-paint].title"],
+      "core/audits/metrics/first-contentful-paint.js | description": ["audits[first-contentful-paint].description"],
       "core/lib/i18n/i18n.js | seconds": [
         {
           "values": {
@@ -7179,30 +7062,14 @@
           "path": "audits[mainthread-work-breakdown].displayValue"
         }
       ],
-      "core/lib/i18n/i18n.js | largestContentfulPaintMetric": [
-        "audits[largest-contentful-paint].title"
-      ],
-      "core/audits/metrics/largest-contentful-paint.js | description": [
-        "audits[largest-contentful-paint].description"
-      ],
-      "core/lib/i18n/i18n.js | firstMeaningfulPaintMetric": [
-        "audits[first-meaningful-paint].title"
-      ],
-      "core/audits/metrics/first-meaningful-paint.js | description": [
-        "audits[first-meaningful-paint].description"
-      ],
-      "core/lib/i18n/i18n.js | speedIndexMetric": [
-        "audits[speed-index].title"
-      ],
-      "core/audits/metrics/speed-index.js | description": [
-        "audits[speed-index].description"
-      ],
-      "core/lib/i18n/i18n.js | totalBlockingTimeMetric": [
-        "audits[total-blocking-time].title"
-      ],
-      "core/audits/metrics/total-blocking-time.js | description": [
-        "audits[total-blocking-time].description"
-      ],
+      "core/lib/i18n/i18n.js | largestContentfulPaintMetric": ["audits[largest-contentful-paint].title"],
+      "core/audits/metrics/largest-contentful-paint.js | description": ["audits[largest-contentful-paint].description"],
+      "core/lib/i18n/i18n.js | firstMeaningfulPaintMetric": ["audits[first-meaningful-paint].title"],
+      "core/audits/metrics/first-meaningful-paint.js | description": ["audits[first-meaningful-paint].description"],
+      "core/lib/i18n/i18n.js | speedIndexMetric": ["audits[speed-index].title"],
+      "core/audits/metrics/speed-index.js | description": ["audits[speed-index].description"],
+      "core/lib/i18n/i18n.js | totalBlockingTimeMetric": ["audits[total-blocking-time].title"],
+      "core/audits/metrics/total-blocking-time.js | description": ["audits[total-blocking-time].description"],
       "core/lib/i18n/i18n.js | ms": [
         {
           "values": {
@@ -7235,24 +7102,12 @@
           "path": "audits[largest-contentful-paint-element].displayValue"
         }
       ],
-      "core/lib/i18n/i18n.js | maxPotentialFIDMetric": [
-        "audits[max-potential-fid].title"
-      ],
-      "core/audits/metrics/max-potential-fid.js | description": [
-        "audits[max-potential-fid].description"
-      ],
-      "core/lib/i18n/i18n.js | cumulativeLayoutShiftMetric": [
-        "audits[cumulative-layout-shift].title"
-      ],
-      "core/audits/metrics/cumulative-layout-shift.js | description": [
-        "audits[cumulative-layout-shift].description"
-      ],
-      "core/audits/errors-in-console.js | failureTitle": [
-        "audits[errors-in-console].title"
-      ],
-      "core/audits/errors-in-console.js | description": [
-        "audits[errors-in-console].description"
-      ],
+      "core/lib/i18n/i18n.js | maxPotentialFIDMetric": ["audits[max-potential-fid].title"],
+      "core/audits/metrics/max-potential-fid.js | description": ["audits[max-potential-fid].description"],
+      "core/lib/i18n/i18n.js | cumulativeLayoutShiftMetric": ["audits[cumulative-layout-shift].title"],
+      "core/audits/metrics/cumulative-layout-shift.js | description": ["audits[cumulative-layout-shift].description"],
+      "core/audits/errors-in-console.js | failureTitle": ["audits[errors-in-console].title"],
+      "core/audits/errors-in-console.js | description": ["audits[errors-in-console].description"],
       "core/lib/i18n/i18n.js | columnSource": [
         "audits[errors-in-console].details.headings[0].label",
         "audits.deprecations.details.headings[1].label",
@@ -7270,12 +7125,8 @@
         "audits[clickjacking-mitigation].details.headings[0].label",
         "audits[trusted-types-xss].details.headings[0].label"
       ],
-      "core/audits/server-response-time.js | title": [
-        "audits[server-response-time].title"
-      ],
-      "core/audits/server-response-time.js | description": [
-        "audits[server-response-time].description"
-      ],
+      "core/audits/server-response-time.js | title": ["audits[server-response-time].title"],
+      "core/audits/server-response-time.js | description": ["audits[server-response-time].description"],
       "core/audits/server-response-time.js | displayValue": [
         {
           "values": {
@@ -7311,29 +7162,13 @@
         "audits[network-rtt].details.headings[1].label",
         "audits[network-server-latency].details.headings[1].label"
       ],
-      "core/lib/i18n/i18n.js | interactiveMetric": [
-        "audits.interactive.title"
-      ],
-      "core/audits/metrics/interactive.js | description": [
-        "audits.interactive.description"
-      ],
-      "core/audits/user-timings.js | title": [
-        "audits[user-timings].title"
-      ],
-      "core/audits/user-timings.js | description": [
-        "audits[user-timings].description"
-      ],
-      "core/lib/i18n/i18n.js | columnName": [
-        "audits[user-timings].details.headings[0].label",
-        "audits[third-party-cookies].details.headings[0].label"
-      ],
-      "core/audits/user-timings.js | columnType": [
-        "audits[user-timings].details.headings[1].label"
-      ],
-      "core/lib/i18n/i18n.js | columnStartTime": [
-        "audits[user-timings].details.headings[2].label",
-        "audits[long-tasks].details.headings[1].label"
-      ],
+      "core/lib/i18n/i18n.js | interactiveMetric": ["audits.interactive.title"],
+      "core/audits/metrics/interactive.js | description": ["audits.interactive.description"],
+      "core/audits/user-timings.js | title": ["audits[user-timings].title"],
+      "core/audits/user-timings.js | description": ["audits[user-timings].description"],
+      "core/lib/i18n/i18n.js | columnName": ["audits[user-timings].details.headings[0].label", "audits[third-party-cookies].details.headings[0].label"],
+      "core/audits/user-timings.js | columnType": ["audits[user-timings].details.headings[1].label"],
+      "core/lib/i18n/i18n.js | columnStartTime": ["audits[user-timings].details.headings[2].label", "audits[long-tasks].details.headings[1].label"],
       "core/lib/i18n/i18n.js | columnDuration": [
         "audits[user-timings].details.headings[3].label",
         "audits[long-tasks].details.headings[2].label",
@@ -7341,12 +7176,8 @@
         "audits[lcp-breakdown-insight].details.items[0].headings[1].label",
         "audits[render-blocking-insight].details.headings[2].label"
       ],
-      "core/audits/critical-request-chains.js | title": [
-        "audits[critical-request-chains].title"
-      ],
-      "core/audits/critical-request-chains.js | description": [
-        "audits[critical-request-chains].description"
-      ],
+      "core/audits/critical-request-chains.js | title": ["audits[critical-request-chains].title"],
+      "core/audits/critical-request-chains.js | description": ["audits[critical-request-chains].description"],
       "core/audits/critical-request-chains.js | displayValue": [
         {
           "values": {
@@ -7355,90 +7186,34 @@
           "path": "audits[critical-request-chains].displayValue"
         }
       ],
-      "core/audits/redirects.js | title": [
-        "audits.redirects.title"
-      ],
-      "core/audits/redirects.js | description": [
-        "audits.redirects.description"
-      ],
-      "core/audits/image-aspect-ratio.js | title": [
-        "audits[image-aspect-ratio].title"
-      ],
-      "core/audits/image-aspect-ratio.js | description": [
-        "audits[image-aspect-ratio].description"
-      ],
-      "core/audits/image-aspect-ratio.js | columnDisplayed": [
-        "audits[image-aspect-ratio].details.headings[2].label"
-      ],
-      "core/audits/image-aspect-ratio.js | columnActual": [
-        "audits[image-aspect-ratio].details.headings[3].label"
-      ],
-      "core/audits/image-size-responsive.js | title": [
-        "audits[image-size-responsive].title"
-      ],
-      "core/audits/image-size-responsive.js | description": [
-        "audits[image-size-responsive].description"
-      ],
-      "core/audits/image-size-responsive.js | columnDisplayed": [
-        "audits[image-size-responsive].details.headings[2].label"
-      ],
-      "core/audits/image-size-responsive.js | columnActual": [
-        "audits[image-size-responsive].details.headings[3].label"
-      ],
-      "core/audits/image-size-responsive.js | columnExpected": [
-        "audits[image-size-responsive].details.headings[4].label"
-      ],
-      "core/audits/deprecations.js | title": [
-        "audits.deprecations.title"
-      ],
-      "core/audits/deprecations.js | description": [
-        "audits.deprecations.description"
-      ],
-      "core/audits/deprecations.js | columnDeprecate": [
-        "audits.deprecations.details.headings[0].label"
-      ],
-      "core/audits/third-party-cookies.js | title": [
-        "audits[third-party-cookies].title"
-      ],
-      "core/audits/third-party-cookies.js | description": [
-        "audits[third-party-cookies].description"
-      ],
-      "core/audits/mainthread-work-breakdown.js | title": [
-        "audits[mainthread-work-breakdown].title"
-      ],
-      "core/audits/mainthread-work-breakdown.js | description": [
-        "audits[mainthread-work-breakdown].description"
-      ],
-      "core/audits/mainthread-work-breakdown.js | columnCategory": [
-        "audits[mainthread-work-breakdown].details.headings[0].label"
-      ],
-      "core/audits/bootup-time.js | title": [
-        "audits[bootup-time].title"
-      ],
-      "core/audits/bootup-time.js | description": [
-        "audits[bootup-time].description"
-      ],
-      "core/audits/bootup-time.js | columnTotal": [
-        "audits[bootup-time].details.headings[1].label"
-      ],
-      "core/audits/bootup-time.js | columnScriptEval": [
-        "audits[bootup-time].details.headings[2].label"
-      ],
-      "core/audits/bootup-time.js | columnScriptParse": [
-        "audits[bootup-time].details.headings[3].label"
-      ],
-      "core/audits/uses-rel-preconnect.js | title": [
-        "audits[uses-rel-preconnect].title"
-      ],
-      "core/audits/uses-rel-preconnect.js | description": [
-        "audits[uses-rel-preconnect].description"
-      ],
-      "core/audits/font-display.js | title": [
-        "audits[font-display].title"
-      ],
-      "core/audits/font-display.js | description": [
-        "audits[font-display].description"
-      ],
+      "core/audits/redirects.js | title": ["audits.redirects.title"],
+      "core/audits/redirects.js | description": ["audits.redirects.description"],
+      "core/audits/image-aspect-ratio.js | title": ["audits[image-aspect-ratio].title"],
+      "core/audits/image-aspect-ratio.js | description": ["audits[image-aspect-ratio].description"],
+      "core/audits/image-aspect-ratio.js | columnDisplayed": ["audits[image-aspect-ratio].details.headings[2].label"],
+      "core/audits/image-aspect-ratio.js | columnActual": ["audits[image-aspect-ratio].details.headings[3].label"],
+      "core/audits/image-size-responsive.js | title": ["audits[image-size-responsive].title"],
+      "core/audits/image-size-responsive.js | description": ["audits[image-size-responsive].description"],
+      "core/audits/image-size-responsive.js | columnDisplayed": ["audits[image-size-responsive].details.headings[2].label"],
+      "core/audits/image-size-responsive.js | columnActual": ["audits[image-size-responsive].details.headings[3].label"],
+      "core/audits/image-size-responsive.js | columnExpected": ["audits[image-size-responsive].details.headings[4].label"],
+      "core/audits/deprecations.js | title": ["audits.deprecations.title"],
+      "core/audits/deprecations.js | description": ["audits.deprecations.description"],
+      "core/audits/deprecations.js | columnDeprecate": ["audits.deprecations.details.headings[0].label"],
+      "core/audits/third-party-cookies.js | title": ["audits[third-party-cookies].title"],
+      "core/audits/third-party-cookies.js | description": ["audits[third-party-cookies].description"],
+      "core/audits/mainthread-work-breakdown.js | title": ["audits[mainthread-work-breakdown].title"],
+      "core/audits/mainthread-work-breakdown.js | description": ["audits[mainthread-work-breakdown].description"],
+      "core/audits/mainthread-work-breakdown.js | columnCategory": ["audits[mainthread-work-breakdown].details.headings[0].label"],
+      "core/audits/bootup-time.js | title": ["audits[bootup-time].title"],
+      "core/audits/bootup-time.js | description": ["audits[bootup-time].description"],
+      "core/audits/bootup-time.js | columnTotal": ["audits[bootup-time].details.headings[1].label"],
+      "core/audits/bootup-time.js | columnScriptEval": ["audits[bootup-time].details.headings[2].label"],
+      "core/audits/bootup-time.js | columnScriptParse": ["audits[bootup-time].details.headings[3].label"],
+      "core/audits/uses-rel-preconnect.js | title": ["audits[uses-rel-preconnect].title"],
+      "core/audits/uses-rel-preconnect.js | description": ["audits[uses-rel-preconnect].description"],
+      "core/audits/font-display.js | title": ["audits[font-display].title"],
+      "core/audits/font-display.js | description": ["audits[font-display].description"],
       "core/audits/font-display.js | undeclaredFontOriginWarning": [
         {
           "values": {
@@ -7453,24 +7228,12 @@
         "audits[font-display-insight].details.headings[1].label",
         "audits[image-delivery-insight].details.headings[2].label"
       ],
-      "core/audits/network-rtt.js | title": [
-        "audits[network-rtt].title"
-      ],
-      "core/audits/network-rtt.js | description": [
-        "audits[network-rtt].description"
-      ],
-      "core/audits/network-server-latency.js | title": [
-        "audits[network-server-latency].title"
-      ],
-      "core/audits/network-server-latency.js | description": [
-        "audits[network-server-latency].description"
-      ],
-      "core/lib/i18n/i18n.js | columnResourceType": [
-        "audits[resource-summary].details.headings[0].label"
-      ],
-      "core/lib/i18n/i18n.js | columnRequests": [
-        "audits[resource-summary].details.headings[1].label"
-      ],
+      "core/audits/network-rtt.js | title": ["audits[network-rtt].title"],
+      "core/audits/network-rtt.js | description": ["audits[network-rtt].description"],
+      "core/audits/network-server-latency.js | title": ["audits[network-server-latency].title"],
+      "core/audits/network-server-latency.js | description": ["audits[network-server-latency].description"],
+      "core/lib/i18n/i18n.js | columnResourceType": ["audits[resource-summary].details.headings[0].label"],
+      "core/lib/i18n/i18n.js | columnRequests": ["audits[resource-summary].details.headings[1].label"],
       "core/lib/i18n/i18n.js | columnTransferSize": [
         "audits[resource-summary].details.headings[2].label",
         "audits[uses-long-cache-ttl].details.headings[2].label",
@@ -7479,138 +7242,54 @@
         "audits[cache-insight].details.headings[2].label",
         "audits[render-blocking-insight].details.headings[1].label"
       ],
-      "core/lib/i18n/i18n.js | total": [
-        "audits[resource-summary].details.items[0].label"
-      ],
-      "core/lib/i18n/i18n.js | documentResourceType": [
-        "audits[resource-summary].details.items[1].label"
-      ],
-      "core/lib/i18n/i18n.js | stylesheetResourceType": [
-        "audits[resource-summary].details.items[2].label"
-      ],
-      "core/lib/i18n/i18n.js | fontResourceType": [
-        "audits[resource-summary].details.items[3].label"
-      ],
-      "core/lib/i18n/i18n.js | scriptResourceType": [
-        "audits[resource-summary].details.items[4].label"
-      ],
-      "core/lib/i18n/i18n.js | otherResourceType": [
-        "audits[resource-summary].details.items[5].label"
-      ],
-      "core/lib/i18n/i18n.js | imageResourceType": [
-        "audits[resource-summary].details.items[6].label"
-      ],
-      "core/lib/i18n/i18n.js | mediaResourceType": [
-        "audits[resource-summary].details.items[7].label"
-      ],
-      "core/lib/i18n/i18n.js | thirdPartyResourceType": [
-        "audits[resource-summary].details.items[8].label"
-      ],
-      "core/audits/third-party-summary.js | title": [
-        "audits[third-party-summary].title"
-      ],
-      "core/audits/third-party-summary.js | description": [
-        "audits[third-party-summary].description"
-      ],
-      "core/audits/third-party-facades.js | title": [
-        "audits[third-party-facades].title"
-      ],
-      "core/audits/third-party-facades.js | description": [
-        "audits[third-party-facades].description"
-      ],
-      "core/audits/largest-contentful-paint-element.js | title": [
-        "audits[largest-contentful-paint-element].title"
-      ],
-      "core/audits/largest-contentful-paint-element.js | description": [
-        "audits[largest-contentful-paint-element].description"
-      ],
+      "core/lib/i18n/i18n.js | total": ["audits[resource-summary].details.items[0].label"],
+      "core/lib/i18n/i18n.js | documentResourceType": ["audits[resource-summary].details.items[1].label"],
+      "core/lib/i18n/i18n.js | stylesheetResourceType": ["audits[resource-summary].details.items[2].label"],
+      "core/lib/i18n/i18n.js | fontResourceType": ["audits[resource-summary].details.items[3].label"],
+      "core/lib/i18n/i18n.js | scriptResourceType": ["audits[resource-summary].details.items[4].label"],
+      "core/lib/i18n/i18n.js | otherResourceType": ["audits[resource-summary].details.items[5].label"],
+      "core/lib/i18n/i18n.js | imageResourceType": ["audits[resource-summary].details.items[6].label"],
+      "core/lib/i18n/i18n.js | mediaResourceType": ["audits[resource-summary].details.items[7].label"],
+      "core/lib/i18n/i18n.js | thirdPartyResourceType": ["audits[resource-summary].details.items[8].label"],
+      "core/audits/third-party-summary.js | title": ["audits[third-party-summary].title"],
+      "core/audits/third-party-summary.js | description": ["audits[third-party-summary].description"],
+      "core/audits/third-party-facades.js | title": ["audits[third-party-facades].title"],
+      "core/audits/third-party-facades.js | description": ["audits[third-party-facades].description"],
+      "core/audits/largest-contentful-paint-element.js | title": ["audits[largest-contentful-paint-element].title"],
+      "core/audits/largest-contentful-paint-element.js | description": ["audits[largest-contentful-paint-element].description"],
       "core/lib/i18n/i18n.js | columnElement": [
         "audits[largest-contentful-paint-element].details.items[0].headings[0].label",
         "audits[layout-shifts].details.headings[0].label",
         "audits[non-composited-animations].details.headings[0].label",
         "audits[dom-size].details.headings[1].label"
       ],
-      "core/audits/largest-contentful-paint-element.js | columnPhase": [
-        "audits[largest-contentful-paint-element].details.items[1].headings[0].label"
-      ],
-      "core/audits/largest-contentful-paint-element.js | columnPercentOfLCP": [
-        "audits[largest-contentful-paint-element].details.items[1].headings[1].label"
-      ],
-      "core/audits/largest-contentful-paint-element.js | columnTiming": [
-        "audits[largest-contentful-paint-element].details.items[1].headings[2].label"
-      ],
-      "core/audits/largest-contentful-paint-element.js | itemTTFB": [
-        "audits[largest-contentful-paint-element].details.items[1].items[0].phase"
-      ],
-      "core/audits/largest-contentful-paint-element.js | itemLoadDelay": [
-        "audits[largest-contentful-paint-element].details.items[1].items[1].phase"
-      ],
-      "core/audits/largest-contentful-paint-element.js | itemLoadTime": [
-        "audits[largest-contentful-paint-element].details.items[1].items[2].phase"
-      ],
-      "core/audits/largest-contentful-paint-element.js | itemRenderDelay": [
-        "audits[largest-contentful-paint-element].details.items[1].items[3].phase"
-      ],
-      "core/audits/lcp-lazy-loaded.js | title": [
-        "audits[lcp-lazy-loaded].title"
-      ],
-      "core/audits/lcp-lazy-loaded.js | description": [
-        "audits[lcp-lazy-loaded].description"
-      ],
-      "core/audits/layout-shifts.js | title": [
-        "audits[layout-shifts].title"
-      ],
-      "core/audits/layout-shifts.js | description": [
-        "audits[layout-shifts].description"
-      ],
-      "core/audits/layout-shifts.js | columnScore": [
-        "audits[layout-shifts].details.headings[1].label"
-      ],
-      "core/audits/long-tasks.js | title": [
-        "audits[long-tasks].title"
-      ],
-      "core/audits/long-tasks.js | description": [
-        "audits[long-tasks].description"
-      ],
-      "core/audits/non-composited-animations.js | title": [
-        "audits[non-composited-animations].title"
-      ],
-      "core/audits/non-composited-animations.js | description": [
-        "audits[non-composited-animations].description"
-      ],
-      "core/audits/unsized-images.js | title": [
-        "audits[unsized-images].title"
-      ],
-      "core/audits/unsized-images.js | description": [
-        "audits[unsized-images].description"
-      ],
-      "core/audits/valid-source-maps.js | title": [
-        "audits[valid-source-maps].title"
-      ],
-      "core/audits/valid-source-maps.js | description": [
-        "audits[valid-source-maps].description"
-      ],
-      "core/audits/valid-source-maps.js | columnMapURL": [
-        "audits[valid-source-maps].details.headings[1].label"
-      ],
-      "core/audits/prioritize-lcp-image.js | title": [
-        "audits[prioritize-lcp-image].title"
-      ],
-      "core/audits/prioritize-lcp-image.js | description": [
-        "audits[prioritize-lcp-image].description"
-      ],
-      "core/audits/csp-xss.js | title": [
-        "audits[csp-xss].title"
-      ],
-      "core/audits/csp-xss.js | description": [
-        "audits[csp-xss].description"
-      ],
-      "core/audits/csp-xss.js | columnDirective": [
-        "audits[csp-xss].details.headings[1].label"
-      ],
-      "core/audits/csp-xss.js | columnSeverity": [
-        "audits[csp-xss].details.headings[2].label"
-      ],
+      "core/audits/largest-contentful-paint-element.js | columnPhase": ["audits[largest-contentful-paint-element].details.items[1].headings[0].label"],
+      "core/audits/largest-contentful-paint-element.js | columnPercentOfLCP": ["audits[largest-contentful-paint-element].details.items[1].headings[1].label"],
+      "core/audits/largest-contentful-paint-element.js | columnTiming": ["audits[largest-contentful-paint-element].details.items[1].headings[2].label"],
+      "core/audits/largest-contentful-paint-element.js | itemTTFB": ["audits[largest-contentful-paint-element].details.items[1].items[0].phase"],
+      "core/audits/largest-contentful-paint-element.js | itemLoadDelay": ["audits[largest-contentful-paint-element].details.items[1].items[1].phase"],
+      "core/audits/largest-contentful-paint-element.js | itemLoadTime": ["audits[largest-contentful-paint-element].details.items[1].items[2].phase"],
+      "core/audits/largest-contentful-paint-element.js | itemRenderDelay": ["audits[largest-contentful-paint-element].details.items[1].items[3].phase"],
+      "core/audits/lcp-lazy-loaded.js | title": ["audits[lcp-lazy-loaded].title"],
+      "core/audits/lcp-lazy-loaded.js | description": ["audits[lcp-lazy-loaded].description"],
+      "core/audits/layout-shifts.js | title": ["audits[layout-shifts].title"],
+      "core/audits/layout-shifts.js | description": ["audits[layout-shifts].description"],
+      "core/audits/layout-shifts.js | columnScore": ["audits[layout-shifts].details.headings[1].label"],
+      "core/audits/long-tasks.js | title": ["audits[long-tasks].title"],
+      "core/audits/long-tasks.js | description": ["audits[long-tasks].description"],
+      "core/audits/non-composited-animations.js | title": ["audits[non-composited-animations].title"],
+      "core/audits/non-composited-animations.js | description": ["audits[non-composited-animations].description"],
+      "core/audits/unsized-images.js | title": ["audits[unsized-images].title"],
+      "core/audits/unsized-images.js | description": ["audits[unsized-images].description"],
+      "core/audits/valid-source-maps.js | title": ["audits[valid-source-maps].title"],
+      "core/audits/valid-source-maps.js | description": ["audits[valid-source-maps].description"],
+      "core/audits/valid-source-maps.js | columnMapURL": ["audits[valid-source-maps].details.headings[1].label"],
+      "core/audits/prioritize-lcp-image.js | title": ["audits[prioritize-lcp-image].title"],
+      "core/audits/prioritize-lcp-image.js | description": ["audits[prioritize-lcp-image].description"],
+      "core/audits/csp-xss.js | title": ["audits[csp-xss].title"],
+      "core/audits/csp-xss.js | description": ["audits[csp-xss].description"],
+      "core/audits/csp-xss.js | columnDirective": ["audits[csp-xss].details.headings[1].label"],
+      "core/audits/csp-xss.js | columnSeverity": ["audits[csp-xss].details.headings[2].label"],
       "core/lib/i18n/i18n.js | itemSeverityHigh": [
         "audits[csp-xss].details.items[0].severity",
         "audits[has-hsts].details.items[0].severity",
@@ -7618,111 +7297,41 @@
         "audits[clickjacking-mitigation].details.items[0].severity",
         "audits[trusted-types-xss].details.items[0].severity"
       ],
-      "core/audits/csp-xss.js | noCsp": [
-        "audits[csp-xss].details.items[0].description"
-      ],
-      "core/audits/has-hsts.js | title": [
-        "audits[has-hsts].title"
-      ],
-      "core/audits/has-hsts.js | description": [
-        "audits[has-hsts].description"
-      ],
-      "core/audits/has-hsts.js | columnDirective": [
-        "audits[has-hsts].details.headings[1].label"
-      ],
-      "core/audits/has-hsts.js | columnSeverity": [
-        "audits[has-hsts].details.headings[2].label"
-      ],
-      "core/audits/has-hsts.js | noHsts": [
-        "audits[has-hsts].details.items[0].description"
-      ],
-      "core/audits/origin-isolation.js | title": [
-        "audits[origin-isolation].title"
-      ],
-      "core/audits/origin-isolation.js | description": [
-        "audits[origin-isolation].description"
-      ],
-      "core/audits/origin-isolation.js | columnDirective": [
-        "audits[origin-isolation].details.headings[1].label"
-      ],
-      "core/audits/origin-isolation.js | columnSeverity": [
-        "audits[origin-isolation].details.headings[2].label"
-      ],
-      "core/audits/origin-isolation.js | noCoop": [
-        "audits[origin-isolation].details.items[0].description"
-      ],
-      "core/audits/clickjacking-mitigation.js | title": [
-        "audits[clickjacking-mitigation].title"
-      ],
-      "core/audits/clickjacking-mitigation.js | description": [
-        "audits[clickjacking-mitigation].description"
-      ],
-      "core/audits/clickjacking-mitigation.js | columnSeverity": [
-        "audits[clickjacking-mitigation].details.headings[1].label"
-      ],
-      "core/audits/clickjacking-mitigation.js | noClickjackingMitigation": [
-        "audits[clickjacking-mitigation].details.items[0].description"
-      ],
-      "core/audits/trusted-types-xss.js | title": [
-        "audits[trusted-types-xss].title"
-      ],
-      "core/audits/trusted-types-xss.js | description": [
-        "audits[trusted-types-xss].description"
-      ],
-      "core/audits/trusted-types-xss.js | columnSeverity": [
-        "audits[trusted-types-xss].details.headings[1].label"
-      ],
-      "core/audits/trusted-types-xss.js | noTrustedTypesToMitigateXss": [
-        "audits[trusted-types-xss].details.items[0].description"
-      ],
-      "core/audits/accessibility/accesskeys.js | title": [
-        "audits.accesskeys.title"
-      ],
-      "core/audits/accessibility/accesskeys.js | description": [
-        "audits.accesskeys.description"
-      ],
-      "core/audits/accessibility/aria-allowed-attr.js | title": [
-        "audits[aria-allowed-attr].title"
-      ],
-      "core/audits/accessibility/aria-allowed-attr.js | description": [
-        "audits[aria-allowed-attr].description"
-      ],
-      "core/audits/accessibility/aria-allowed-role.js | title": [
-        "audits[aria-allowed-role].title"
-      ],
-      "core/audits/accessibility/aria-allowed-role.js | description": [
-        "audits[aria-allowed-role].description"
-      ],
-      "core/audits/accessibility/aria-command-name.js | title": [
-        "audits[aria-command-name].title"
-      ],
-      "core/audits/accessibility/aria-command-name.js | description": [
-        "audits[aria-command-name].description"
-      ],
-      "core/audits/accessibility/aria-conditional-attr.js | title": [
-        "audits[aria-conditional-attr].title"
-      ],
-      "core/audits/accessibility/aria-conditional-attr.js | description": [
-        "audits[aria-conditional-attr].description"
-      ],
-      "core/audits/accessibility/aria-deprecated-role.js | title": [
-        "audits[aria-deprecated-role].title"
-      ],
-      "core/audits/accessibility/aria-deprecated-role.js | description": [
-        "audits[aria-deprecated-role].description"
-      ],
-      "core/audits/accessibility/aria-dialog-name.js | title": [
-        "audits[aria-dialog-name].title"
-      ],
-      "core/audits/accessibility/aria-dialog-name.js | description": [
-        "audits[aria-dialog-name].description"
-      ],
-      "core/audits/accessibility/aria-hidden-body.js | title": [
-        "audits[aria-hidden-body].title"
-      ],
-      "core/audits/accessibility/aria-hidden-body.js | description": [
-        "audits[aria-hidden-body].description"
-      ],
+      "core/audits/csp-xss.js | noCsp": ["audits[csp-xss].details.items[0].description"],
+      "core/audits/has-hsts.js | title": ["audits[has-hsts].title"],
+      "core/audits/has-hsts.js | description": ["audits[has-hsts].description"],
+      "core/audits/has-hsts.js | columnDirective": ["audits[has-hsts].details.headings[1].label"],
+      "core/audits/has-hsts.js | columnSeverity": ["audits[has-hsts].details.headings[2].label"],
+      "core/audits/has-hsts.js | noHsts": ["audits[has-hsts].details.items[0].description"],
+      "core/audits/origin-isolation.js | title": ["audits[origin-isolation].title"],
+      "core/audits/origin-isolation.js | description": ["audits[origin-isolation].description"],
+      "core/audits/origin-isolation.js | columnDirective": ["audits[origin-isolation].details.headings[1].label"],
+      "core/audits/origin-isolation.js | columnSeverity": ["audits[origin-isolation].details.headings[2].label"],
+      "core/audits/origin-isolation.js | noCoop": ["audits[origin-isolation].details.items[0].description"],
+      "core/audits/clickjacking-mitigation.js | title": ["audits[clickjacking-mitigation].title"],
+      "core/audits/clickjacking-mitigation.js | description": ["audits[clickjacking-mitigation].description"],
+      "core/audits/clickjacking-mitigation.js | columnSeverity": ["audits[clickjacking-mitigation].details.headings[1].label"],
+      "core/audits/clickjacking-mitigation.js | noClickjackingMitigation": ["audits[clickjacking-mitigation].details.items[0].description"],
+      "core/audits/trusted-types-xss.js | title": ["audits[trusted-types-xss].title"],
+      "core/audits/trusted-types-xss.js | description": ["audits[trusted-types-xss].description"],
+      "core/audits/trusted-types-xss.js | columnSeverity": ["audits[trusted-types-xss].details.headings[1].label"],
+      "core/audits/trusted-types-xss.js | noTrustedTypesToMitigateXss": ["audits[trusted-types-xss].details.items[0].description"],
+      "core/audits/accessibility/accesskeys.js | title": ["audits.accesskeys.title"],
+      "core/audits/accessibility/accesskeys.js | description": ["audits.accesskeys.description"],
+      "core/audits/accessibility/aria-allowed-attr.js | title": ["audits[aria-allowed-attr].title"],
+      "core/audits/accessibility/aria-allowed-attr.js | description": ["audits[aria-allowed-attr].description"],
+      "core/audits/accessibility/aria-allowed-role.js | title": ["audits[aria-allowed-role].title"],
+      "core/audits/accessibility/aria-allowed-role.js | description": ["audits[aria-allowed-role].description"],
+      "core/audits/accessibility/aria-command-name.js | title": ["audits[aria-command-name].title"],
+      "core/audits/accessibility/aria-command-name.js | description": ["audits[aria-command-name].description"],
+      "core/audits/accessibility/aria-conditional-attr.js | title": ["audits[aria-conditional-attr].title"],
+      "core/audits/accessibility/aria-conditional-attr.js | description": ["audits[aria-conditional-attr].description"],
+      "core/audits/accessibility/aria-deprecated-role.js | title": ["audits[aria-deprecated-role].title"],
+      "core/audits/accessibility/aria-deprecated-role.js | description": ["audits[aria-deprecated-role].description"],
+      "core/audits/accessibility/aria-dialog-name.js | title": ["audits[aria-dialog-name].title"],
+      "core/audits/accessibility/aria-dialog-name.js | description": ["audits[aria-dialog-name].description"],
+      "core/audits/accessibility/aria-hidden-body.js | title": ["audits[aria-hidden-body].title"],
+      "core/audits/accessibility/aria-hidden-body.js | description": ["audits[aria-hidden-body].description"],
       "core/lib/i18n/i18n.js | columnFailingElem": [
         "audits[aria-hidden-body].details.headings[0].label",
         "audits[color-contrast].details.headings[0].label",
@@ -7733,342 +7342,118 @@
         "audits[meta-viewport].details.headings[0].label",
         "audits[paste-preventing-inputs].details.headings[0].label"
       ],
-      "core/audits/accessibility/aria-hidden-focus.js | title": [
-        "audits[aria-hidden-focus].title"
-      ],
-      "core/audits/accessibility/aria-hidden-focus.js | description": [
-        "audits[aria-hidden-focus].description"
-      ],
-      "core/audits/accessibility/aria-input-field-name.js | title": [
-        "audits[aria-input-field-name].title"
-      ],
-      "core/audits/accessibility/aria-input-field-name.js | description": [
-        "audits[aria-input-field-name].description"
-      ],
-      "core/audits/accessibility/aria-meter-name.js | title": [
-        "audits[aria-meter-name].title"
-      ],
-      "core/audits/accessibility/aria-meter-name.js | description": [
-        "audits[aria-meter-name].description"
-      ],
-      "core/audits/accessibility/aria-progressbar-name.js | title": [
-        "audits[aria-progressbar-name].title"
-      ],
-      "core/audits/accessibility/aria-progressbar-name.js | description": [
-        "audits[aria-progressbar-name].description"
-      ],
-      "core/audits/accessibility/aria-prohibited-attr.js | title": [
-        "audits[aria-prohibited-attr].title"
-      ],
-      "core/audits/accessibility/aria-prohibited-attr.js | description": [
-        "audits[aria-prohibited-attr].description"
-      ],
-      "core/audits/accessibility/aria-required-attr.js | title": [
-        "audits[aria-required-attr].title"
-      ],
-      "core/audits/accessibility/aria-required-attr.js | description": [
-        "audits[aria-required-attr].description"
-      ],
-      "core/audits/accessibility/aria-required-children.js | title": [
-        "audits[aria-required-children].title"
-      ],
-      "core/audits/accessibility/aria-required-children.js | description": [
-        "audits[aria-required-children].description"
-      ],
-      "core/audits/accessibility/aria-required-parent.js | title": [
-        "audits[aria-required-parent].title"
-      ],
-      "core/audits/accessibility/aria-required-parent.js | description": [
-        "audits[aria-required-parent].description"
-      ],
-      "core/audits/accessibility/aria-roles.js | title": [
-        "audits[aria-roles].title"
-      ],
-      "core/audits/accessibility/aria-roles.js | description": [
-        "audits[aria-roles].description"
-      ],
-      "core/audits/accessibility/aria-text.js | title": [
-        "audits[aria-text].title"
-      ],
-      "core/audits/accessibility/aria-text.js | description": [
-        "audits[aria-text].description"
-      ],
-      "core/audits/accessibility/aria-toggle-field-name.js | title": [
-        "audits[aria-toggle-field-name].title"
-      ],
-      "core/audits/accessibility/aria-toggle-field-name.js | description": [
-        "audits[aria-toggle-field-name].description"
-      ],
-      "core/audits/accessibility/aria-tooltip-name.js | title": [
-        "audits[aria-tooltip-name].title"
-      ],
-      "core/audits/accessibility/aria-tooltip-name.js | description": [
-        "audits[aria-tooltip-name].description"
-      ],
-      "core/audits/accessibility/aria-treeitem-name.js | title": [
-        "audits[aria-treeitem-name].title"
-      ],
-      "core/audits/accessibility/aria-treeitem-name.js | description": [
-        "audits[aria-treeitem-name].description"
-      ],
-      "core/audits/accessibility/aria-valid-attr-value.js | title": [
-        "audits[aria-valid-attr-value].title"
-      ],
-      "core/audits/accessibility/aria-valid-attr-value.js | description": [
-        "audits[aria-valid-attr-value].description"
-      ],
-      "core/audits/accessibility/aria-valid-attr.js | title": [
-        "audits[aria-valid-attr].title"
-      ],
-      "core/audits/accessibility/aria-valid-attr.js | description": [
-        "audits[aria-valid-attr].description"
-      ],
-      "core/audits/accessibility/button-name.js | title": [
-        "audits[button-name].title"
-      ],
-      "core/audits/accessibility/button-name.js | description": [
-        "audits[button-name].description"
-      ],
-      "core/audits/accessibility/bypass.js | title": [
-        "audits.bypass.title"
-      ],
-      "core/audits/accessibility/bypass.js | description": [
-        "audits.bypass.description"
-      ],
-      "core/audits/accessibility/color-contrast.js | title": [
-        "audits[color-contrast].title"
-      ],
-      "core/audits/accessibility/color-contrast.js | description": [
-        "audits[color-contrast].description"
-      ],
-      "core/audits/accessibility/definition-list.js | title": [
-        "audits[definition-list].title"
-      ],
-      "core/audits/accessibility/definition-list.js | description": [
-        "audits[definition-list].description"
-      ],
-      "core/audits/accessibility/dlitem.js | title": [
-        "audits.dlitem.title"
-      ],
-      "core/audits/accessibility/dlitem.js | description": [
-        "audits.dlitem.description"
-      ],
-      "core/audits/accessibility/document-title.js | title": [
-        "audits[document-title].title"
-      ],
-      "core/audits/accessibility/document-title.js | description": [
-        "audits[document-title].description"
-      ],
-      "core/audits/accessibility/duplicate-id-aria.js | title": [
-        "audits[duplicate-id-aria].title"
-      ],
-      "core/audits/accessibility/duplicate-id-aria.js | description": [
-        "audits[duplicate-id-aria].description"
-      ],
-      "core/audits/accessibility/empty-heading.js | title": [
-        "audits[empty-heading].title"
-      ],
-      "core/audits/accessibility/empty-heading.js | description": [
-        "audits[empty-heading].description"
-      ],
-      "core/audits/accessibility/form-field-multiple-labels.js | title": [
-        "audits[form-field-multiple-labels].title"
-      ],
-      "core/audits/accessibility/form-field-multiple-labels.js | description": [
-        "audits[form-field-multiple-labels].description"
-      ],
-      "core/audits/accessibility/frame-title.js | title": [
-        "audits[frame-title].title"
-      ],
-      "core/audits/accessibility/frame-title.js | description": [
-        "audits[frame-title].description"
-      ],
-      "core/audits/accessibility/heading-order.js | title": [
-        "audits[heading-order].title"
-      ],
-      "core/audits/accessibility/heading-order.js | description": [
-        "audits[heading-order].description"
-      ],
-      "core/audits/accessibility/html-has-lang.js | title": [
-        "audits[html-has-lang].title"
-      ],
-      "core/audits/accessibility/html-has-lang.js | description": [
-        "audits[html-has-lang].description"
-      ],
-      "core/audits/accessibility/html-lang-valid.js | title": [
-        "audits[html-lang-valid].title"
-      ],
-      "core/audits/accessibility/html-lang-valid.js | description": [
-        "audits[html-lang-valid].description"
-      ],
-      "core/audits/accessibility/html-xml-lang-mismatch.js | title": [
-        "audits[html-xml-lang-mismatch].title"
-      ],
-      "core/audits/accessibility/html-xml-lang-mismatch.js | description": [
-        "audits[html-xml-lang-mismatch].description"
-      ],
-      "core/audits/accessibility/identical-links-same-purpose.js | title": [
-        "audits[identical-links-same-purpose].title"
-      ],
-      "core/audits/accessibility/identical-links-same-purpose.js | description": [
-        "audits[identical-links-same-purpose].description"
-      ],
-      "core/audits/accessibility/image-alt.js | title": [
-        "audits[image-alt].title"
-      ],
-      "core/audits/accessibility/image-alt.js | description": [
-        "audits[image-alt].description"
-      ],
-      "core/audits/accessibility/image-redundant-alt.js | title": [
-        "audits[image-redundant-alt].title"
-      ],
-      "core/audits/accessibility/image-redundant-alt.js | description": [
-        "audits[image-redundant-alt].description"
-      ],
-      "core/audits/accessibility/input-button-name.js | title": [
-        "audits[input-button-name].title"
-      ],
-      "core/audits/accessibility/input-button-name.js | description": [
-        "audits[input-button-name].description"
-      ],
-      "core/audits/accessibility/input-image-alt.js | title": [
-        "audits[input-image-alt].title"
-      ],
-      "core/audits/accessibility/input-image-alt.js | description": [
-        "audits[input-image-alt].description"
-      ],
-      "core/audits/accessibility/label-content-name-mismatch.js | title": [
-        "audits[label-content-name-mismatch].title"
-      ],
-      "core/audits/accessibility/label-content-name-mismatch.js | description": [
-        "audits[label-content-name-mismatch].description"
-      ],
-      "core/audits/accessibility/label.js | title": [
-        "audits.label.title"
-      ],
-      "core/audits/accessibility/label.js | description": [
-        "audits.label.description"
-      ],
-      "core/audits/accessibility/landmark-one-main.js | title": [
-        "audits[landmark-one-main].title"
-      ],
-      "core/audits/accessibility/landmark-one-main.js | description": [
-        "audits[landmark-one-main].description"
-      ],
-      "core/audits/accessibility/link-name.js | title": [
-        "audits[link-name].title"
-      ],
-      "core/audits/accessibility/link-name.js | description": [
-        "audits[link-name].description"
-      ],
-      "core/audits/accessibility/link-in-text-block.js | title": [
-        "audits[link-in-text-block].title"
-      ],
-      "core/audits/accessibility/link-in-text-block.js | description": [
-        "audits[link-in-text-block].description"
-      ],
-      "core/audits/accessibility/list.js | title": [
-        "audits.list.title"
-      ],
-      "core/audits/accessibility/list.js | description": [
-        "audits.list.description"
-      ],
-      "core/audits/accessibility/listitem.js | title": [
-        "audits.listitem.title"
-      ],
-      "core/audits/accessibility/listitem.js | description": [
-        "audits.listitem.description"
-      ],
-      "core/audits/accessibility/meta-refresh.js | title": [
-        "audits[meta-refresh].title"
-      ],
-      "core/audits/accessibility/meta-refresh.js | description": [
-        "audits[meta-refresh].description"
-      ],
-      "core/audits/accessibility/meta-viewport.js | title": [
-        "audits[meta-viewport].title"
-      ],
-      "core/audits/accessibility/meta-viewport.js | description": [
-        "audits[meta-viewport].description"
-      ],
-      "core/audits/accessibility/object-alt.js | title": [
-        "audits[object-alt].title"
-      ],
-      "core/audits/accessibility/object-alt.js | description": [
-        "audits[object-alt].description"
-      ],
-      "core/audits/accessibility/select-name.js | title": [
-        "audits[select-name].title"
-      ],
-      "core/audits/accessibility/select-name.js | description": [
-        "audits[select-name].description"
-      ],
-      "core/audits/accessibility/skip-link.js | title": [
-        "audits[skip-link].title"
-      ],
-      "core/audits/accessibility/skip-link.js | description": [
-        "audits[skip-link].description"
-      ],
-      "core/audits/accessibility/tabindex.js | title": [
-        "audits.tabindex.title"
-      ],
-      "core/audits/accessibility/tabindex.js | description": [
-        "audits.tabindex.description"
-      ],
-      "core/audits/accessibility/table-duplicate-name.js | title": [
-        "audits[table-duplicate-name].title"
-      ],
-      "core/audits/accessibility/table-duplicate-name.js | description": [
-        "audits[table-duplicate-name].description"
-      ],
-      "core/audits/accessibility/table-fake-caption.js | title": [
-        "audits[table-fake-caption].title"
-      ],
-      "core/audits/accessibility/table-fake-caption.js | description": [
-        "audits[table-fake-caption].description"
-      ],
-      "core/audits/accessibility/target-size.js | title": [
-        "audits[target-size].title"
-      ],
-      "core/audits/accessibility/target-size.js | description": [
-        "audits[target-size].description"
-      ],
-      "core/audits/accessibility/td-has-header.js | title": [
-        "audits[td-has-header].title"
-      ],
-      "core/audits/accessibility/td-has-header.js | description": [
-        "audits[td-has-header].description"
-      ],
-      "core/audits/accessibility/td-headers-attr.js | title": [
-        "audits[td-headers-attr].title"
-      ],
-      "core/audits/accessibility/td-headers-attr.js | description": [
-        "audits[td-headers-attr].description"
-      ],
-      "core/audits/accessibility/th-has-data-cells.js | title": [
-        "audits[th-has-data-cells].title"
-      ],
-      "core/audits/accessibility/th-has-data-cells.js | description": [
-        "audits[th-has-data-cells].description"
-      ],
-      "core/audits/accessibility/valid-lang.js | title": [
-        "audits[valid-lang].title"
-      ],
-      "core/audits/accessibility/valid-lang.js | description": [
-        "audits[valid-lang].description"
-      ],
-      "core/audits/accessibility/video-caption.js | title": [
-        "audits[video-caption].title"
-      ],
-      "core/audits/accessibility/video-caption.js | description": [
-        "audits[video-caption].description"
-      ],
-      "core/audits/byte-efficiency/uses-long-cache-ttl.js | title": [
-        "audits[uses-long-cache-ttl].title"
-      ],
-      "core/audits/byte-efficiency/uses-long-cache-ttl.js | description": [
-        "audits[uses-long-cache-ttl].description"
-      ],
+      "core/audits/accessibility/aria-hidden-focus.js | title": ["audits[aria-hidden-focus].title"],
+      "core/audits/accessibility/aria-hidden-focus.js | description": ["audits[aria-hidden-focus].description"],
+      "core/audits/accessibility/aria-input-field-name.js | title": ["audits[aria-input-field-name].title"],
+      "core/audits/accessibility/aria-input-field-name.js | description": ["audits[aria-input-field-name].description"],
+      "core/audits/accessibility/aria-meter-name.js | title": ["audits[aria-meter-name].title"],
+      "core/audits/accessibility/aria-meter-name.js | description": ["audits[aria-meter-name].description"],
+      "core/audits/accessibility/aria-progressbar-name.js | title": ["audits[aria-progressbar-name].title"],
+      "core/audits/accessibility/aria-progressbar-name.js | description": ["audits[aria-progressbar-name].description"],
+      "core/audits/accessibility/aria-prohibited-attr.js | title": ["audits[aria-prohibited-attr].title"],
+      "core/audits/accessibility/aria-prohibited-attr.js | description": ["audits[aria-prohibited-attr].description"],
+      "core/audits/accessibility/aria-required-attr.js | title": ["audits[aria-required-attr].title"],
+      "core/audits/accessibility/aria-required-attr.js | description": ["audits[aria-required-attr].description"],
+      "core/audits/accessibility/aria-required-children.js | title": ["audits[aria-required-children].title"],
+      "core/audits/accessibility/aria-required-children.js | description": ["audits[aria-required-children].description"],
+      "core/audits/accessibility/aria-required-parent.js | title": ["audits[aria-required-parent].title"],
+      "core/audits/accessibility/aria-required-parent.js | description": ["audits[aria-required-parent].description"],
+      "core/audits/accessibility/aria-roles.js | title": ["audits[aria-roles].title"],
+      "core/audits/accessibility/aria-roles.js | description": ["audits[aria-roles].description"],
+      "core/audits/accessibility/aria-text.js | title": ["audits[aria-text].title"],
+      "core/audits/accessibility/aria-text.js | description": ["audits[aria-text].description"],
+      "core/audits/accessibility/aria-toggle-field-name.js | title": ["audits[aria-toggle-field-name].title"],
+      "core/audits/accessibility/aria-toggle-field-name.js | description": ["audits[aria-toggle-field-name].description"],
+      "core/audits/accessibility/aria-tooltip-name.js | title": ["audits[aria-tooltip-name].title"],
+      "core/audits/accessibility/aria-tooltip-name.js | description": ["audits[aria-tooltip-name].description"],
+      "core/audits/accessibility/aria-treeitem-name.js | title": ["audits[aria-treeitem-name].title"],
+      "core/audits/accessibility/aria-treeitem-name.js | description": ["audits[aria-treeitem-name].description"],
+      "core/audits/accessibility/aria-valid-attr-value.js | title": ["audits[aria-valid-attr-value].title"],
+      "core/audits/accessibility/aria-valid-attr-value.js | description": ["audits[aria-valid-attr-value].description"],
+      "core/audits/accessibility/aria-valid-attr.js | title": ["audits[aria-valid-attr].title"],
+      "core/audits/accessibility/aria-valid-attr.js | description": ["audits[aria-valid-attr].description"],
+      "core/audits/accessibility/button-name.js | title": ["audits[button-name].title"],
+      "core/audits/accessibility/button-name.js | description": ["audits[button-name].description"],
+      "core/audits/accessibility/bypass.js | title": ["audits.bypass.title"],
+      "core/audits/accessibility/bypass.js | description": ["audits.bypass.description"],
+      "core/audits/accessibility/color-contrast.js | title": ["audits[color-contrast].title"],
+      "core/audits/accessibility/color-contrast.js | description": ["audits[color-contrast].description"],
+      "core/audits/accessibility/definition-list.js | title": ["audits[definition-list].title"],
+      "core/audits/accessibility/definition-list.js | description": ["audits[definition-list].description"],
+      "core/audits/accessibility/dlitem.js | title": ["audits.dlitem.title"],
+      "core/audits/accessibility/dlitem.js | description": ["audits.dlitem.description"],
+      "core/audits/accessibility/document-title.js | title": ["audits[document-title].title"],
+      "core/audits/accessibility/document-title.js | description": ["audits[document-title].description"],
+      "core/audits/accessibility/duplicate-id-aria.js | title": ["audits[duplicate-id-aria].title"],
+      "core/audits/accessibility/duplicate-id-aria.js | description": ["audits[duplicate-id-aria].description"],
+      "core/audits/accessibility/empty-heading.js | title": ["audits[empty-heading].title"],
+      "core/audits/accessibility/empty-heading.js | description": ["audits[empty-heading].description"],
+      "core/audits/accessibility/form-field-multiple-labels.js | title": ["audits[form-field-multiple-labels].title"],
+      "core/audits/accessibility/form-field-multiple-labels.js | description": ["audits[form-field-multiple-labels].description"],
+      "core/audits/accessibility/frame-title.js | title": ["audits[frame-title].title"],
+      "core/audits/accessibility/frame-title.js | description": ["audits[frame-title].description"],
+      "core/audits/accessibility/heading-order.js | title": ["audits[heading-order].title"],
+      "core/audits/accessibility/heading-order.js | description": ["audits[heading-order].description"],
+      "core/audits/accessibility/html-has-lang.js | title": ["audits[html-has-lang].title"],
+      "core/audits/accessibility/html-has-lang.js | description": ["audits[html-has-lang].description"],
+      "core/audits/accessibility/html-lang-valid.js | title": ["audits[html-lang-valid].title"],
+      "core/audits/accessibility/html-lang-valid.js | description": ["audits[html-lang-valid].description"],
+      "core/audits/accessibility/html-xml-lang-mismatch.js | title": ["audits[html-xml-lang-mismatch].title"],
+      "core/audits/accessibility/html-xml-lang-mismatch.js | description": ["audits[html-xml-lang-mismatch].description"],
+      "core/audits/accessibility/identical-links-same-purpose.js | title": ["audits[identical-links-same-purpose].title"],
+      "core/audits/accessibility/identical-links-same-purpose.js | description": ["audits[identical-links-same-purpose].description"],
+      "core/audits/accessibility/image-alt.js | title": ["audits[image-alt].title"],
+      "core/audits/accessibility/image-alt.js | description": ["audits[image-alt].description"],
+      "core/audits/accessibility/image-redundant-alt.js | title": ["audits[image-redundant-alt].title"],
+      "core/audits/accessibility/image-redundant-alt.js | description": ["audits[image-redundant-alt].description"],
+      "core/audits/accessibility/input-button-name.js | title": ["audits[input-button-name].title"],
+      "core/audits/accessibility/input-button-name.js | description": ["audits[input-button-name].description"],
+      "core/audits/accessibility/input-image-alt.js | title": ["audits[input-image-alt].title"],
+      "core/audits/accessibility/input-image-alt.js | description": ["audits[input-image-alt].description"],
+      "core/audits/accessibility/label-content-name-mismatch.js | title": ["audits[label-content-name-mismatch].title"],
+      "core/audits/accessibility/label-content-name-mismatch.js | description": ["audits[label-content-name-mismatch].description"],
+      "core/audits/accessibility/label.js | title": ["audits.label.title"],
+      "core/audits/accessibility/label.js | description": ["audits.label.description"],
+      "core/audits/accessibility/landmark-one-main.js | title": ["audits[landmark-one-main].title"],
+      "core/audits/accessibility/landmark-one-main.js | description": ["audits[landmark-one-main].description"],
+      "core/audits/accessibility/link-name.js | title": ["audits[link-name].title"],
+      "core/audits/accessibility/link-name.js | description": ["audits[link-name].description"],
+      "core/audits/accessibility/link-in-text-block.js | title": ["audits[link-in-text-block].title"],
+      "core/audits/accessibility/link-in-text-block.js | description": ["audits[link-in-text-block].description"],
+      "core/audits/accessibility/list.js | title": ["audits.list.title"],
+      "core/audits/accessibility/list.js | description": ["audits.list.description"],
+      "core/audits/accessibility/listitem.js | title": ["audits.listitem.title"],
+      "core/audits/accessibility/listitem.js | description": ["audits.listitem.description"],
+      "core/audits/accessibility/meta-refresh.js | title": ["audits[meta-refresh].title"],
+      "core/audits/accessibility/meta-refresh.js | description": ["audits[meta-refresh].description"],
+      "core/audits/accessibility/meta-viewport.js | title": ["audits[meta-viewport].title"],
+      "core/audits/accessibility/meta-viewport.js | description": ["audits[meta-viewport].description"],
+      "core/audits/accessibility/object-alt.js | title": ["audits[object-alt].title"],
+      "core/audits/accessibility/object-alt.js | description": ["audits[object-alt].description"],
+      "core/audits/accessibility/select-name.js | title": ["audits[select-name].title"],
+      "core/audits/accessibility/select-name.js | description": ["audits[select-name].description"],
+      "core/audits/accessibility/skip-link.js | title": ["audits[skip-link].title"],
+      "core/audits/accessibility/skip-link.js | description": ["audits[skip-link].description"],
+      "core/audits/accessibility/tabindex.js | title": ["audits.tabindex.title"],
+      "core/audits/accessibility/tabindex.js | description": ["audits.tabindex.description"],
+      "core/audits/accessibility/table-duplicate-name.js | title": ["audits[table-duplicate-name].title"],
+      "core/audits/accessibility/table-duplicate-name.js | description": ["audits[table-duplicate-name].description"],
+      "core/audits/accessibility/table-fake-caption.js | title": ["audits[table-fake-caption].title"],
+      "core/audits/accessibility/table-fake-caption.js | description": ["audits[table-fake-caption].description"],
+      "core/audits/accessibility/target-size.js | title": ["audits[target-size].title"],
+      "core/audits/accessibility/target-size.js | description": ["audits[target-size].description"],
+      "core/audits/accessibility/td-has-header.js | title": ["audits[td-has-header].title"],
+      "core/audits/accessibility/td-has-header.js | description": ["audits[td-has-header].description"],
+      "core/audits/accessibility/td-headers-attr.js | title": ["audits[td-headers-attr].title"],
+      "core/audits/accessibility/td-headers-attr.js | description": ["audits[td-headers-attr].description"],
+      "core/audits/accessibility/th-has-data-cells.js | title": ["audits[th-has-data-cells].title"],
+      "core/audits/accessibility/th-has-data-cells.js | description": ["audits[th-has-data-cells].description"],
+      "core/audits/accessibility/valid-lang.js | title": ["audits[valid-lang].title"],
+      "core/audits/accessibility/valid-lang.js | description": ["audits[valid-lang].description"],
+      "core/audits/accessibility/video-caption.js | title": ["audits[video-caption].title"],
+      "core/audits/accessibility/video-caption.js | description": ["audits[video-caption].description"],
+      "core/audits/byte-efficiency/uses-long-cache-ttl.js | title": ["audits[uses-long-cache-ttl].title"],
+      "core/audits/byte-efficiency/uses-long-cache-ttl.js | description": ["audits[uses-long-cache-ttl].description"],
       "core/audits/byte-efficiency/uses-long-cache-ttl.js | displayValue": [
         {
           "values": {
@@ -8077,16 +7462,9 @@
           "path": "audits[uses-long-cache-ttl].displayValue"
         }
       ],
-      "core/lib/i18n/i18n.js | columnCacheTTL": [
-        "audits[uses-long-cache-ttl].details.headings[1].label",
-        "audits[cache-insight].details.headings[1].label"
-      ],
-      "core/audits/byte-efficiency/total-byte-weight.js | title": [
-        "audits[total-byte-weight].title"
-      ],
-      "core/audits/byte-efficiency/total-byte-weight.js | description": [
-        "audits[total-byte-weight].description"
-      ],
+      "core/lib/i18n/i18n.js | columnCacheTTL": ["audits[uses-long-cache-ttl].details.headings[1].label", "audits[cache-insight].details.headings[1].label"],
+      "core/audits/byte-efficiency/total-byte-weight.js | title": ["audits[total-byte-weight].title"],
+      "core/audits/byte-efficiency/total-byte-weight.js | description": ["audits[total-byte-weight].description"],
       "core/audits/byte-efficiency/total-byte-weight.js | displayValue": [
         {
           "values": {
@@ -8095,18 +7473,10 @@
           "path": "audits[total-byte-weight].displayValue"
         }
       ],
-      "core/audits/byte-efficiency/offscreen-images.js | title": [
-        "audits[offscreen-images].title"
-      ],
-      "core/audits/byte-efficiency/offscreen-images.js | description": [
-        "audits[offscreen-images].description"
-      ],
-      "core/audits/byte-efficiency/render-blocking-resources.js | title": [
-        "audits[render-blocking-resources].title"
-      ],
-      "core/audits/byte-efficiency/render-blocking-resources.js | description": [
-        "audits[render-blocking-resources].description"
-      ],
+      "core/audits/byte-efficiency/offscreen-images.js | title": ["audits[offscreen-images].title"],
+      "core/audits/byte-efficiency/offscreen-images.js | description": ["audits[offscreen-images].description"],
+      "core/audits/byte-efficiency/render-blocking-resources.js | title": ["audits[render-blocking-resources].title"],
+      "core/audits/byte-efficiency/render-blocking-resources.js | description": ["audits[render-blocking-resources].description"],
       "core/lib/i18n/i18n.js | displayValueMsSavings": [
         {
           "values": {
@@ -8115,90 +7485,34 @@
           "path": "audits[render-blocking-resources].displayValue"
         }
       ],
-      "core/audits/byte-efficiency/unminified-css.js | title": [
-        "audits[unminified-css].title"
-      ],
-      "core/audits/byte-efficiency/unminified-css.js | description": [
-        "audits[unminified-css].description"
-      ],
-      "core/audits/byte-efficiency/unminified-javascript.js | title": [
-        "audits[unminified-javascript].title"
-      ],
-      "core/audits/byte-efficiency/unminified-javascript.js | description": [
-        "audits[unminified-javascript].description"
-      ],
-      "core/audits/byte-efficiency/unused-css-rules.js | title": [
-        "audits[unused-css-rules].title"
-      ],
-      "core/audits/byte-efficiency/unused-css-rules.js | description": [
-        "audits[unused-css-rules].description"
-      ],
-      "core/audits/byte-efficiency/unused-javascript.js | title": [
-        "audits[unused-javascript].title"
-      ],
-      "core/audits/byte-efficiency/unused-javascript.js | description": [
-        "audits[unused-javascript].description"
-      ],
-      "core/audits/byte-efficiency/modern-image-formats.js | title": [
-        "audits[modern-image-formats].title"
-      ],
-      "core/audits/byte-efficiency/modern-image-formats.js | description": [
-        "audits[modern-image-formats].description"
-      ],
-      "core/audits/byte-efficiency/uses-optimized-images.js | title": [
-        "audits[uses-optimized-images].title"
-      ],
-      "core/audits/byte-efficiency/uses-optimized-images.js | description": [
-        "audits[uses-optimized-images].description"
-      ],
-      "core/audits/byte-efficiency/uses-text-compression.js | title": [
-        "audits[uses-text-compression].title"
-      ],
-      "core/audits/byte-efficiency/uses-text-compression.js | description": [
-        "audits[uses-text-compression].description"
-      ],
-      "core/audits/byte-efficiency/uses-responsive-images.js | title": [
-        "audits[uses-responsive-images].title"
-      ],
-      "core/audits/byte-efficiency/uses-responsive-images.js | description": [
-        "audits[uses-responsive-images].description"
-      ],
-      "core/audits/byte-efficiency/efficient-animated-content.js | title": [
-        "audits[efficient-animated-content].title"
-      ],
-      "core/audits/byte-efficiency/efficient-animated-content.js | description": [
-        "audits[efficient-animated-content].description"
-      ],
-      "core/audits/byte-efficiency/duplicated-javascript.js | title": [
-        "audits[duplicated-javascript].title"
-      ],
-      "core/audits/byte-efficiency/duplicated-javascript.js | description": [
-        "audits[duplicated-javascript].description"
-      ],
-      "core/audits/byte-efficiency/legacy-javascript.js | title": [
-        "audits[legacy-javascript].title"
-      ],
-      "core/audits/byte-efficiency/legacy-javascript.js | description": [
-        "audits[legacy-javascript].description"
-      ],
-      "core/audits/dobetterweb/doctype.js | title": [
-        "audits.doctype.title"
-      ],
-      "core/audits/dobetterweb/doctype.js | description": [
-        "audits.doctype.description"
-      ],
-      "core/audits/dobetterweb/charset.js | title": [
-        "audits.charset.title"
-      ],
-      "core/audits/dobetterweb/charset.js | description": [
-        "audits.charset.description"
-      ],
-      "core/audits/dobetterweb/dom-size.js | title": [
-        "audits[dom-size].title"
-      ],
-      "core/audits/dobetterweb/dom-size.js | description": [
-        "audits[dom-size].description"
-      ],
+      "core/audits/byte-efficiency/unminified-css.js | title": ["audits[unminified-css].title"],
+      "core/audits/byte-efficiency/unminified-css.js | description": ["audits[unminified-css].description"],
+      "core/audits/byte-efficiency/unminified-javascript.js | title": ["audits[unminified-javascript].title"],
+      "core/audits/byte-efficiency/unminified-javascript.js | description": ["audits[unminified-javascript].description"],
+      "core/audits/byte-efficiency/unused-css-rules.js | title": ["audits[unused-css-rules].title"],
+      "core/audits/byte-efficiency/unused-css-rules.js | description": ["audits[unused-css-rules].description"],
+      "core/audits/byte-efficiency/unused-javascript.js | title": ["audits[unused-javascript].title"],
+      "core/audits/byte-efficiency/unused-javascript.js | description": ["audits[unused-javascript].description"],
+      "core/audits/byte-efficiency/modern-image-formats.js | title": ["audits[modern-image-formats].title"],
+      "core/audits/byte-efficiency/modern-image-formats.js | description": ["audits[modern-image-formats].description"],
+      "core/audits/byte-efficiency/uses-optimized-images.js | title": ["audits[uses-optimized-images].title"],
+      "core/audits/byte-efficiency/uses-optimized-images.js | description": ["audits[uses-optimized-images].description"],
+      "core/audits/byte-efficiency/uses-text-compression.js | title": ["audits[uses-text-compression].title"],
+      "core/audits/byte-efficiency/uses-text-compression.js | description": ["audits[uses-text-compression].description"],
+      "core/audits/byte-efficiency/uses-responsive-images.js | title": ["audits[uses-responsive-images].title"],
+      "core/audits/byte-efficiency/uses-responsive-images.js | description": ["audits[uses-responsive-images].description"],
+      "core/audits/byte-efficiency/efficient-animated-content.js | title": ["audits[efficient-animated-content].title"],
+      "core/audits/byte-efficiency/efficient-animated-content.js | description": ["audits[efficient-animated-content].description"],
+      "core/audits/byte-efficiency/duplicated-javascript.js | title": ["audits[duplicated-javascript].title"],
+      "core/audits/byte-efficiency/duplicated-javascript.js | description": ["audits[duplicated-javascript].description"],
+      "core/audits/byte-efficiency/legacy-javascript.js | title": ["audits[legacy-javascript].title"],
+      "core/audits/byte-efficiency/legacy-javascript.js | description": ["audits[legacy-javascript].description"],
+      "core/audits/dobetterweb/doctype.js | title": ["audits.doctype.title"],
+      "core/audits/dobetterweb/doctype.js | description": ["audits.doctype.description"],
+      "core/audits/dobetterweb/charset.js | title": ["audits.charset.title"],
+      "core/audits/dobetterweb/charset.js | description": ["audits.charset.description"],
+      "core/audits/dobetterweb/dom-size.js | title": ["audits[dom-size].title"],
+      "core/audits/dobetterweb/dom-size.js | description": ["audits[dom-size].description"],
       "core/audits/dobetterweb/dom-size.js | displayValue": [
         {
           "values": {
@@ -8207,162 +7521,58 @@
           "path": "audits[dom-size].displayValue"
         }
       ],
-      "core/audits/dobetterweb/dom-size.js | columnStatistic": [
-        "audits[dom-size].details.headings[0].label"
-      ],
-      "core/audits/dobetterweb/dom-size.js | columnValue": [
-        "audits[dom-size].details.headings[2].label"
-      ],
-      "core/audits/dobetterweb/dom-size.js | statisticDOMElements": [
-        "audits[dom-size].details.items[0].statistic"
-      ],
-      "core/audits/dobetterweb/dom-size.js | statisticDOMDepth": [
-        "audits[dom-size].details.items[1].statistic"
-      ],
-      "core/audits/dobetterweb/dom-size.js | statisticDOMWidth": [
-        "audits[dom-size].details.items[2].statistic"
-      ],
-      "core/audits/dobetterweb/geolocation-on-start.js | title": [
-        "audits[geolocation-on-start].title"
-      ],
-      "core/audits/dobetterweb/geolocation-on-start.js | description": [
-        "audits[geolocation-on-start].description"
-      ],
-      "core/audits/dobetterweb/inspector-issues.js | title": [
-        "audits[inspector-issues].title"
-      ],
-      "core/audits/dobetterweb/inspector-issues.js | description": [
-        "audits[inspector-issues].description"
-      ],
-      "core/audits/dobetterweb/inspector-issues.js | columnIssueType": [
-        "audits[inspector-issues].details.headings[0].label"
-      ],
-      "core/audits/dobetterweb/no-document-write.js | title": [
-        "audits[no-document-write].title"
-      ],
-      "core/audits/dobetterweb/no-document-write.js | description": [
-        "audits[no-document-write].description"
-      ],
-      "core/audits/dobetterweb/js-libraries.js | title": [
-        "audits[js-libraries].title"
-      ],
-      "core/audits/dobetterweb/js-libraries.js | description": [
-        "audits[js-libraries].description"
-      ],
-      "core/audits/dobetterweb/notification-on-start.js | title": [
-        "audits[notification-on-start].title"
-      ],
-      "core/audits/dobetterweb/notification-on-start.js | description": [
-        "audits[notification-on-start].description"
-      ],
-      "core/audits/dobetterweb/paste-preventing-inputs.js | title": [
-        "audits[paste-preventing-inputs].title"
-      ],
-      "core/audits/dobetterweb/paste-preventing-inputs.js | description": [
-        "audits[paste-preventing-inputs].description"
-      ],
-      "core/audits/dobetterweb/uses-http2.js | title": [
-        "audits[uses-http2].title"
-      ],
-      "core/audits/dobetterweb/uses-http2.js | description": [
-        "audits[uses-http2].description"
-      ],
-      "core/audits/dobetterweb/uses-passive-event-listeners.js | title": [
-        "audits[uses-passive-event-listeners].title"
-      ],
-      "core/audits/dobetterweb/uses-passive-event-listeners.js | description": [
-        "audits[uses-passive-event-listeners].description"
-      ],
-      "core/audits/seo/meta-description.js | title": [
-        "audits[meta-description].title"
-      ],
-      "core/audits/seo/meta-description.js | description": [
-        "audits[meta-description].description"
-      ],
-      "core/audits/seo/http-status-code.js | title": [
-        "audits[http-status-code].title"
-      ],
-      "core/audits/seo/http-status-code.js | description": [
-        "audits[http-status-code].description"
-      ],
-      "core/audits/seo/font-size.js | title": [
-        "audits[font-size].title"
-      ],
-      "core/audits/seo/font-size.js | description": [
-        "audits[font-size].description"
-      ],
-      "core/audits/seo/link-text.js | title": [
-        "audits[link-text].title"
-      ],
-      "core/audits/seo/link-text.js | description": [
-        "audits[link-text].description"
-      ],
-      "core/audits/seo/crawlable-anchors.js | title": [
-        "audits[crawlable-anchors].title"
-      ],
-      "core/audits/seo/crawlable-anchors.js | description": [
-        "audits[crawlable-anchors].description"
-      ],
-      "core/audits/seo/crawlable-anchors.js | columnFailingLink": [
-        "audits[crawlable-anchors].details.headings[0].label"
-      ],
-      "core/audits/seo/is-crawlable.js | title": [
-        "audits[is-crawlable].title"
-      ],
-      "core/audits/seo/is-crawlable.js | description": [
-        "audits[is-crawlable].description"
-      ],
-      "core/audits/seo/robots-txt.js | title": [
-        "audits[robots-txt].title"
-      ],
-      "core/audits/seo/robots-txt.js | description": [
-        "audits[robots-txt].description"
-      ],
-      "core/audits/seo/hreflang.js | title": [
-        "audits.hreflang.title"
-      ],
-      "core/audits/seo/hreflang.js | description": [
-        "audits.hreflang.description"
-      ],
-      "core/audits/seo/canonical.js | title": [
-        "audits.canonical.title"
-      ],
-      "core/audits/seo/canonical.js | description": [
-        "audits.canonical.description"
-      ],
-      "core/audits/seo/manual/structured-data.js | title": [
-        "audits[structured-data].title"
-      ],
-      "core/audits/seo/manual/structured-data.js | description": [
-        "audits[structured-data].description"
-      ],
-      "core/audits/bf-cache.js | title": [
-        "audits[bf-cache].title"
-      ],
-      "core/audits/bf-cache.js | description": [
-        "audits[bf-cache].description"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/Cache.js | title": [
-        "audits[cache-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/Cache.js | description": [
-        "audits[cache-insight].description"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/Cache.js | requestColumn": [
-        "audits[cache-insight].details.headings[0].label"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/CLSCulprits.js | title": [
-        "audits[cls-culprits-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/CLSCulprits.js | description": [
-        "audits[cls-culprits-insight].description"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/DocumentLatency.js | title": [
-        "audits[document-latency-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/DocumentLatency.js | description": [
-        "audits[document-latency-insight].description"
-      ],
+      "core/audits/dobetterweb/dom-size.js | columnStatistic": ["audits[dom-size].details.headings[0].label"],
+      "core/audits/dobetterweb/dom-size.js | columnValue": ["audits[dom-size].details.headings[2].label"],
+      "core/audits/dobetterweb/dom-size.js | statisticDOMElements": ["audits[dom-size].details.items[0].statistic"],
+      "core/audits/dobetterweb/dom-size.js | statisticDOMDepth": ["audits[dom-size].details.items[1].statistic"],
+      "core/audits/dobetterweb/dom-size.js | statisticDOMWidth": ["audits[dom-size].details.items[2].statistic"],
+      "core/audits/dobetterweb/geolocation-on-start.js | title": ["audits[geolocation-on-start].title"],
+      "core/audits/dobetterweb/geolocation-on-start.js | description": ["audits[geolocation-on-start].description"],
+      "core/audits/dobetterweb/inspector-issues.js | title": ["audits[inspector-issues].title"],
+      "core/audits/dobetterweb/inspector-issues.js | description": ["audits[inspector-issues].description"],
+      "core/audits/dobetterweb/inspector-issues.js | columnIssueType": ["audits[inspector-issues].details.headings[0].label"],
+      "core/audits/dobetterweb/no-document-write.js | title": ["audits[no-document-write].title"],
+      "core/audits/dobetterweb/no-document-write.js | description": ["audits[no-document-write].description"],
+      "core/audits/dobetterweb/js-libraries.js | title": ["audits[js-libraries].title"],
+      "core/audits/dobetterweb/js-libraries.js | description": ["audits[js-libraries].description"],
+      "core/audits/dobetterweb/notification-on-start.js | title": ["audits[notification-on-start].title"],
+      "core/audits/dobetterweb/notification-on-start.js | description": ["audits[notification-on-start].description"],
+      "core/audits/dobetterweb/paste-preventing-inputs.js | title": ["audits[paste-preventing-inputs].title"],
+      "core/audits/dobetterweb/paste-preventing-inputs.js | description": ["audits[paste-preventing-inputs].description"],
+      "core/audits/dobetterweb/uses-http2.js | title": ["audits[uses-http2].title"],
+      "core/audits/dobetterweb/uses-http2.js | description": ["audits[uses-http2].description"],
+      "core/audits/dobetterweb/uses-passive-event-listeners.js | title": ["audits[uses-passive-event-listeners].title"],
+      "core/audits/dobetterweb/uses-passive-event-listeners.js | description": ["audits[uses-passive-event-listeners].description"],
+      "core/audits/seo/meta-description.js | title": ["audits[meta-description].title"],
+      "core/audits/seo/meta-description.js | description": ["audits[meta-description].description"],
+      "core/audits/seo/http-status-code.js | title": ["audits[http-status-code].title"],
+      "core/audits/seo/http-status-code.js | description": ["audits[http-status-code].description"],
+      "core/audits/seo/font-size.js | title": ["audits[font-size].title"],
+      "core/audits/seo/font-size.js | description": ["audits[font-size].description"],
+      "core/audits/seo/link-text.js | title": ["audits[link-text].title"],
+      "core/audits/seo/link-text.js | description": ["audits[link-text].description"],
+      "core/audits/seo/crawlable-anchors.js | title": ["audits[crawlable-anchors].title"],
+      "core/audits/seo/crawlable-anchors.js | description": ["audits[crawlable-anchors].description"],
+      "core/audits/seo/crawlable-anchors.js | columnFailingLink": ["audits[crawlable-anchors].details.headings[0].label"],
+      "core/audits/seo/is-crawlable.js | title": ["audits[is-crawlable].title"],
+      "core/audits/seo/is-crawlable.js | description": ["audits[is-crawlable].description"],
+      "core/audits/seo/robots-txt.js | title": ["audits[robots-txt].title"],
+      "core/audits/seo/robots-txt.js | description": ["audits[robots-txt].description"],
+      "core/audits/seo/hreflang.js | title": ["audits.hreflang.title"],
+      "core/audits/seo/hreflang.js | description": ["audits.hreflang.description"],
+      "core/audits/seo/canonical.js | title": ["audits.canonical.title"],
+      "core/audits/seo/canonical.js | description": ["audits.canonical.description"],
+      "core/audits/seo/manual/structured-data.js | title": ["audits[structured-data].title"],
+      "core/audits/seo/manual/structured-data.js | description": ["audits[structured-data].description"],
+      "core/audits/bf-cache.js | title": ["audits[bf-cache].title"],
+      "core/audits/bf-cache.js | description": ["audits[bf-cache].description"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/Cache.js | title": ["audits[cache-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/Cache.js | description": ["audits[cache-insight].description"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/Cache.js | requestColumn": ["audits[cache-insight].details.headings[0].label"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/CLSCulprits.js | title": ["audits[cls-culprits-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/CLSCulprits.js | description": ["audits[cls-culprits-insight].description"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/DocumentLatency.js | title": ["audits[document-latency-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/DocumentLatency.js | description": ["audits[document-latency-insight].description"],
       "node_modules/@paulirish/trace_engine/models/trace/insights/DocumentLatency.js | passingRedirects": [
         "audits[document-latency-insight].details.items.noRedirects.label"
       ],
@@ -8377,60 +7587,30 @@
       "node_modules/@paulirish/trace_engine/models/trace/insights/DocumentLatency.js | passingTextCompression": [
         "audits[document-latency-insight].details.items.usesCompression.label"
       ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/DOMSize.js | title": [
-        "audits[dom-size-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/DOMSize.js | description": [
-        "audits[dom-size-insight].description"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/DuplicatedJavaScript.js | title": [
-        "audits[duplicated-javascript-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/DuplicatedJavaScript.js | description": [
-        "audits[duplicated-javascript-insight].description"
-      ],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/DOMSize.js | title": ["audits[dom-size-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/DOMSize.js | description": ["audits[dom-size-insight].description"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/DuplicatedJavaScript.js | title": ["audits[duplicated-javascript-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/DuplicatedJavaScript.js | description": ["audits[duplicated-javascript-insight].description"],
       "node_modules/@paulirish/trace_engine/models/trace/insights/DuplicatedJavaScript.js | columnSource": [
         "audits[duplicated-javascript-insight].details.headings[0].label"
       ],
       "node_modules/@paulirish/trace_engine/models/trace/insights/DuplicatedJavaScript.js | columnDuplicatedBytes": [
         "audits[duplicated-javascript-insight].details.headings[1].label"
       ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/FontDisplay.js | title": [
-        "audits[font-display-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/FontDisplay.js | description": [
-        "audits[font-display-insight].description"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/ForcedReflow.js | title": [
-        "audits[forced-reflow-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/ForcedReflow.js | description": [
-        "audits[forced-reflow-insight].description"
-      ],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/FontDisplay.js | title": ["audits[font-display-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/FontDisplay.js | description": ["audits[font-display-insight].description"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/ForcedReflow.js | title": ["audits[forced-reflow-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/ForcedReflow.js | description": ["audits[forced-reflow-insight].description"],
       "node_modules/@paulirish/trace_engine/models/trace/insights/ForcedReflow.js | totalReflowTime": [
         "audits[forced-reflow-insight].details.items[0].headings[1].label"
       ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/ImageDelivery.js | title": [
-        "audits[image-delivery-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/ImageDelivery.js | description": [
-        "audits[image-delivery-insight].description"
-      ],
-      "core/lib/i18n/i18n.js | columnResourceSize": [
-        "audits[image-delivery-insight].details.headings[1].label"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/INPBreakdown.js | title": [
-        "audits[inp-breakdown-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/INPBreakdown.js | description": [
-        "audits[inp-breakdown-insight].description"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/LCPBreakdown.js | title": [
-        "audits[lcp-breakdown-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/LCPBreakdown.js | description": [
-        "audits[lcp-breakdown-insight].description"
-      ],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/ImageDelivery.js | title": ["audits[image-delivery-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/ImageDelivery.js | description": ["audits[image-delivery-insight].description"],
+      "core/lib/i18n/i18n.js | columnResourceSize": ["audits[image-delivery-insight].details.headings[1].label"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/INPBreakdown.js | title": ["audits[inp-breakdown-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/INPBreakdown.js | description": ["audits[inp-breakdown-insight].description"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/LCPBreakdown.js | title": ["audits[lcp-breakdown-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/LCPBreakdown.js | description": ["audits[lcp-breakdown-insight].description"],
       "node_modules/@paulirish/trace_engine/models/trace/insights/LCPBreakdown.js | subpart": [
         "audits[lcp-breakdown-insight].details.items[0].headings[0].label"
       ],
@@ -8440,33 +7620,17 @@
       "node_modules/@paulirish/trace_engine/models/trace/insights/LCPBreakdown.js | elementRenderDelay": [
         "audits[lcp-breakdown-insight].details.items[0].items[1].label"
       ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/LCPDiscovery.js | title": [
-        "audits[lcp-discovery-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/LCPDiscovery.js | description": [
-        "audits[lcp-discovery-insight].description"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/LegacyJavaScript.js | title": [
-        "audits[legacy-javascript-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/LegacyJavaScript.js | description": [
-        "audits[legacy-javascript-insight].description"
-      ],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/LCPDiscovery.js | title": ["audits[lcp-discovery-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/LCPDiscovery.js | description": ["audits[lcp-discovery-insight].description"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/LegacyJavaScript.js | title": ["audits[legacy-javascript-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/LegacyJavaScript.js | description": ["audits[legacy-javascript-insight].description"],
       "node_modules/@paulirish/trace_engine/models/trace/insights/LegacyJavaScript.js | columnWastedBytes": [
         "audits[legacy-javascript-insight].details.headings[2].label"
       ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/ModernHTTP.js | title": [
-        "audits[modern-http-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/ModernHTTP.js | description": [
-        "audits[modern-http-insight].description"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/ModernHTTP.js | protocol": [
-        "audits[modern-http-insight].details.headings[1].label"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/NetworkDependencyTree.js | title": [
-        "audits[network-dependency-tree-insight].title"
-      ],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/ModernHTTP.js | title": ["audits[modern-http-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/ModernHTTP.js | description": ["audits[modern-http-insight].description"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/ModernHTTP.js | protocol": ["audits[modern-http-insight].details.headings[1].label"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/NetworkDependencyTree.js | title": ["audits[network-dependency-tree-insight].title"],
       "node_modules/@paulirish/trace_engine/models/trace/insights/NetworkDependencyTree.js | description": [
         "audits[network-dependency-tree-insight].description"
       ],
@@ -8488,18 +7652,10 @@
       "node_modules/@paulirish/trace_engine/models/trace/insights/NetworkDependencyTree.js | noPreconnectCandidates": [
         "audits[network-dependency-tree-insight].details.items[2].value.value"
       ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/RenderBlocking.js | title": [
-        "audits[render-blocking-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/RenderBlocking.js | description": [
-        "audits[render-blocking-insight].description"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/ThirdParties.js | title": [
-        "audits[third-parties-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/ThirdParties.js | description": [
-        "audits[third-parties-insight].description"
-      ],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/RenderBlocking.js | title": ["audits[render-blocking-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/RenderBlocking.js | description": ["audits[render-blocking-insight].description"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/ThirdParties.js | title": ["audits[third-parties-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/ThirdParties.js | description": ["audits[third-parties-insight].description"],
       "node_modules/@paulirish/trace_engine/models/trace/insights/ThirdParties.js | columnThirdParty": [
         "audits[third-parties-insight].details.headings[0].label"
       ],
@@ -8509,129 +7665,47 @@
       "node_modules/@paulirish/trace_engine/models/trace/insights/ThirdParties.js | columnMainThreadTime": [
         "audits[third-parties-insight].details.headings[2].label"
       ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/Viewport.js | title": [
-        "audits[viewport-insight].title"
-      ],
-      "node_modules/@paulirish/trace_engine/models/trace/insights/Viewport.js | description": [
-        "audits[viewport-insight].description"
-      ],
-      "core/config/default-config.js | performanceCategoryTitle": [
-        "categories.performance.title"
-      ],
-      "core/config/default-config.js | a11yCategoryTitle": [
-        "categories.accessibility.title"
-      ],
-      "core/config/default-config.js | a11yCategoryDescription": [
-        "categories.accessibility.description"
-      ],
-      "core/config/default-config.js | a11yCategoryManualDescription": [
-        "categories.accessibility.manualDescription"
-      ],
-      "core/config/default-config.js | bestPracticesCategoryTitle": [
-        "categories[best-practices].title"
-      ],
-      "core/config/default-config.js | seoCategoryTitle": [
-        "categories.seo.title"
-      ],
-      "core/config/default-config.js | seoCategoryDescription": [
-        "categories.seo.description"
-      ],
-      "core/config/default-config.js | seoCategoryManualDescription": [
-        "categories.seo.manualDescription"
-      ],
-      "core/config/default-config.js | metricGroupTitle": [
-        "categoryGroups.metrics.title"
-      ],
-      "core/config/default-config.js | insightsGroupTitle": [
-        "categoryGroups.insights.title"
-      ],
-      "core/config/default-config.js | insightsGroupDescription": [
-        "categoryGroups.insights.description"
-      ],
-      "core/config/default-config.js | diagnosticsGroupTitle": [
-        "categoryGroups.diagnostics.title"
-      ],
-      "core/config/default-config.js | diagnosticsGroupDescription": [
-        "categoryGroups.diagnostics.description"
-      ],
-      "core/config/default-config.js | a11yBestPracticesGroupTitle": [
-        "categoryGroups[a11y-best-practices].title"
-      ],
-      "core/config/default-config.js | a11yBestPracticesGroupDescription": [
-        "categoryGroups[a11y-best-practices].description"
-      ],
-      "core/config/default-config.js | a11yColorContrastGroupTitle": [
-        "categoryGroups[a11y-color-contrast].title"
-      ],
-      "core/config/default-config.js | a11yColorContrastGroupDescription": [
-        "categoryGroups[a11y-color-contrast].description"
-      ],
-      "core/config/default-config.js | a11yNamesLabelsGroupTitle": [
-        "categoryGroups[a11y-names-labels].title"
-      ],
-      "core/config/default-config.js | a11yNamesLabelsGroupDescription": [
-        "categoryGroups[a11y-names-labels].description"
-      ],
-      "core/config/default-config.js | a11yNavigationGroupTitle": [
-        "categoryGroups[a11y-navigation].title"
-      ],
-      "core/config/default-config.js | a11yNavigationGroupDescription": [
-        "categoryGroups[a11y-navigation].description"
-      ],
-      "core/config/default-config.js | a11yAriaGroupTitle": [
-        "categoryGroups[a11y-aria].title"
-      ],
-      "core/config/default-config.js | a11yAriaGroupDescription": [
-        "categoryGroups[a11y-aria].description"
-      ],
-      "core/config/default-config.js | a11yLanguageGroupTitle": [
-        "categoryGroups[a11y-language].title"
-      ],
-      "core/config/default-config.js | a11yLanguageGroupDescription": [
-        "categoryGroups[a11y-language].description"
-      ],
-      "core/config/default-config.js | a11yAudioVideoGroupTitle": [
-        "categoryGroups[a11y-audio-video].title"
-      ],
-      "core/config/default-config.js | a11yAudioVideoGroupDescription": [
-        "categoryGroups[a11y-audio-video].description"
-      ],
-      "core/config/default-config.js | a11yTablesListsVideoGroupTitle": [
-        "categoryGroups[a11y-tables-lists].title"
-      ],
-      "core/config/default-config.js | a11yTablesListsVideoGroupDescription": [
-        "categoryGroups[a11y-tables-lists].description"
-      ],
-      "core/config/default-config.js | seoMobileGroupTitle": [
-        "categoryGroups[seo-mobile].title"
-      ],
-      "core/config/default-config.js | seoMobileGroupDescription": [
-        "categoryGroups[seo-mobile].description"
-      ],
-      "core/config/default-config.js | seoContentGroupTitle": [
-        "categoryGroups[seo-content].title"
-      ],
-      "core/config/default-config.js | seoContentGroupDescription": [
-        "categoryGroups[seo-content].description"
-      ],
-      "core/config/default-config.js | seoCrawlingGroupTitle": [
-        "categoryGroups[seo-crawl].title"
-      ],
-      "core/config/default-config.js | seoCrawlingGroupDescription": [
-        "categoryGroups[seo-crawl].description"
-      ],
-      "core/config/default-config.js | bestPracticesTrustSafetyGroupTitle": [
-        "categoryGroups[best-practices-trust-safety].title"
-      ],
-      "core/config/default-config.js | bestPracticesUXGroupTitle": [
-        "categoryGroups[best-practices-ux].title"
-      ],
-      "core/config/default-config.js | bestPracticesBrowserCompatGroupTitle": [
-        "categoryGroups[best-practices-browser-compat].title"
-      ],
-      "core/config/default-config.js | bestPracticesGeneralGroupTitle": [
-        "categoryGroups[best-practices-general].title"
-      ]
+      "node_modules/@paulirish/trace_engine/models/trace/insights/Viewport.js | title": ["audits[viewport-insight].title"],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/Viewport.js | description": ["audits[viewport-insight].description"],
+      "core/config/default-config.js | performanceCategoryTitle": ["categories.performance.title"],
+      "core/config/default-config.js | a11yCategoryTitle": ["categories.accessibility.title"],
+      "core/config/default-config.js | a11yCategoryDescription": ["categories.accessibility.description"],
+      "core/config/default-config.js | a11yCategoryManualDescription": ["categories.accessibility.manualDescription"],
+      "core/config/default-config.js | bestPracticesCategoryTitle": ["categories[best-practices].title"],
+      "core/config/default-config.js | seoCategoryTitle": ["categories.seo.title"],
+      "core/config/default-config.js | seoCategoryDescription": ["categories.seo.description"],
+      "core/config/default-config.js | seoCategoryManualDescription": ["categories.seo.manualDescription"],
+      "core/config/default-config.js | metricGroupTitle": ["categoryGroups.metrics.title"],
+      "core/config/default-config.js | insightsGroupTitle": ["categoryGroups.insights.title"],
+      "core/config/default-config.js | insightsGroupDescription": ["categoryGroups.insights.description"],
+      "core/config/default-config.js | diagnosticsGroupTitle": ["categoryGroups.diagnostics.title"],
+      "core/config/default-config.js | diagnosticsGroupDescription": ["categoryGroups.diagnostics.description"],
+      "core/config/default-config.js | a11yBestPracticesGroupTitle": ["categoryGroups[a11y-best-practices].title"],
+      "core/config/default-config.js | a11yBestPracticesGroupDescription": ["categoryGroups[a11y-best-practices].description"],
+      "core/config/default-config.js | a11yColorContrastGroupTitle": ["categoryGroups[a11y-color-contrast].title"],
+      "core/config/default-config.js | a11yColorContrastGroupDescription": ["categoryGroups[a11y-color-contrast].description"],
+      "core/config/default-config.js | a11yNamesLabelsGroupTitle": ["categoryGroups[a11y-names-labels].title"],
+      "core/config/default-config.js | a11yNamesLabelsGroupDescription": ["categoryGroups[a11y-names-labels].description"],
+      "core/config/default-config.js | a11yNavigationGroupTitle": ["categoryGroups[a11y-navigation].title"],
+      "core/config/default-config.js | a11yNavigationGroupDescription": ["categoryGroups[a11y-navigation].description"],
+      "core/config/default-config.js | a11yAriaGroupTitle": ["categoryGroups[a11y-aria].title"],
+      "core/config/default-config.js | a11yAriaGroupDescription": ["categoryGroups[a11y-aria].description"],
+      "core/config/default-config.js | a11yLanguageGroupTitle": ["categoryGroups[a11y-language].title"],
+      "core/config/default-config.js | a11yLanguageGroupDescription": ["categoryGroups[a11y-language].description"],
+      "core/config/default-config.js | a11yAudioVideoGroupTitle": ["categoryGroups[a11y-audio-video].title"],
+      "core/config/default-config.js | a11yAudioVideoGroupDescription": ["categoryGroups[a11y-audio-video].description"],
+      "core/config/default-config.js | a11yTablesListsVideoGroupTitle": ["categoryGroups[a11y-tables-lists].title"],
+      "core/config/default-config.js | a11yTablesListsVideoGroupDescription": ["categoryGroups[a11y-tables-lists].description"],
+      "core/config/default-config.js | seoMobileGroupTitle": ["categoryGroups[seo-mobile].title"],
+      "core/config/default-config.js | seoMobileGroupDescription": ["categoryGroups[seo-mobile].description"],
+      "core/config/default-config.js | seoContentGroupTitle": ["categoryGroups[seo-content].title"],
+      "core/config/default-config.js | seoContentGroupDescription": ["categoryGroups[seo-content].description"],
+      "core/config/default-config.js | seoCrawlingGroupTitle": ["categoryGroups[seo-crawl].title"],
+      "core/config/default-config.js | seoCrawlingGroupDescription": ["categoryGroups[seo-crawl].description"],
+      "core/config/default-config.js | bestPracticesTrustSafetyGroupTitle": ["categoryGroups[best-practices-trust-safety].title"],
+      "core/config/default-config.js | bestPracticesUXGroupTitle": ["categoryGroups[best-practices-ux].title"],
+      "core/config/default-config.js | bestPracticesBrowserCompatGroupTitle": ["categoryGroups[best-practices-browser-compat].title"],
+      "core/config/default-config.js | bestPracticesGeneralGroupTitle": ["categoryGroups[best-practices-general].title"]
     }
   }
 }

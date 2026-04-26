@@ -1,199 +1,213 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @font-face {
-    font-family: 'Tulpen One';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/TulpenOne-Regular.ttf) format('truetype');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: 'Tulpen One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/TulpenOne-Regular.ttf) format('truetype');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 
-html, body {
-    --x-bg: #26262a;
-    --x-stroke: #f8423d;
-    --x-fill: #bb3b37;
-    --x-white: #e4e5e5;
+html,
+body {
+  --x-bg: #26262a;
+  --x-stroke: #f8423d;
+  --x-fill: #bb3b37;
+  --x-white: #e4e5e5;
 
-    font-family: "Tulpen One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: 'Tulpen One', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 
-    height: 100%;
-    background: var(--x-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+  height: 100%;
+  background: var(--x-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 #card {
-    width: 100dvw;
-    height: 100dvh;
-    display: block;
+  width: 100dvw;
+  height: 100dvh;
+  display: block;
 }
 
 svg * {
-    fill: none;
-    stroke: var(--x-stroke);
-    stroke-width: 1;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    vector-effect: non-scaling-stroke;
+  fill: none;
+  stroke: var(--x-stroke);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
 }
 
 #title * {
-    stroke-width: 0;
-    fill: var(--x-white);
-    fill-opacity: .87;
+  stroke-width: 0;
+  fill: var(--x-white);
+  fill-opacity: 0.87;
 }
 
 #gh * {
-    stroke-width: 0;
-    fill: var(--x-fill);
+  stroke-width: 0;
+  fill: var(--x-fill);
 }
 
 #gh:hover * {
-    stroke-width: 0;
-    fill: var(--x-white);
-    fill-opacity: .80;
+  stroke-width: 0;
+  fill: var(--x-white);
+  fill-opacity: 0.8;
 }
 
 #heart-small-icon * {
-    stroke-width: 0;
-    fill: var(--x-fill);
+  stroke-width: 0;
+  fill: var(--x-fill);
 }
 
 .beat-signal * {
-    stroke-width: 0;
-    fill: var(--x-fill);
-    fill-opacity: 1;
+  stroke-width: 0;
+  fill: var(--x-fill);
+  fill-opacity: 1;
 }
 
 #midi-small-icon * {
-    stroke: var(--x-white);
-    stroke-opacity: .87;
+  stroke: var(--x-white);
+  stroke-opacity: 0.87;
 }
 
 #rect-outer {
-    fill: var(--x-bg);
+  fill: var(--x-bg);
 }
 
-#watch-btn *, #jack-btn * {
-    fill: var(--x-bg);
-    fill-opacity: 1;
+#watch-btn *,
+#jack-btn * {
+  fill: var(--x-bg);
+  fill-opacity: 1;
 }
 
-#play-btn *, #stop-btn *, #heart * {
-    fill: var(--x-bg);
-    fill-opacity: 1;
+#play-btn *,
+#stop-btn *,
+#heart * {
+  fill: var(--x-bg);
+  fill-opacity: 1;
 }
 
 #watch-btn.active * {
-    stroke: var(--x-white);
+  stroke: var(--x-white);
 }
 
-#play-btn.active *, #stop-btn.active * {
-    stroke: var(--x-white);
+#play-btn.active *,
+#stop-btn.active * {
+  stroke: var(--x-white);
 }
 
 #jack-btn.active * {
-    stroke: var(--x-white);
+  stroke: var(--x-white);
 }
 
 #digit-group * {
-    stroke: var(--x-white);
+  stroke: var(--x-white);
 }
 
-#drum-btn *, #sine-btn * {
-    fill: var(--x-fill);
-    fill-opacity: 0;
-    stroke: var(--x-stroke);
+#drum-btn *,
+#sine-btn * {
+  fill: var(--x-fill);
+  fill-opacity: 0;
+  stroke: var(--x-stroke);
 }
 
-#drum-btn.active *, #sine-btn.active * {
-    stroke: var(--x-white);
+#drum-btn.active *,
+#sine-btn.active * {
+  stroke: var(--x-white);
 }
 
 /* MIDI picker overlay */
 #midi-picker {
-    pointer-events: all;
+  pointer-events: all;
 }
 
 #midi-picker-bg {
-    fill: var(--x-bg);
-    stroke: none;
+  fill: var(--x-bg);
+  stroke: none;
 }
 
 .picker-divider {
-    stroke: var(--x-stroke);
-    fill: none;
+  stroke: var(--x-stroke);
+  fill: none;
 }
 
 .picker-row-hit {
-    fill: transparent;
-    stroke: none;
-    cursor: pointer;
+  fill: transparent;
+  stroke: none;
+  cursor: pointer;
 }
 
 .picker-label {
-    fill: var(--x-white);
-    fill-opacity: 0.55;
-    stroke: none;
+  fill: var(--x-white);
+  fill-opacity: 0.55;
+  stroke: none;
 }
 
 .picker-label.selected {
-    fill: #fff;
-    fill-opacity: 1;
+  fill: #fff;
+  fill-opacity: 1;
 }
 
 .picker-row-group:hover .picker-label {
-    fill: #fff;
-    fill-opacity: 1;
+  fill: #fff;
+  fill-opacity: 1;
 }
 
 #backdrop {
-    fill: none;
-    stroke-width: 0;
+  fill: none;
+  stroke-width: 0;
 }
 
 #bpm-line {
-    stroke: var(--x-white);
+  stroke: var(--x-white);
 }
 
-#bpm-min-label, #bpm-max-label {
-    stroke: none;
-    stroke-width: 0;
-    fill: var(--x-white);
-    fill-opacity: .87;
-    letter-spacing: 2px;
+#bpm-min-label,
+#bpm-max-label {
+  stroke: none;
+  stroke-width: 0;
+  fill: var(--x-white);
+  fill-opacity: 0.87;
+  letter-spacing: 2px;
 }
 
 .arc {
-    stroke: var(--x-white);
-    stroke-width: 1.25px;
+  stroke: var(--x-white);
+  stroke-width: 1.25px;
 }
 
-[role="button"]:focus, a:focus {
-    outline: none;
+[role='button']:focus,
+a:focus {
+  outline: none;
 }
-[role="button"]:focus-visible, a:focus-visible {
-    outline: none;
-    outline-offset: 6px;
-    border-radius: 4px;
+[role='button']:focus-visible,
+a:focus-visible {
+  outline: none;
+  outline-offset: 6px;
+  border-radius: 4px;
 }
 
 #loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #e4e5e5;
-    font-size: 1.5rem;
-    letter-spacing: 0.15em;
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #e4e5e5;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  pointer-events: none;
 }

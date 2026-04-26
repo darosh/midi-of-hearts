@@ -1,21 +1,21 @@
 export interface BpmSample {
-  t: DOMHighResTimeStamp;
-  bpm: number;
+  t: DOMHighResTimeStamp
+  bpm: number
 }
 
 export interface State {
-  bpm: number;
-  isConnected: boolean;
-  deviceName: string;
-  isPlaying: boolean;
+  bpm: number
+  isConnected: boolean
+  deviceName: string
+  isPlaying: boolean
   /** performance.now() timestamps of upcoming quarter notes (written by midi.ts) */
-  upcomingBeats: number[];
-  lastBeatTime: number;
+  upcomingBeats: number[]
+  lastBeatTime: number
   /** performance.now() of most recent HR notification */
-  lastHrTime: number;
-  bpmHistory: BpmSample[];
-  bpmAllTimeMin: number;
-  bpmAllTimeMax: number;
+  lastHrTime: number
+  bpmHistory: BpmSample[]
+  bpmAllTimeMin: number
+  bpmAllTimeMax: number
 }
 
 export const state: State = {
@@ -29,4 +29,4 @@ export const state: State = {
   bpmHistory: [],
   bpmAllTimeMin: Infinity,
   bpmAllTimeMax: -Infinity,
-};
+}

@@ -37,9 +37,9 @@ for (const [, cat] of Object.entries(lhr.categories)) {
 console.log(line())
 
 // ── Opportunities ────────────────────────────────────────────────────────────
-const opportunities = Object.values(lhr.audits).filter(
-  a => a.details?.type === 'opportunity' && a.score !== null && a.score < 1
-).sort((a, b) => (b.details?.overallSavingsMs ?? 0) - (a.details?.overallSavingsMs ?? 0))
+const opportunities = Object.values(lhr.audits)
+  .filter((a) => a.details?.type === 'opportunity' && a.score !== null && a.score < 1)
+  .sort((a, b) => (b.details?.overallSavingsMs ?? 0) - (a.details?.overallSavingsMs ?? 0))
 
 if (opportunities.length) {
   console.log('\nOpportunities (sorted by savings):')
@@ -47,14 +47,18 @@ if (opportunities.length) {
     const savings = a.details?.overallSavingsMs
     const tag = savings != null ? ` (~${Math.round(savings)} ms)` : ''
     console.log(`  • ${a.title}${tag}`)
-    if (a.description) console.log(`    ${a.description.replace(/\[.*?\]\(.*?\)/g, '').trim().slice(0, 120)}`)
+    if (a.description)
+      console.log(
+        `    ${a.description
+          .replace(/\[.*?\]\(.*?\)/g, '')
+          .trim()
+          .slice(0, 120)}`,
+      )
   }
 }
 
 // ── Diagnostics ──────────────────────────────────────────────────────────────
-const diagnostics = Object.values(lhr.audits).filter(
-  a => a.details?.type === 'table' && a.score !== null && a.score < 1
-)
+const diagnostics = Object.values(lhr.audits).filter((a) => a.details?.type === 'table' && a.score !== null && a.score < 1)
 if (diagnostics.length) {
   console.log('\nDiagnostics:')
   for (const a of diagnostics) {
@@ -65,11 +69,7 @@ if (diagnostics.length) {
 // ── All failing audits ───────────────────────────────────────────────────────
 const skipTypes = new Set(['opportunity', 'filmstrip', 'screenshot'])
 const skipIds = new Set(['metrics', 'screenshot-thumbnails', 'final-screenshot', 'full-page-screenshot'])
-const failing = Object.values(lhr.audits).filter(
-  a => a.score !== null && a.score < 0.9 &&
-       !skipTypes.has(a.details?.type) &&
-       !skipIds.has(a.id)
-)
+const failing = Object.values(lhr.audits).filter((a) => a.score !== null && a.score < 0.9 && !skipTypes.has(a.details?.type) && !skipIds.has(a.id))
 if (failing.length) {
   console.log('\nFailing audits:')
   for (const a of failing) {
@@ -80,5 +80,5 @@ if (failing.length) {
 }
 
 // ── Passed ───────────────────────────────────────────────────────────────────
-const passed = Object.values(lhr.audits).filter(a => a.score === 1)
+const passed = Object.values(lhr.audits).filter((a) => a.score === 1)
 console.log(`\n✓ ${passed.length} audits passed\n`)
