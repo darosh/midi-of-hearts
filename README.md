@@ -12,6 +12,10 @@
    better offline user experience
 6. To force update of the cached app use *Hard Reload* <kbd>Ctrl + F5</kbd> or <kbd>Command + Shift + R</kbd> on Mac. The current version is shown during '?' button hint.
 
+The app is using 2 seconds buffer to mitigate browser throttling inactive tab so the clock output change is delayed.
+
+Inspired by [HeartSync VST](https://consciousaudio.com.au/heartsync).<br />Made with ❤️ in Brno.
+
 ## Development
 
 Powered by [Vite+](https://viteplus.dev/), see [CLAUDE.md](./CLAUDE.md) for more info.

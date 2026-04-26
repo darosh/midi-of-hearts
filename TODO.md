@@ -1,13 +1,13 @@
 # TODO
 
-- [ ] buffer note
-- [ ] inspired by note
 - [ ] test MIDI
 - [ ] tune kick
 - [ ] tune sine length
 - [ ] test PWA install
 - [ ] test mobile / tablet
 - [ ] tweak heart pulse animation
+- [x] buffer note
+- [x] inspired by note
 - [x] lighthouse
 - [x] readme
 - [x] add version to GH hint
