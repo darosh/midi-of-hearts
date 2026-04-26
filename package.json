@@ -8,6 +8,7 @@
     "build": "tsc && vp build",
     "preview": "vp preview",
     "lint": "vp fmt && vp lint --fix --format=stylish",
+    "bump": "npm version patch",
     "audit": "node scripts/lighthouse.js",
     "report": "node scripts/parse-report.js",
     "svgo": "npx svgo ./src/assets/svg/*.svg && npx svgo public/logo.svg",

@@ -1,7 +1,6 @@
 # TODO
 
 - [ ] add version to GH hint
-- [ ] add bump script
 - [ ] test MIDI
 - [ ] tune kick
 - [ ] tune sine length
@@ -10,6 +9,7 @@
 - [ ] lighthouse
 - [ ] readme
 - [ ] tweak heart pulse animation
+- [x] add bump script
 - [x] fix lost BPM
 - [x] pwa
 - [x] focus style
