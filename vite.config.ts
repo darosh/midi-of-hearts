@@ -8,7 +8,7 @@ const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'))
 export default defineConfig({
   plugins: [
     VitePWA({
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       injectRegister: 'inline',
       includeAssets: ['fonts/*.ttf'],
       manifest: {
