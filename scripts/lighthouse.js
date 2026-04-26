@@ -19,11 +19,12 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const DOCS_DIR = resolve(__dirname, '../dist')
 const REPORT_PATH = join(__dirname, 'lighthouse-report.json')
 
+/** @returns {Promise<number>} */
 function freePort() {
   return new Promise((res, rej) => {
     const s = createServer()
     s.listen(0, '127.0.0.1', () => {
-      const p = s.address().port
+      const p = /** @type {import('net').AddressInfo} */ (s.address()).port
       s.close(() => res(p))
     })
     s.on('error', rej)
@@ -78,7 +79,7 @@ async function run() {
 
 function printSummary(lhr) {
   const cats = lhr.categories
-  const scores = Object.entries(cats).map(([k, v]) => ({
+  const scores = Object.entries(cats).map(([_k, v]) => ({
     name: v.title,
     score: Math.round(v.score * 100),
   }))

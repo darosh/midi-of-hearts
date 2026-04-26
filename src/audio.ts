@@ -14,7 +14,7 @@ export function cancelPendingAudio(): void {
   for (const osc of pending) {
     try {
       osc.stop(now)
-    } catch (_) {
+    } catch {
       /* already stopped */
     }
   }
@@ -39,12 +39,9 @@ export function toggleSine(): void {
   cancelPendingAudio()
 }
 
-let beatSeq = 0
-
 export function scheduleBeat(perfNowTime: number, bpm: number): void {
   if (!ctx) return
   const offset = (perfNowTime - performance.now()) / 1000
-  ++beatSeq
   if (offset < -0.05) return
   const at = ctx.currentTime + Math.max(0.015, offset)
   if (kickOn) scheduleKick(at)
