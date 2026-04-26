@@ -1,11 +1,11 @@
 # TODO
 
-- [ ] gh-pages
 - [ ] lighthouse
-- [ ] tweak heart pulse animation
-- [ ] pwa
 - [ ] readme
-- [ ] focus style
+- [ ] tweak heart pulse animation
+- [x] pwa
+- [x] focus style
+- [x] gh-pages
 - [x] vp
 - [x] disconnect should clean queue
 - [x] sound artifact on first beat
