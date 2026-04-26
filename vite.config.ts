@@ -12,9 +12,10 @@ export default defineConfig({
       injectRegister: false,
       includeAssets: ['fonts/*.ttf'],
       workbox: {
-        // viteSingleFile inlines everything into index.html after VitePWA generates
-        // the precache manifest, so index.html ends up with revision:null and Workbox
-        // never re-fetches it on update. Use NetworkFirst for navigation instead.
+        // viteSingleFile inlines everything into index.html, so VitePWA can't compute
+        // a revision for it (ends up revision:null). Exclude html from precache entirely
+        // and serve navigation requests via NetworkFirst so updates are always fetched.
+        globPatterns: ['**/*.{js,css,png,svg,ico,ttf,woff2,webmanifest}'],
         navigateFallback: null,
         clientsClaim: true,
         runtimeCaching: [
@@ -37,6 +38,11 @@ export default defineConfig({
             src: 'pwa-64x64.png',
             sizes: '64x64',
             type: 'image/png',
+          },
+          {
+            src: 'logo.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
           },
           {
             src: 'pwa-192x192.png',
