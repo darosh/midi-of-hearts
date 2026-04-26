@@ -16,7 +16,7 @@ import puppeteer from 'puppeteer'
 import lighthouse from 'lighthouse'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const DOCS_DIR = resolve(__dirname, '../docs')
+const DOCS_DIR = resolve(__dirname, '../dist')
 const REPORT_PATH = join(__dirname, 'lighthouse-report.json')
 
 function freePort () {

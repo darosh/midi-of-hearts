@@ -9,7 +9,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(./fonts/TulpenOne-Regular.ttf) format('ttf');
+    src: url(/fonts/TulpenOne-Regular.ttf) format('truetype');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -50,7 +50,6 @@ svg * {
     stroke-width: 0;
     fill: var(--x-white);
     fill-opacity: .87;
-    /*stroke: var(--x-white);*/
 }
 
 #gh * {
@@ -78,9 +77,6 @@ svg * {
 #midi-small-icon * {
     stroke: var(--x-white);
     stroke-opacity: .87;
-    /*stroke-width: 0;*/
-    /*fill: var(--x-white);*/
-    /*fill-opacity: .87;*/
 }
 
 #rect-outer {
@@ -180,4 +176,24 @@ svg * {
 .arc {
     stroke: var(--x-white);
     stroke-width: 1.25px;
+}
+
+[role="button"]:focus, a:focus {
+    outline: none;
+}
+[role="button"]:focus-visible, a:focus-visible {
+    outline: none;
+    outline-offset: 6px;
+    border-radius: 4px;
+}
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #e4e5e5;
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+    pointer-events: none;
 }
