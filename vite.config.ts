@@ -8,7 +8,7 @@ const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'))
 export default defineConfig({
   plugins: [
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       manifest: {
         name: 'MIDI of Hearts',
         short_name: 'MoH',
