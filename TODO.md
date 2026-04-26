@@ -1,5 +1,7 @@
 # TODO
 
+- [ ] buffer note
+- [ ] inspired by note
 - [ ] test MIDI
 - [ ] tune kick
 - [ ] tune sine length
