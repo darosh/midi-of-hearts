@@ -9,6 +9,8 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: 'prompt',
+      injectRegister: 'inline',
+      includeAssets: ['fonts/*.ttf'],
       manifest: {
         name: 'MIDI of Hearts',
         short_name: 'MoH',
