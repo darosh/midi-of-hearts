@@ -2,7 +2,7 @@
 
 - [ ] test PWA install
 - [ ] test mobile / tablet
-- [ ] tweak heart pulse animation
+- [x] tweak heart pulse animation
 - [x] test MIDI
 - [x] tune kick
 - [x] tune sine length

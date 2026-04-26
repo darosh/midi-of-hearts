@@ -493,6 +493,17 @@ function closePicker(): void {
 const ARC_TRAVEL_MS = 800
 const BEAT_TRAVEL_MS = 2000
 
+let lastBeatMs = -Infinity
+midi.onBeat((t) => {
+  const delay = t - performance.now()
+  setTimeout(
+    () => {
+      lastBeatMs = performance.now()
+    },
+    Math.max(0, delay),
+  )
+})
+
 let displayDigits: number[] = []
 let targetBpm = 0
 
@@ -578,17 +589,30 @@ function animateBeatTicks(now: number): void {
   }
 }
 
+function easeOutSine(x: number): number {
+  return Math.sin((x * Math.PI) / 2)
+}
+
+function easeOut(x: number) {
+  return 1 - (1 - x) ** 2
+}
+
 function animateHeartPulse(now: number): void {
   const heartG = svg?.getElementById('heart')
   if (!heartG) return
-  const lastBeat = state.upcomingBeats.filter((t) => t <= now).reduce((a, b) => (b > a ? b : a), -Infinity)
-  const age = now - lastBeat,
-    dur = 300
-  if (!isFinite(lastBeat) || age > dur) {
+  const age = now - lastBeatMs
+  const dur = state.bpm > 0 ? 60_000 / state.bpm / 2 : 300
+
+  if (!isFinite(lastBeatMs) || age > dur) {
     heartG.setAttribute('transform', '')
     return
   }
-  const scale = 1 + 0.18 * Math.sin((Math.PI * age) / dur)
+
+  const T_PEAK = 0.125
+  const t = Math.min(1, age / dur)
+  const scaleFactor = t <= T_PEAK ? easeOutSine(t / T_PEAK) : easeOut(1 - (t - T_PEAK) / (1 - T_PEAK))
+
+  const scale = 1 + 0.08 * scaleFactor
   heartG.setAttribute('transform', `translate(${f(HEART_C.x)},${f(HEART_C.y)}) scale(${f(scale)}) translate(${f(-HEART_C.x)},${f(-HEART_C.y)})`)
 }
 
