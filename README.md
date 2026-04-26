@@ -10,6 +10,7 @@
 4. **Click play button**
 5. The app should be available offline by design, but you can additionally use the browser *install as app* feature for
    better offline user experience
+6. To force update of the cached app use *Hard Reload* <kbd>Ctrl + F5</kbd> or <kbd>Command + Shift + R</kbd> on Mac. The current version is shown during '?' button hint.
 
 ## Development
 
