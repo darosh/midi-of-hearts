@@ -11,6 +11,19 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
       includeAssets: ['fonts/*.ttf'],
+      workbox: {
+        // viteSingleFile inlines everything into index.html after VitePWA generates
+        // the precache manifest, so index.html ends up with revision:null and Workbox
+        // never re-fetches it on update. Use NetworkFirst for navigation instead.
+        navigateFallback: null,
+        runtimeCaching: [
+          {
+            urlPattern: ({ request }) => request.mode === 'navigate',
+            handler: 'NetworkFirst',
+            options: { cacheName: 'pages' },
+          },
+        ],
+      },
       manifest: {
         name: 'MIDI of Hearts',
         short_name: 'MoH',
