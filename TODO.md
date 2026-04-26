@@ -1,8 +1,16 @@
 # TODO
 
+- [ ] add version to GH hint
+- [ ] add bump script
+- [ ] test MIDI
+- [ ] tune kick
+- [ ] tune sine length
+- [ ] test PWA install
+- [ ] test mobile / tablet
 - [ ] lighthouse
 - [ ] readme
 - [ ] tweak heart pulse animation
+- [x] fix lost BPM
 - [x] pwa
 - [x] focus style
 - [x] gh-pages
