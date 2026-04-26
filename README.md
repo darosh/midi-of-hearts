@@ -1,6 +1,6 @@
 # MIDI of Hearts
 
-> Bluetooth heart rate monitor to MIDI clock.
+> Bluetooth smartwatch heart rate monitor and MIDI clock
 
 ## Usage
 
