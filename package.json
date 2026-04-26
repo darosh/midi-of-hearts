@@ -9,7 +9,8 @@
     "preview": "vp preview",
     "lint": "vp fmt && vp lint --fix --format=stylish",
     "audit": "node scripts/lighthouse.js",
-    "report": "node scripts/parse-report.js"
+    "report": "node scripts/parse-report.js",
+    "svgo": "npx svgo ./src/assets/svg/*.svg && npx svgo ./public/favicon.svg"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
@@ -17,6 +18,8 @@
     "puppeteer": "^23.0.0",
     "typescript": "~6.0.2",
     "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vite-plugin-pwa": "^1.2.0",
+    "vite-plugin-singlefile": "^2.3.3",
     "vite-plus": "latest"
   },
   "overrides": {
