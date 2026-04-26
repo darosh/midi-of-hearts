@@ -44,6 +44,7 @@ svg * {
   stroke-width: 0;
   fill: var(--x-white);
   fill-opacity: 0.87;
+  shape-rendering: crispEdges;
 }
 
 #gh * {
@@ -71,6 +72,12 @@ svg * {
 #midi-small-icon * {
   stroke: var(--x-white);
   stroke-opacity: 0.87;
+  stroke-width: 1;
+  paint-order: fill;
+  stroke-linecap: initial;
+  stroke-linejoin: initial;
+  fill: var(--x-bg);
+  shape-rendering: crispEdges;
 }
 
 #rect-outer {
@@ -144,6 +151,7 @@ svg * {
   fill: var(--x-white);
   fill-opacity: 0.55;
   stroke: none;
+  shape-rendering: crispEdges;
 }
 
 .picker-label.selected {
@@ -172,6 +180,7 @@ svg * {
   fill: var(--x-white);
   fill-opacity: 0.87;
   letter-spacing: 2px;
+  shape-rendering: crispEdges;
 }
 
 .arc {
@@ -219,8 +228,9 @@ a:focus-visible .focus-ring {
   stroke: none;
   stroke-width: 0;
   letter-spacing: 0.055em;
-  word-spacing: 0.2em;
+  word-spacing: 0.1em;
   pointer-events: none;
+  shape-rendering: crispEdges;
 }
 
 #loading {
