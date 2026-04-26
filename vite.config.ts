@@ -10,13 +10,12 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: false,
-      includeAssets: ['fonts/*.ttf'],
       includeManifestIcons: false,
       workbox: {
         // viteSingleFile inlines everything into index.html, so VitePWA can't compute
         // a revision for it (ends up revision:null). Exclude html from precache entirely
         // and serve navigation requests via NetworkFirst so updates are always fetched.
-        globPatterns: ['**/*.{js,css,png,svg,ico,ttf,woff2,webmanifest}'],
+        globPatterns: ['**/*.{js,css,png,svg,ico,ttf,woff,woff2,webmanifest}'],
         navigateFallback: null,
         clientsClaim: true,
         runtimeCaching: [
