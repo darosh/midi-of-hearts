@@ -201,8 +201,9 @@ a:focus-visible {
 
 .focus-ring {
   fill: transparent !important;
-  stroke: var(--x-stroke);
-  stroke-width: 1;
+  stroke: var(--x-white) !important;
+  stroke-width: 1 !important;
+  stroke-opacity: .75!important;
   stroke-dasharray: 6 4;
   opacity: 0;
   transition: opacity 0.15s;
