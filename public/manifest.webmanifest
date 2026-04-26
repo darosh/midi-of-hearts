@@ -1,0 +1,10 @@
+{
+  "name": "MIDI of Hearts",
+  "short_name": "MoH",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#26262a",
+  "theme_color": "#bb3b37",
+  "lang": "en",
+  "scope": "./"
+}
