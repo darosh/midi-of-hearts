@@ -211,7 +211,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
   if (svg) svg.remove()
 
   svg = el('svg', { viewBox: `0 0 ${W} ${H}`, id: 'card' }) as unknown as SVGSVGElement
-  document.body.appendChild(svg)
+  document.body.querySelector('main')!.appendChild(svg)
 
   svg.appendChild(el('rect', { x: String(OX), y: String(OY), width: String(OW), height: String(OH), rx: String(R), ry: String(R), id: 'rect-outer' }))
   svg.appendChild(el('rect', { x: String(IX), y: String(IY), width: String(IW), height: String(IH), rx: String(RI), ry: String(RI) }))
