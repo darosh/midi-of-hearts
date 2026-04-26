@@ -39,11 +39,11 @@ export default defineConfig({
             sizes: '64x64',
             type: 'image/png',
           },
-          {
-            src: 'logo.svg',
-            sizes: 'any',
-            type: 'image/svg+xml',
-          },
+          // {
+          //   src: 'logo.svg',
+          //   sizes: 'any',
+          //   type: 'image/svg+xml',
+          // },
           {
             src: 'pwa-192x192.png',
             sizes: '192x192',
