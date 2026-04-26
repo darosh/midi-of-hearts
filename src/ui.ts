@@ -239,7 +239,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
   const cornerSize = GUTTER_H
   const cornerCX = M + I / 2
   const cornerCY = M + I / 2
-  svg.appendChild(placeIcon(iconsArg.heart, cornerCX + I - P, cornerCY, cornerSize, cornerSize - P, { id: 'heart-small-icon' }))
+  svg.appendChild(placeIcon(iconsArg.heart, cornerCX + I - P, cornerCY + P *.08, cornerSize, cornerSize - P, { id: 'heart-small-icon' }))
   svg.appendChild(placeIcon(iconsArg.midiLogo, cornerCX + I + cornerSize + P * 1.5, cornerCY, cornerSize * 5, cornerSize, { id: 'midi-small-icon' }))
 
   const rightGutterCX = W - M - I / 2
