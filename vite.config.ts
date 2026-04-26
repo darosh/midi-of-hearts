@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite-plus'
 
 export default defineConfig({
-  base: '/midi-of-hearts/',
+  base: './',
   fmt: {
     semi: false,
     singleQuote: true,
