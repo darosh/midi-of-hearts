@@ -16,6 +16,7 @@ export default defineConfig({
         // the precache manifest, so index.html ends up with revision:null and Workbox
         // never re-fetches it on update. Use NetworkFirst for navigation instead.
         navigateFallback: null,
+        clientsClaim: true,
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.mode === 'navigate',
