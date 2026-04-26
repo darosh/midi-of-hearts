@@ -17,7 +17,8 @@ jobs:
       - uses: voidzero-dev/setup-vp@v1
         with:
           run-install: false
-      - run: vp install --legacy-peer-deps
+
+      - run: vp install -- --legacy-peer-deps
 
       - run: vp build
 
