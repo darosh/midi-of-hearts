@@ -1,14 +1,14 @@
 # TODO
 
-- [ ] add version to GH hint
+- [ ] lighthouse
 - [ ] test MIDI
 - [ ] tune kick
 - [ ] tune sine length
 - [ ] test PWA install
 - [ ] test mobile / tablet
-- [ ] lighthouse
 - [ ] readme
 - [ ] tweak heart pulse animation
+- [x] add version to GH hint
 - [x] add bump script
 - [x] fix lost BPM
 - [x] pwa

@@ -233,7 +233,7 @@ function buildCard(iconsArg: Record<string, Icon>): void {
   const ghLink = el('a', { href: 'https://github.com/darosh/midi-of-hearts', target: '_blank', id: 'gh', 'aria-label': 'View source on GitHub' })
   ghLink.appendChild(placeIcon(iconsArg.gh, ghCX, ghCY, ghSize, ghSize))
   addFocusRing(ghLink, ghCX, ghCY, ghSize * 0.62)
-  wireHint(ghLink, 'More info on GitHub')
+  wireHint(ghLink, `More info on GitHub / Version ${__APP_VERSION__}`)
   svg.appendChild(ghLink)
 
   const cornerSize = GUTTER_H

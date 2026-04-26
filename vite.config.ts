@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite-plus'
 import { VitePWA } from 'vite-plugin-pwa'
 import { viteSingleFile } from 'vite-plugin-singlefile'
+import { readFileSync } from 'node:fs'
+
+const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'))
 
 export default defineConfig({
   plugins: [
@@ -41,6 +44,9 @@ export default defineConfig({
     viteSingleFile(),
   ],
   base: './',
+  define: {
+    __APP_VERSION__: JSON.stringify(version),
+  },
   build: {
     cssCodeSplit: false, // optional: combine all CSS into one
     assetsInlineLimit: 1000000, // optional: inline small assets too
