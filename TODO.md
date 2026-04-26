@@ -1,11 +1,11 @@
 # TODO
 
-- [ ] test MIDI
-- [ ] tune kick
-- [ ] tune sine length
 - [ ] test PWA install
 - [ ] test mobile / tablet
 - [ ] tweak heart pulse animation
+- [x] test MIDI
+- [x] tune kick
+- [x] tune sine length
 - [x] buffer note
 - [x] inspired by note
 - [x] lighthouse
