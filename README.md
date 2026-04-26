@@ -4,7 +4,7 @@
 
 ## Usage
 
-1. **Visit** [darosh.github.io/midi-of-hearts](https://darosh.github.io/midi-of-hearts/)
+1. **Visit** [darosh.github.io/midi-of-hearts](https://darosh.github.io/midi-of-hearts/) in desktop browser.
 2. **Connect to your heart rate monitor:** click the watches icon, start the monitor and click pair in browser popup
 3. **Select MIDI and/or sound**
 4. **Click play button**
@@ -12,9 +12,11 @@
    better offline user experience
 6. To force update of the cached app use _Hard Reload_ <kbd>Ctrl + F5</kbd> or <kbd>Command + Shift + R</kbd> on Mac. The current version is shown during '?' button hint.
 
-Tested with **desktop Chrome** with **Garmin Epix gen2**. Android and iOS is unsuported.
+👉 The app is using 2 seconds buffer to mitigate browser throttling inactive tab so the clock output change is delayed.
 
-The app is using 2 seconds buffer to mitigate browser throttling inactive tab so the clock output change is delayed.
+🧪 Tested with **desktop Chrome** and **Garmin Epix gen2**.
+
+**⚠️ Android and iOS** are unsupported by design as they lack the required Web APIs: [Web Bluetooth](https://caniuse.com/?search=Web+Bluetooth) and [Web MIDI](https://caniuse.com/?search=Web+MIDI+API)
 
 Inspired by [HeartSync VST](https://consciousaudio.com.au/heartsync).<br />Made with ❤️ in Brno.
 
