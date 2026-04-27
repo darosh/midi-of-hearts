@@ -47,11 +47,7 @@ svg * {
   shape-rendering: crispEdges;
 }
 
-#gh * {
-}
-
-#gh:hover *,
-#settings-btn:hover * {
+#settings-btn.active * {
   stroke: var(--x-white);
 }
 

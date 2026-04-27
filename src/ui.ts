@@ -667,6 +667,8 @@ function openSettings(): void {
   if (!svg) return
   if (svg.getElementById('settings-panel')) return
 
+  svg.getElementById('settings-btn')?.classList.add('active')
+
   const g = el('g', { id: 'settings-panel' })
 
   const backdrop = el('rect', {
@@ -743,6 +745,7 @@ function openSettings(): void {
 
 function closeSettings(): void {
   svg?.getElementById('settings-panel')?.remove()
+  svg?.getElementById('settings-btn')?.classList.remove('active')
 }
 
 // ── RAF animation loop ────────────────────────────────────────────────────────
