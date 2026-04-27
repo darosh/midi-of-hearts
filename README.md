@@ -12,7 +12,7 @@
    better offline user experience
 6. To force update of the cached app use _Hard Reload_ <kbd>Ctrl + F5</kbd> or <kbd>Command + Shift + R</kbd> on Mac. The current version is shown during '?' button hint.
 
-👉 The app is using 2 seconds buffer to mitigate browser throttling inactive tab so the clock output change is delayed.
+👉 The app is using 2 seconds buffer to mitigate browser throttling inactive tab so the clock output change is delayed. You can change the **Lookahead** in the app settings menu under the cog button.
 
 🧪 Tested with **desktop Chrome** and **Garmin Epix gen2**.
 
