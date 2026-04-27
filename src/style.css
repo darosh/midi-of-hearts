@@ -48,14 +48,11 @@ svg * {
 }
 
 #gh * {
-  stroke-width: 0;
-  fill: var(--x-fill);
 }
 
-#gh:hover * {
-  stroke-width: 0;
-  fill: var(--x-white);
-  fill-opacity: 0.8;
+#gh:hover *,
+#settings-btn:hover * {
+  stroke: var(--x-white);
 }
 
 #heart-small-icon * {
@@ -189,10 +186,12 @@ svg * {
 }
 
 [role='button']:focus,
+[role='slider']:focus,
 a:focus {
   outline: none;
 }
 [role='button']:focus-visible,
+[role='slider']:focus-visible,
 a:focus-visible {
   outline: none;
 }
@@ -210,6 +209,8 @@ a:focus-visible {
 
 [role='button']:hover .focus-ring,
 [role='button']:focus-visible .focus-ring,
+[role='slider']:hover .focus-ring,
+[role='slider']:focus-visible .focus-ring,
 a:hover .focus-ring,
 a:focus-visible .focus-ring {
   opacity: 1 !important;
@@ -230,6 +231,77 @@ a:focus-visible .focus-ring {
   letter-spacing: 0.055em;
   word-spacing: 0.1em;
   pointer-events: none;
+  shape-rendering: crispEdges;
+}
+
+/* Settings panel overlay */
+#settings-panel {
+  pointer-events: all;
+}
+
+#settings-backdrop {
+  fill: none;
+  stroke-width: 0;
+}
+
+#settings-panel-bg {
+  fill: var(--x-bg);
+  stroke: none;
+}
+
+#settings-title {
+  fill: var(--x-white);
+  fill-opacity: 0.55;
+  stroke: none;
+  stroke-width: 0;
+  letter-spacing: 0.1em;
+  shape-rendering: crispEdges;
+}
+
+.dial-track {
+  stroke: var(--x-stroke);
+  fill: none;
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.dial-value-arc {
+  stroke: var(--x-white);
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.dial-value-text {
+  fill: var(--x-white);
+  fill-opacity: 0.87;
+  stroke: none;
+  stroke-width: 0;
+  letter-spacing: 0.05em;
+  shape-rendering: crispEdges;
+  font-variant-numeric: tabular-nums;
+}
+
+.dial-label-text {
+  fill: var(--x-white);
+  fill-opacity: 0.55;
+  stroke: none;
+  stroke-width: 0;
+  letter-spacing: 0.05em;
+  shape-rendering: crispEdges;
+}
+
+.dial-hit {
+  fill: transparent;
+  stroke: none;
+}
+
+#bpm-smoothed-label {
+  stroke: none;
+  stroke-width: 0;
+  fill: var(--x-white);
+  fill-opacity: 0.87;
+  letter-spacing: 2px;
   shape-rendering: crispEdges;
 }
 

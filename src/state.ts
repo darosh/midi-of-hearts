@@ -16,6 +16,7 @@ export interface State {
   bpmHistory: BpmSample[]
   bpmAllTimeMin: number
   bpmAllTimeMax: number
+  smoothedBpm: number
 }
 
 export const state: State = {
@@ -29,4 +30,5 @@ export const state: State = {
   bpmHistory: [],
   bpmAllTimeMin: Infinity,
   bpmAllTimeMax: -Infinity,
+  smoothedBpm: 0,
 }

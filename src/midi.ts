@@ -19,9 +19,32 @@ declare global {
   }
 }
 
-const LOOKAHEAD_MS = 2000
+let lookaheadMs = 2000
 const SCHEDULER_MS = 30
 const PPQN = 24
+
+export function setLookahead(ms: number): void {
+  lookaheadMs = ms
+}
+
+export function getLookahead(): number {
+  return lookaheadMs
+}
+
+let smoothingMs = 0
+let smoothedBpmVal = 0
+
+export function setSmoothing(ms: number): void {
+  smoothingMs = ms
+}
+
+export function getSmoothing(): number {
+  return smoothingMs
+}
+
+export function getSmoothedBpm(): number {
+  return smoothedBpmVal
+}
 
 let midiAccess: MIDIAccess | null = null
 let schedulerTimer: ReturnType<typeof setInterval> | null = null
@@ -83,15 +106,27 @@ export function stop(): void {
     schedulerTimer = null
   }
   state.upcomingBeats = []
+  smoothedBpmVal = 0
+  state.smoothedBpm = 0
   cancelPendingAudio()
   send([0xfc])
 }
 
 function runScheduler(): void {
   if (!state.isPlaying || state.bpm <= 0) return
-  const intervalMs = 60000 / (state.bpm * PPQN)
+
+  if (smoothingMs <= 0) {
+    smoothedBpmVal = state.bpm
+  } else {
+    if (smoothedBpmVal === 0) smoothedBpmVal = state.bpm
+    const alpha = 1 - Math.exp(-SCHEDULER_MS / smoothingMs)
+    smoothedBpmVal += alpha * (state.bpm - smoothedBpmVal)
+  }
+  state.smoothedBpm = smoothedBpmVal
+
+  const intervalMs = 60000 / (smoothedBpmVal * PPQN)
   const now = performance.now()
-  const until = now + LOOKAHEAD_MS
+  const until = now + lookaheadMs
 
   while (nextPulseTime < until) {
     const t = nextPulseTime

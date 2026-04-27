@@ -15,6 +15,7 @@ import ghSvgRaw from './assets/svg/help.svg?raw'
 import numbersSvgRaw from './assets/svg/numbers.svg?raw'
 import drumSvgRaw from './assets/svg/drum-icon.svg?raw'
 import sineSvgRaw from './assets/svg/sine-icon.svg?raw'
+import settingsSvgRaw from './assets/svg/settings-icon.svg?raw'
 
 // ── Geometry constants ────────────────────────────────────────────────────────
 const W = 500
@@ -280,6 +281,20 @@ function buildCard(iconsArg: Record<string, Icon>): void {
 
   updateSoundBtns()
 
+  const setCY = H - cornerSize - IX
+  const settingsBtn = el('g', { id: 'settings-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Settings', 'aria-pressed': 'false' })
+  settingsBtn.appendChild(placeIcon(iconsArg.settings, rightGutterCX, setCY, cornerSize, cornerSize))
+  addFocusRing(settingsBtn, rightGutterCX, setCY, cornerSize * 0.62)
+  settingsBtn.addEventListener('click', openSettings)
+  settingsBtn.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+      e.preventDefault()
+      openSettings()
+    }
+  })
+  wireHint(settingsBtn, 'Settings')
+  svg.appendChild(settingsBtn)
+
   const watchSize = IW * 0.28
   const watchBtn = el('g', { id: 'watch-btn', style: 'cursor:pointer', role: 'button', tabindex: '0', 'aria-label': 'Connect Bluetooth heart rate monitor' })
   watchBtn.appendChild(placeIcon(iconsArg.watches, WATCH_C.x, WATCH_C.y, watchSize, watchSize))
@@ -384,6 +399,16 @@ function buildCard(iconsArg: Record<string, Icon>): void {
   wireHint(jackBtn, 'Connect to MIDI')
   svg.appendChild(jackBtn)
 
+  const smoothedLabel = el('text', {
+    id: 'bpm-smoothed-label',
+    x: f(JACK_C.x),
+    y: f(JACK_C.y),
+    'font-size': f(SW * 5),
+    'text-anchor': 'middle',
+    'dominant-baseline': 'hanging',
+  })
+  svg.appendChild(smoothedLabel)
+
   digitGroup = el('g', { id: 'digit-group' })
   svg.appendChild(digitGroup)
   renderDigits([])
@@ -400,8 +425,10 @@ function buildCard(iconsArg: Record<string, Icon>): void {
   svg.appendChild(hintEl)
 }
 
-// ── MIDI picker overlay ───────────────────────────────────────────────────────
+// ── Settings + MIDI picker overlays ──────────────────────────────────────────
 const LS_OUTPUT_KEY = 'moh-midi-output'
+const LS_LOOKAHEAD_KEY = 'moh-lookahead'
+const LS_SMOOTHING_KEY = 'moh-smoothing'
 let outputRestored = false
 
 function loadStoredOutput(): void {
@@ -489,6 +516,235 @@ function closePicker(): void {
   svg?.getElementById('midi-picker')?.remove()
 }
 
+// ── Settings overlay ──────────────────────────────────────────────────────────
+interface DialConfig {
+  id: string
+  cx: number
+  cy: number
+  r: number
+  label: string
+  unit: string
+  minVal: number
+  maxVal: number
+  mapping: 'log' | 'linear'
+  getValue(): number
+  setValue(v: number): void
+}
+
+function buildDial(cfg: DialConfig): SVGElement {
+  const { cx, cy, r, label, unit, minVal, maxVal, mapping } = cfg
+  const getValue = (): number => cfg.getValue()
+  const setValue = (v: number): void => cfg.setValue(v)
+
+  // Arc spans 270° CW: start at 135° (7 o'clock), end at 45° (5 o'clock)
+  const START_DEG = 135
+  const SWEEP = 270
+
+  function valToFrac(v: number): number {
+    if (mapping === 'log') return Math.log(v / minVal) / Math.log(maxVal / minVal)
+    return (v - minVal) / (maxVal - minVal)
+  }
+
+  function fracToVal(t: number): number {
+    t = Math.max(0, Math.min(1, t))
+    if (mapping === 'log') return Math.round(minVal * Math.pow(maxVal / minVal, t))
+    return Math.round(minVal + t * (maxVal - minVal))
+  }
+
+  function arcPath(frac: number): string {
+    if (frac <= 0) return ''
+    const clampedFrac = Math.min(frac, 0.9999)
+    const endDeg = START_DEG + clampedFrac * SWEEP
+    const x1 = cx + r * Math.cos((START_DEG * Math.PI) / 180)
+    const y1 = cy + r * Math.sin((START_DEG * Math.PI) / 180)
+    const x2 = cx + r * Math.cos((endDeg * Math.PI) / 180)
+    const y2 = cy + r * Math.sin((endDeg * Math.PI) / 180)
+    const large = clampedFrac * SWEEP > 180 ? 1 : 0
+    return `M ${f(x1)} ${f(y1)} A ${f(r)} ${f(r)} 0 ${large} 1 ${f(x2)} ${f(y2)}`
+  }
+
+  const g = el('g', {
+    id: cfg.id,
+    role: 'slider',
+    tabindex: '0',
+    'aria-label': label,
+    style: 'cursor:ns-resize',
+  })
+
+  g.appendChild(el('path', { class: 'dial-track', d: arcPath(1) }))
+
+  const valuePath = el('path', { class: 'dial-value-arc', id: cfg.id + '-arc' })
+  g.appendChild(valuePath)
+
+  const valueText = el('text', {
+    class: 'dial-value-text',
+    id: cfg.id + '-text',
+    x: f(cx),
+    y: f(cy),
+    'text-anchor': 'middle',
+    'dominant-baseline': 'central',
+    'font-size': f(r * 0.5),
+  })
+  g.appendChild(valueText)
+
+  const labelText = el('text', {
+    class: 'dial-label-text',
+    x: f(cx),
+    y: f(cy + r + P * 1.5),
+    'text-anchor': 'middle',
+    'dominant-baseline': 'hanging',
+    'font-size': f(r * 0.5),
+  })
+  labelText.textContent = label
+  g.appendChild(labelText)
+
+  g.appendChild(el('circle', { class: 'dial-hit', cx: f(cx), cy: f(cy), r: f(r * 1.2) }))
+
+  addFocusRing(g, cx, cy, r * 1.12)
+  wireHint(g, `${label}`)
+
+  function render(): void {
+    const v = getValue()
+    const frac = valToFrac(v)
+    valuePath.setAttribute('d', arcPath(frac))
+    valueText.textContent = `${v} ${unit}`
+    g.setAttribute('aria-valuenow', String(v))
+    g.setAttribute('aria-valuemin', String(minVal))
+    g.setAttribute('aria-valuemax', String(maxVal))
+  }
+
+  render()
+
+  let dragStartY = 0
+  let dragStartX = 0
+  let dragStartFrac = 0
+  let isDragging = false
+
+  function onPointerDown(e: PointerEvent): void {
+    e.preventDefault()
+    isDragging = true
+    dragStartY = e.clientY
+    dragStartX = e.clientX
+    dragStartFrac = valToFrac(getValue())
+    g.setPointerCapture(e.pointerId)
+  }
+
+  function onPointerMove(e: PointerEvent): void {
+    if (!isDragging) return
+    const dy = -(e.clientY - dragStartY)
+    const dx = e.clientX - dragStartX
+    const delta = (dy + dx) / 200
+    setValue(fracToVal(dragStartFrac + delta))
+    render()
+  }
+
+  function onPointerUp(e: PointerEvent): void {
+    isDragging = false
+    g.releasePointerCapture(e.pointerId)
+  }
+
+  g.addEventListener('pointerdown', onPointerDown)
+  g.addEventListener('pointermove', onPointerMove)
+  g.addEventListener('pointerup', onPointerUp)
+  g.addEventListener('pointercancel', onPointerUp)
+
+  g.addEventListener('keydown', (e) => {
+    const ke = e as KeyboardEvent
+    const step = ke.shiftKey ? 0.1 : 0.01
+    let frac = valToFrac(getValue())
+    if (ke.key === 'ArrowUp' || ke.key === 'ArrowRight') frac += step
+    else if (ke.key === 'ArrowDown' || ke.key === 'ArrowLeft') frac -= step
+    else return
+    ke.preventDefault()
+    setValue(fracToVal(frac))
+    render()
+  })
+
+  return g
+}
+
+function openSettings(): void {
+  if (!svg) return
+  if (svg.getElementById('settings-panel')) return
+
+  const g = el('g', { id: 'settings-panel' })
+
+  const backdrop = el('rect', {
+    x: f(OX),
+    y: f(OY),
+    width: f(OW),
+    height: f(OH),
+    id: 'settings-backdrop',
+    style: 'cursor:default',
+  })
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeSettings()
+  })
+  g.appendChild(backdrop)
+
+  g.appendChild(
+    el('rect', {
+      id: 'settings-panel-bg',
+      x: f(IX + P),
+      y: f(IY + P),
+      width: f(IW - 2 * P),
+      height: f(IH - 2 * P),
+      rx: f(RI),
+      ry: f(RI),
+    }),
+  )
+
+  // const dialR = Math.min(60, (IH - 2 * P) / 6)
+  const dialR = (IH - 2 * P) / 2 / 5.5
+  const panelMidY = IY + P + (IH - 2 * P) / 2
+  const dial1CY = panelMidY - dialR * 2.2
+  const dial2CY = panelMidY + dialR * 2.2
+
+  g.appendChild(
+    buildDial({
+      id: 'dial-lookahead',
+      cx: CX,
+      cy: dial1CY,
+      r: dialR,
+      label: 'Lookahead',
+      unit: 'ms',
+      minVal: 60,
+      maxVal: 2000,
+      mapping: 'log',
+      getValue: () => midi.getLookahead(),
+      setValue: (v) => {
+        midi.setLookahead(v)
+        localStorage.setItem(LS_LOOKAHEAD_KEY, String(v))
+      },
+    }),
+  )
+
+  g.appendChild(
+    buildDial({
+      id: 'dial-smoothing',
+      cx: CX,
+      cy: dial2CY,
+      r: dialR,
+      label: 'Smoothing',
+      unit: 'ms',
+      minVal: 0,
+      maxVal: 5000,
+      mapping: 'linear',
+      getValue: () => midi.getSmoothing(),
+      setValue: (v) => {
+        midi.setSmoothing(v)
+        localStorage.setItem(LS_SMOOTHING_KEY, String(v))
+      },
+    }),
+  )
+
+  svg.appendChild(g)
+}
+
+function closeSettings(): void {
+  svg?.getElementById('settings-panel')?.remove()
+}
+
 // ── RAF animation loop ────────────────────────────────────────────────────────
 const ARC_TRAVEL_MS = 800
 const BEAT_TRAVEL_MS = 2000
@@ -536,6 +792,13 @@ function raf(): void {
   animateDigits(now)
   renderBpmChart(now)
   updateActiveStates()
+  updateSmoothedLabel()
+}
+
+function updateSmoothedLabel(): void {
+  const labelEl = svg?.getElementById('bpm-smoothed-label')
+  if (!labelEl) return
+  labelEl.textContent = midi.getSmoothing() > 0 && state.smoothedBpm > 0 ? String(Math.round(state.smoothedBpm)) : ''
 }
 
 function updateActiveStates(): void {
@@ -731,6 +994,7 @@ export async function init(): Promise<void> {
     numbers: numbersSvgRaw,
     drum: drumSvgRaw,
     sine: sineSvgRaw,
+    settings: settingsSvgRaw,
   }
 
   icons = Object.fromEntries(Object.entries(rawSvgs).map(([id, raw]) => [id, parseIcon(raw)]))
@@ -740,9 +1004,14 @@ export async function init(): Promise<void> {
     numbersNodes[d] = g ?? el('g')
   }
 
+  const savedLookahead = Number(localStorage.getItem(LS_LOOKAHEAD_KEY) ?? '2000')
+  midi.setLookahead(isFinite(savedLookahead) && savedLookahead >= 60 ? savedLookahead : 2000)
+  const savedSmoothing = Number(localStorage.getItem(LS_SMOOTHING_KEY) ?? '0')
+  midi.setSmoothing(isFinite(savedSmoothing) && savedSmoothing >= 0 ? savedSmoothing : 0)
+
   deriveH()
   buildCard(icons)
-  midi.onBeat((t) => audio.scheduleBeat(t, state.bpm))
+  midi.onBeat((t) => audio.scheduleBeat(t, midi.getSmoothedBpm() || state.bpm))
 
   let resizeTimer: ReturnType<typeof setTimeout>
   window.addEventListener('resize', () => {
@@ -751,6 +1020,7 @@ export async function init(): Promise<void> {
       displayDigits = []
       digitAnims = []
       closePicker()
+      closeSettings()
       deriveH()
       buildCard(icons)
     }, 200)

@@ -1,5 +1,10 @@
 # TODO
 
+- [ ] change ? icon
+- [ ] add geat icon
+- [ ] add settings lookahead
+- [ ] add smoothing
+- [ ] add smoothing chart
 - [x] test PWA install
 - [x] test mobile / tablet
 - [x] tweak heart pulse animation
